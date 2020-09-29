@@ -1,3 +1,9 @@
+/**
+ * Dariusz Filipiak
+ * @author darekf77@gmail.com
+ * Recommended config for all isomorphic libs *
+ */
+
 import * as _ from 'lodash';
 //#region @backend
 import * as path from 'path';
@@ -5,13 +11,113 @@ import * as os from 'os';
 import * as fse from 'fs-extra';
 import * as child from 'child_process';
 //#endregion
-import { Helpers as Ng2LoggerHelpers } from 'ng2-logger';
-import { Models } from 'tnp-models';
-import type { Helpers as TnpHelpers } from 'tnp-helpers'
-import type { Project as AbstractProject } from 'tnp-helpers';
+
+declare const global: any;
+if (!global['ENV']) {
+  global['ENV'] = {};
+}
+
+// import { Helpers as Ng2LoggerHelpers } from 'ng2-logger';
+// import { Models } from 'tnp-models';
+// import type { Helpers as TnpHelpers } from 'tnp-helpers'
 
 
-const allowedEnvironments: Models.env.EnvironmentName[] = ['static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'];
+export namespace ConfigModels {
+  export type EnvironmentName = 'local' | 'static' | 'dev' | 'stage' | 'prod' | 'online' | 'test' | 'qa' | 'custom';
+  export type UIFramework = 'bootstrap' | 'material' | 'ionic';
+  export type FrameworkVersion = 'v1' | 'v2' | 'v3';
+
+  export type LibType = 'unknow'
+    | 'isomorphic-lib'
+    | 'angular-lib' // https://cli.angular.io/
+    | 'electron-lib' // https://github.com/maximegris/angular-electron
+    | 'ionic-lib'
+    | 'angular-client'
+    | 'ionic-client'
+    | 'workspace'
+    | 'container'
+    | 'docker'
+    | 'vscode-ext'
+    | 'chrome-ext'
+    | 'unknow-npm-project'
+    | 'game-engine-lib-pixi' // https://github.com/pixijs/pixi.js
+    | 'game-engine-lib-phaser' // https://github.com/photonstorm/phaser
+    | 'game-engine-lib-excalibur' // https://github.com/excaliburjs/Excalibur
+    | 'game-engine-lib-babylon' // https://github.com/BabylonJS/Babylon.js
+    ;
+
+  export type NewFactoryType = LibType | 'model' | 'single-file-project';
+  export type CoreLibCategory = LibType | 'common';
+}
+
+export const GlobalLibTypeName = {
+  isomorphicLib: 'isomorphic-lib',
+  angularLib: 'angular-lib',
+  electronLib: 'electron-lib',
+  ionicLib: 'ionic-lib',
+  angularClient: 'angular-client',
+  ionicClient: 'ionic-client',
+  workspace: 'workspace',
+  container: 'container',
+  docker: 'docker',
+  unknowNpmProject: 'unknow-npm-project',
+  vscodeExt: 'vscode-ext',
+  chromeExt: 'chrome-ext',
+  singleFileProject: 'single-file-project',
+};
+
+export const LibTypeArr: ConfigModels.LibType[] = [
+  GlobalLibTypeName.angularLib,
+  GlobalLibTypeName.isomorphicLib,
+  GlobalLibTypeName.angularClient,
+  GlobalLibTypeName.ionicClient,
+  GlobalLibTypeName.workspace,
+  GlobalLibTypeName.container,
+  GlobalLibTypeName.docker,
+  GlobalLibTypeName.unknowNpmProject,
+  GlobalLibTypeName.vscodeExt,
+  GlobalLibTypeName.chromeExt,
+] as ConfigModels.LibType[];
+
+
+export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [
+  GlobalLibTypeName.angularLib,
+  GlobalLibTypeName.isomorphicLib,
+  GlobalLibTypeName.angularClient,
+  GlobalLibTypeName.ionicClient,
+  GlobalLibTypeName.docker,
+  'common'
+] as ConfigModels.CoreLibCategory[];
+
+export class Helpers {
+
+  static simulateBrowser = false;
+  static get isBrowser() {
+    return Helpers.simulateBrowser || !!(typeof window !== 'undefined' && window.document);
+  }
+  static get isNode() {
+    return Helpers.simulateBrowser || !Helpers.isBrowser;
+  }
+  static contain(arr: any[], item: any): boolean {
+    return arr.filter(l => {
+      if (l instanceof RegExp) {
+        return l.test(item)
+      }
+      if (l === item) {
+        return true;
+      }
+      if ((item.match && typeof item.match === 'function') ? item.match(l) : false) {
+        return true
+      }
+      return false;
+    }).length > 0;
+  }
+
+}
+
+
+
+const allowedEnvironments: ConfigModels.EnvironmentName[] = ['static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'];
 const allowedEnvironmentsObj = {};
 allowedEnvironments.forEach(s => {
   allowedEnvironmentsObj[s] = s
@@ -69,6 +175,7 @@ const tempFolders = {
   docs: 'docs',
   dist: 'dist',
   tmp: 'tmp',
+  tmpBundleRelease: 'tmp-bundle-release',
   tempSrc: 'tmp-src',
   tempSrcDist: 'tmp-src-dist',
   previewDistApp: 'dist-app',
@@ -102,10 +209,22 @@ const folder = {
   ...tempFolders
 };
 
+// @LAST RESOLVE TNP LOCATION !!! for each context
+console.log('__dirname:\t', __dirname)
+const dirnameForTnp = __dirname
+  .replace('/node_modules/tnp-config', 'src');
+console.log('dirnameForTnp:\t' + dirnameForTnp)
+// console.log(`path.basename(path.dirname(dirnameForTnp)):\t ${path.basename(path.dirname(dirnameForTnp))}`)
 //#region @backend
 const tnp_folder_location =
-  (path.basename(path.dirname(__dirname)) === folder.node_modules) ?
-    __dirname : path.resolve(__dirname, '..');
+  (
+    (path.basename(path.dirname(dirnameForTnp)) === folder.node_modules) ?
+      dirnameForTnp
+      : path.resolve(dirnameForTnp, '..') // TODO what is this
+  );
+
+!global.hideLog && console.log(`Tnp folder location: ${tnp_folder_location}`);
+process.exit(0)
 //#endregion
 
 //#region @backend
@@ -115,7 +234,7 @@ function pathResolved(...partOfPath: string[]) {
   if (global['frameworkName'] && global['frameworkName'] === firedev) {
     const joined = partOfPath.join('/');
     const projectsInUserFolder = path.join(os.homedir(), firedev, morphi, 'projects')
-    let pathResult = joined.replace((__dirname + '/' + '../../firedev-projects'), projectsInUserFolder);
+    let pathResult = joined.replace((dirnameForTnp + '/' + '../../firedev-projects'), projectsInUserFolder);
 
     pathResult = path.resolve(pathResult);
     const morphiPathUserInUserDir = path.join(os.homedir(), firedev, morphi);
@@ -169,6 +288,7 @@ const argsReplacementsBuild = {
   'ba': 'build:app',
   'bap': 'build:app:prod',
   'bdw': 'build:dist:watch',
+  'bw': 'build:watch',
   'bdpw': 'build:dist:prod:watch',
   'bd': 'build:dist',
   'bb': 'build:bundle',
@@ -193,34 +313,7 @@ export const config = {
     const location = path.join(os.homedir(), `${config.frameworkName}`, dbFileName);
     return location;
   },
-  async initCoreProjects(Project: typeof AbstractProject, Helpers: typeof TnpHelpers) {
-    let allCoreProject: AbstractProject[] = [];
-    (config.coreProjectVersions as Models.libs.FrameworkVersion[]).forEach(v => {
-      const corePorjectsTypes: Models.libs.LibType[] = ['angular-lib', 'isomorphic-lib'];
-      const projects = corePorjectsTypes.map(t => Project.by(t, v));
-      allCoreProject = [
-        ...projects,
-        ...allCoreProject,
-      ] as any;
-    });
 
-    for (let index = 0; index < allCoreProject.length; index++) {
-      const p = allCoreProject[index];
-      console.log(`${p.genericName} ${p.location}`);
-      const linkedFiles = p.projectLinkedFiles();
-      for (let index2 = 0; index2 < linkedFiles.length; index2++) {
-        const l = linkedFiles[index2];
-        const source = path.join(l.sourceProject.location, l.relativePath);
-        const dest = path.join(p.location, l.relativePath);
-        if (!Helpers.exists(source)) {
-          Helpers.error(`[config] Core source do not exists: ${source}`, false, true);
-        }
-        Helpers.info(`link from: ${source} to ${dest}`);
-        Helpers.createSymLink(source, dest);
-      }
-      await p.filesStructure.struct();
-    }
-  },
   //#endregion
   coreProjectVersions: ['v1', 'v2'],
   regexString: {
@@ -254,9 +347,18 @@ export const config = {
   },
   frameworkName: (global['frameworkName'] ? global['frameworkName'] : 'tnp'),
   startPort: 6001,
-  frameworks: ['bootstrap', 'ionic', 'material'] as Models.env.UIFramework[],
+  frameworks: ['bootstrap', 'ionic', 'material'] as ConfigModels.UIFramework[],
   //#region @backend
   argsReplacementsBuild,
+  argsGlobalFlags: [ // TODO do I need this ?
+    '-verbose',
+    '-firedev',
+    '-reinitDb',
+    '-restartWorker',
+    '-useWorker',
+    '-dist',
+    '-bundle',
+  ],
   argsReplacements: {
     ...argsReplacementsBuild,
     'ghpush': 'githubpush',
@@ -264,6 +366,7 @@ export const config = {
     'l': 'last',
     'sl': 'show:last',
     'i': 'install',
+    'si': 'sinstall',
     'rc': 'recommit',
     'rp': 'release:prod',
     'r': 'release',
@@ -296,26 +399,26 @@ export const config = {
      * - <some-project>/node_modules/tnp
     */
     tnp_folder_location,
-    tnp_vscode_ext_location: pathResolved(__dirname, '../../firedev-projects', 'plugins', 'tnp-vscode-ext'),
+    tnp_vscode_ext_location: pathResolved(dirnameForTnp, '../../firedev-projects', 'plugins', 'tnp-vscode-ext'),
 
     tnp_tests_context: pathResolved(tnp_folder_location, folder.tnp_tests_context),
     tnp_db_for_tests_json: pathResolved(tnp_folder_location, folder.bin, file.db_for_tests_json),
 
     scripts: {
-      HELP_js: pathResolved(__dirname, folder.scripts, 'HELP.js'),
-      allHelpFiles: path.join(__dirname, folder.scripts, '/**/*.js'),
-      allPattern: path.join(__dirname, `/${folder.scripts}/**/*.js`),
+      HELP_js: pathResolved(dirnameForTnp, folder.scripts, 'HELP.js'),
+      allHelpFiles: path.join(dirnameForTnp, folder.scripts, '/**/*.js'),
+      allPattern: path.join(dirnameForTnp, `/${folder.scripts}/**/*.js`),
     },
 
-    projectsExamples: (version?: Models.libs.FrameworkVersion) => {
+    projectsExamples: (version?: ConfigModels.FrameworkVersion) => {
       version = (!version || version === 'v1') ? '' : `-${version}` as any;
       const result = {
-        workspace: pathResolved(__dirname, `../../firedev-projects/container${version}/workspace${version}`),
-        container: pathResolved(__dirname, `../../firedev-projects/container${version}`),
-        projectByType(libType: Models.libs.NewFactoryType) {
-          return pathResolved(__dirname, `../../firedev-projects/container${version}/workspace${version}/${libType}${version}`);
+        workspace: pathResolved(dirnameForTnp, `../../firedev-projects/container${version}/workspace${version}`),
+        container: pathResolved(dirnameForTnp, `../../firedev-projects/container${version}`),
+        projectByType(libType: ConfigModels.NewFactoryType) {
+          return pathResolved(dirnameForTnp, `../../firedev-projects/container${version}/workspace${version}/${libType}${version}`);
         },
-        singlefileproject: pathResolved(__dirname, `../../firedev-projects/container${version}/single-file-project${version}`)
+        singlefileproject: pathResolved(dirnameForTnp, `../../firedev-projects/container${version}/single-file-project${version}`)
       }
       return result;
     }
@@ -329,7 +432,7 @@ export const config = {
   default: {
     cloud: {
       environment: {
-        name: 'online' as Models.env.EnvironmentName
+        name: 'online' as ConfigModels.EnvironmentName
       }
     }
   },
@@ -363,23 +466,23 @@ export const config = {
      * Projects for build:app:watch command
      */
     app: [
-      Models.libs.GlobalLibTypeName.angularClient,
-      Models.libs.GlobalLibTypeName.angularLib,
-      Models.libs.GlobalLibTypeName.isomorphicLib,
-      Models.libs.GlobalLibTypeName.ionicClient,
-      Models.libs.GlobalLibTypeName.docker,
-      Models.libs.GlobalLibTypeName.container,
-    ] as Models.libs.LibType[],
+      GlobalLibTypeName.angularClient,
+      GlobalLibTypeName.angularLib,
+      GlobalLibTypeName.isomorphicLib,
+      GlobalLibTypeName.ionicClient,
+      GlobalLibTypeName.docker,
+      GlobalLibTypeName.container,
+    ] as ConfigModels.LibType[],
     /**
      * Projects for build:(dist|bundle):(watch) command
      */
     libs: [
-      Models.libs.GlobalLibTypeName.angularLib,
-      Models.libs.GlobalLibTypeName.isomorphicLib,
-      Models.libs.GlobalLibTypeName.workspace,
-      Models.libs.GlobalLibTypeName.container,
-      Models.libs.GlobalLibTypeName.docker,
-    ] as Models.libs.LibType[]
+      GlobalLibTypeName.angularLib,
+      GlobalLibTypeName.isomorphicLib,
+      GlobalLibTypeName.workspace,
+      GlobalLibTypeName.container,
+      GlobalLibTypeName.docker,
+    ] as ConfigModels.LibType[]
   },
   moduleNameAngularLib,
   moduleNameIsomorphicLib,
@@ -388,17 +491,17 @@ export const config = {
   },
   projectTypes: {
     forNpmLibs: [
-      Models.libs.GlobalLibTypeName.angularLib,
-      Models.libs.GlobalLibTypeName.isomorphicLib,
+      GlobalLibTypeName.angularLib,
+      GlobalLibTypeName.isomorphicLib,
     ],
     with: {
       angularAsCore: [
-        Models.libs.GlobalLibTypeName.angularClient,
-        Models.libs.GlobalLibTypeName.angularLib,
-        Models.libs.GlobalLibTypeName.ionicClient,
+        GlobalLibTypeName.angularClient,
+        GlobalLibTypeName.angularLib,
+        GlobalLibTypeName.ionicClient,
       ],
       componetsAsSrc: [
-        Models.libs.GlobalLibTypeName.angularLib,
+        GlobalLibTypeName.angularLib,
       ],
     }
   },
@@ -490,7 +593,7 @@ export const config = {
 
 
 
-if (Ng2LoggerHelpers.isNode) {
+if (Helpers.isNode) {
   //#region @backend
   if (!global['ENV']) {
     global['ENV'] = {};
