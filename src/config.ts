@@ -209,7 +209,7 @@ const folder = {
   ...tempFolders
 };
 
-// @LAST RESOLVE TNP LOCATION !!! for each context
+// @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
 console.log('__dirname:\t', __dirname)
 const dirnameForTnp = __dirname
   .replace('/node_modules/tnp-config', 'src');
