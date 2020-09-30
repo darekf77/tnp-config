@@ -17,10 +17,7 @@ if (!global['ENV']) {
   global['ENV'] = {};
 }
 
-// import { Helpers as Ng2LoggerHelpers } from 'ng2-logger';
-// import { Models } from 'tnp-models';
-// import type { Helpers as TnpHelpers } from 'tnp-helpers'
-
+//#region config models
 
 export namespace ConfigModels {
   export type EnvironmentName = 'local' | 'static' | 'dev' | 'stage' | 'prod' | 'online' | 'test' | 'qa' | 'custom';
@@ -89,6 +86,9 @@ export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [
   'common'
 ] as ConfigModels.CoreLibCategory[];
 
+//#endregion
+
+//#region config helpers
 export class Helpers {
 
   static simulateBrowser = false;
@@ -114,28 +114,19 @@ export class Helpers {
   }
 
 }
-
+//#endregion
 
 
 const allowedEnvironments: ConfigModels.EnvironmentName[] = ['static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'];
 const allowedEnvironmentsObj = {};
 allowedEnvironments.forEach(s => {
   allowedEnvironmentsObj[s] = s
-})
-// let { environmentName, env }: { environmentName: EnvironmentName, env: EnvironmentName } = require('minimist')(process.argv);
-
-// if (_.isString(env)) {
-//   environmentName = env;
-// }
+});
 
 const firedev = 'firedev';
 const morphi = 'morphi';
 const urlMorphi = 'https://github.com/darekf77/morphi.git';
 
-
-// environmentName = _.isString(environmentName) && environmentName.toLowerCase() as any;
-// environmentName = allowedEnvironments.includes(environmentName) ? environmentName : 'local';
-// console.log(`Current environment prefix: "${environmentName}"  , args: ${JSON.stringify(process.argv)}`);
 const filesNotAllowedToClean = {
   _gitignore: '.gitignore',
   _npmrc: '.npmrc',
@@ -210,21 +201,30 @@ const folder = {
 };
 
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
-console.log('__dirname:\t', __dirname)
-const dirnameForTnp = __dirname
-  .replace('/node_modules/tnp-config', 'src');
-console.log('dirnameForTnp:\t' + dirnameForTnp)
-// console.log(`path.basename(path.dirname(dirnameForTnp)):\t ${path.basename(path.dirname(dirnameForTnp))}`)
-//#region @backend
-const tnp_folder_location =
-  (
-    (path.basename(path.dirname(dirnameForTnp)) === folder.node_modules) ?
-      dirnameForTnp
-      : path.resolve(dirnameForTnp, '..') // TODO what is this
-  );
+const dirnameForTnp = __dirname;
+const firedevProjectsRelative = `../../../firedev-projects`;
+console.log(`__filename: ${__filename}`);
+console.log(`__dirname: ${__dirname}`);
 
-!global.hideLog && console.log(`Tnp folder location: ${tnp_folder_location}`);
-process.exit(0)
+
+//#region @backend
+let tnp_folder_location: string;
+
+// if (path.basename(path.dirname(dirnameForTnp)) === folder.node_modules) {
+//   tnp_folder_location = path.resolve(dirnameForTnp, '../..')
+// }
+// !global.hideLog && console.log(`!!!!!: ${tnp_folder_location}`);
+
+if (dirnameForTnp.endsWith(`/tnp/node_modules/tnp-config`)) {
+  // local folder with tnp
+  tnp_folder_location = dirnameForTnp.replace(`/tnp/node_modules/tnp-config`, '/tnp');
+} else {
+  // global tnp node_modules being use in firedev case
+  tnp_folder_location = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
+}
+
+!global.hideLog && console.log(`tnp from: ${tnp_folder_location}`);
+// process.exit(0)
 //#endregion
 
 //#region @backend
@@ -234,7 +234,7 @@ function pathResolved(...partOfPath: string[]) {
   if (global['frameworkName'] && global['frameworkName'] === firedev) {
     const joined = partOfPath.join('/');
     const projectsInUserFolder = path.join(os.homedir(), firedev, morphi, 'projects')
-    let pathResult = joined.replace((dirnameForTnp + '/' + '../../firedev-projects'), projectsInUserFolder);
+    let pathResult = joined.replace((dirnameForTnp + '/' + firedevProjectsRelative), projectsInUserFolder);
 
     pathResult = path.resolve(pathResult);
     const morphiPathUserInUserDir = path.join(os.homedir(), firedev, morphi);
@@ -394,12 +394,13 @@ export const config = {
     /**
      * Location of compiled source code for tnp framework
      * Can be in 3 places:
-     * - <..>/tnp/dist
-     * - <..>/tnp/bundle
-     * - <some-project>/node_modules/tnp
+     * - <..>/tnp/dist @DEPRACATED
+     * - <..>/tnp/bundle @DEPRACATED
+     * - <some-project>/node_modules/tnp @DEPRACATED
+     *  - <some-project>/node_modules/tnp-config
     */
     tnp_folder_location,
-    tnp_vscode_ext_location: pathResolved(dirnameForTnp, '../../firedev-projects', 'plugins', 'tnp-vscode-ext'),
+    tnp_vscode_ext_location: pathResolved(dirnameForTnp, firedevProjectsRelative, 'plugins', 'tnp-vscode-ext'),
 
     tnp_tests_context: pathResolved(tnp_folder_location, folder.tnp_tests_context),
     tnp_db_for_tests_json: pathResolved(tnp_folder_location, folder.bin, file.db_for_tests_json),
@@ -413,12 +414,12 @@ export const config = {
     projectsExamples: (version?: ConfigModels.FrameworkVersion) => {
       version = (!version || version === 'v1') ? '' : `-${version}` as any;
       const result = {
-        workspace: pathResolved(dirnameForTnp, `../../firedev-projects/container${version}/workspace${version}`),
-        container: pathResolved(dirnameForTnp, `../../firedev-projects/container${version}`),
+        workspace: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}`),
+        container: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}`),
         projectByType(libType: ConfigModels.NewFactoryType) {
-          return pathResolved(dirnameForTnp, `../../firedev-projects/container${version}/workspace${version}/${libType}${version}`);
+          return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}/${libType}${version}`);
         },
-        singlefileproject: pathResolved(dirnameForTnp, `../../firedev-projects/container${version}/single-file-project${version}`)
+        singlefileproject: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/single-file-project${version}`)
       }
       return result;
     }
