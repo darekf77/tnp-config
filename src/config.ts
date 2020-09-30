@@ -203,8 +203,8 @@ const folder = {
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
 const dirnameForTnp = __dirname;
 const firedevProjectsRelative = `../../../firedev-projects`;
-console.log(`__filename: ${__filename}`);
-console.log(`__dirname: ${__dirname}`);
+// console.log(`__filename: ${__filename}`);
+// console.log(`__dirname: ${__dirname}`);
 
 
 //#region @backend
