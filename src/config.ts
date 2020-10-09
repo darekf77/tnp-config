@@ -441,6 +441,7 @@ export const config = {
       }
     }
   },
+  SUBERIZED_PREFIX : `---stuberized`,
   message: {
     globalSystemToolMode: 'globalSystemToolMode'
   },
