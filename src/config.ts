@@ -159,6 +159,7 @@ const file = {
   db_json: 'db.json',
   db_for_tests_json: 'db-for-tests.json',
   tmpDockerImageId: 'tmp-docker-image-id',
+  tmpIsomorphicPackagesJson: 'tmp-isomorphic-packages.json',
   tsconfig_json: 'tsconfig.json',
   ...filesNotAllowedToClean
 };
