@@ -92,10 +92,26 @@ export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [
 export class Helpers {
 
   static simulateBrowser = false;
+  //#region @backend
+  private static isBackend = false;
+  static setIsBackend() {
+    Helpers.isBackend = true;
+  }
+  //#endregion
   static get isBrowser() {
+    //#region @backend
+    if (Helpers.isBackend) {
+      return false;
+    }
+    //#endregion
     return Helpers.simulateBrowser || !!(typeof window !== 'undefined' && window.document);
   }
   static get isNode() {
+    //#region @backend
+    if (Helpers.isBackend) {
+      return true;
+    }
+    //#endregion
     return Helpers.simulateBrowser || !Helpers.isBrowser;
   }
   static contain(arr: any[], item: any): boolean {
@@ -442,7 +458,7 @@ export const config = {
       }
     }
   },
-  SUBERIZED_PREFIX : `---stuberized`,
+  SUBERIZED_PREFIX: `---stuberized`,
   message: {
     globalSystemToolMode: 'globalSystemToolMode'
   },
