@@ -27,7 +27,7 @@
     "requiredServers": []
   },
   "name": "tnp-config",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
@@ -168,10 +168,11 @@
     "mocha": "^5.2.0",
     "moment": "^2.22.2",
     "morphi": "4.0.3",
+    "ng-modal-lib": "0.0.6",
     "ng-packagr": "^5.7.1",
     "ng2-file-upload": "^1.3.0",
     "ng2-logger": "3.0.13",
-    "ng2-rest": "11.0.3",
+    "ng2-rest": "11.0.4",
     "ngx-bootstrap": "^5.2.0",
     "ngx-breadcrumbs": "0.0.3",
     "ngx-editor": "^4.1.0",

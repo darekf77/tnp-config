@@ -3,8 +3,6 @@
  * @author darekf77@gmail.com
  * Recommended config for all isomorphic libs *
  */
-
-import * as _ from 'lodash';
 //#region @backend
 import * as path from 'path';
 import * as os from 'os';
@@ -13,7 +11,7 @@ import * as child from 'child_process';
 //#endregion
 
 declare const global: any;
-if (!global['ENV']) {
+if (global && !global['ENV']) {
   global['ENV'] = {};
 }
 
@@ -45,6 +43,10 @@ export namespace ConfigModels {
 
   export type NewFactoryType = LibType | 'model' | 'single-file-project';
   export type CoreLibCategory = LibType | 'common';
+  export type Position = {
+    x: number;
+    y: number;
+  }
 }
 
 export const GlobalLibTypeName = {
@@ -222,7 +224,10 @@ const folder = {
 };
 
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
-const dirnameForTnp = __dirname;
+let dirnameForTnp: string;
+//#region @backend
+dirnameForTnp = __dirname;
+//#endregion
 const firedevProjectsRelative = `../../../firedev-projects`;
 // console.log(`__filename: ${__filename}`);
 // console.log(`__dirname: ${__dirname}`);
