@@ -184,6 +184,7 @@ const file = {
   tmpDockerImageId: 'tmp-docker-image-id',
   tmpIsomorphicPackagesJson: 'tmp-isomorphic-packages.json',
   tsconfig_json: 'tsconfig.json',
+  README_MD: 'README.md',
   ...filesNotAllowedToClean
 };
 
