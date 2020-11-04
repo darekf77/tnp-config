@@ -624,20 +624,3 @@ export const config = {
     ]
   }
 }
-
-
-
-if (Helpers.isNode) {
-  //#region @backend
-  if (!global['ENV']) {
-    global['ENV'] = {};
-  }
-  global['ENV']['config'] = config;
-  //#endregion
-} else {
-  if (!window['ENV']) {
-    window['ENV'] = {};
-  }
-  window['ENV']['config'] = config;
-}
-
