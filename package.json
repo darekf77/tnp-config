@@ -10,8 +10,10 @@
     "version": "v2",
     "overrided": {
       "ignoreDepsPattern": [],
-      "includeAsDev": "*",
-      "includeOnly": [],
+      "includeAsDev": [],
+      "includeOnly": [
+        "tnp-helpers"
+      ],
       "dependencies": {},
       "linkedFolders": []
     },
