@@ -166,6 +166,7 @@ const file = {
   autob_actions_js: 'auto-actions.js',
   package_json: 'package.json',
   package_json__tnp_json: 'package.json_tnp.json',
+  package_json__devDependencies_json: 'package.json_devDependencies.json',
   yarn_lock: 'yarn.lock',
   package_lock_json: 'package-lock.json',
   tnpEnvironment_json: 'tmp-environment.json',
@@ -188,6 +189,11 @@ const file = {
   README_MD: 'README.md',
   ...filesNotAllowedToClean
 };
+
+const packageJsonSplit = [
+  file.package_json__tnp_json,
+  file.package_json__devDependencies_json,
+];
 
 const tempFolders = {
   bundle: 'bundle',
@@ -349,6 +355,7 @@ export const config = {
 
   //#endregion
   coreProjectVersions: ['v1', 'v2'],
+  packageJsonSplit,
   regexString: {
     pathPartStringRegex: `(\/([a-zA-Z0-9]|\\-|\\_|\\+|\\.)*)`
   },
