@@ -165,6 +165,7 @@ const file = {
   entities_ts: 'entities.ts',
   autob_actions_js: 'auto-actions.js',
   package_json: 'package.json',
+  package_json__tnp_json: 'package.json_tnp.json',
   yarn_lock: 'yarn.lock',
   package_lock_json: 'package-lock.json',
   tnpEnvironment_json: 'tmp-environment.json',
