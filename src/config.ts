@@ -415,6 +415,7 @@ export const config = {
     'scm': 'showcoremodules',
     '--version': 'version',
     '-v': 'version',
+    'tpu': 'target:proj:update',
   },
   coreBuildFrameworkNames: [
     'tnp',
