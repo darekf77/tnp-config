@@ -459,6 +459,14 @@ export const config = {
         workspace: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}`),
         container: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}`),
         projectByType(libType: ConfigModels.NewFactoryType) {
+          if (libType === 'vscode-ext') {
+            // @ts-ignore
+            if (version === '') { // TODO current version handle somehow
+              // @ts-ignore
+              version = '-v2';
+            }
+            return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/${libType}${version}`);
+          }
           return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}/${libType}${version}`);
         },
         singlefileproject: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/single-file-project${version}`)
@@ -516,6 +524,7 @@ export const config = {
       GlobalLibTypeName.ionicClient,
       GlobalLibTypeName.docker,
       GlobalLibTypeName.container,
+      GlobalLibTypeName.vscodeExt,
     ] as ConfigModels.LibType[],
     /**
      * Projects for build:(dist|bundle):(watch) command
@@ -526,6 +535,7 @@ export const config = {
       GlobalLibTypeName.workspace,
       GlobalLibTypeName.container,
       GlobalLibTypeName.docker,
+      GlobalLibTypeName.vscodeExt,
     ] as ConfigModels.LibType[]
   },
   moduleNameAngularLib,
