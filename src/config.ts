@@ -8,6 +8,9 @@ import * as path from 'path';
 import * as os from 'os';
 import * as fse from 'fs-extra';
 import * as child from 'child_process';
+import check from 'check-node-version';
+import chalk from 'chalk';
+const commandExistsSync = require('command-exists').sync;
 //#endregion
 
 declare const global: any;
@@ -52,6 +55,36 @@ export namespace ConfigModels {
     w: number;
     h: number;
   }
+
+
+  export interface GlobalNpmDependency {
+    name: string; installName?: string; version?: string | number;
+  }
+
+  export interface GlobalCommandLineProgramDependency {
+    name: string; website: string; version?: string;
+  }
+  export interface GlobalDependencies {
+    npm?: GlobalNpmDependency[];
+    programs?: GlobalCommandLineProgramDependency[];
+  }
+
+}
+
+export const GlobalIsomorphicDependencies: ConfigModels.GlobalDependencies = {
+  npm: [
+    { name: 'rimraf' },
+    { name: 'npm-run', version: '4.1.2' },
+    { name: 'cpr' },
+    { name: 'check-node-version' },
+    { name: 'vsce' },
+  ],
+  programs: [
+    // {
+    //   name: 'code',
+    //   website: 'https://code.visualstudio.com/'
+    // }
+  ] as { name: string; website: string }[]
 }
 
 export const GlobalLibTypeName = {
@@ -97,7 +130,6 @@ export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [
 
 //#region config helpers
 export class Helpers {
-
   static simulateBrowser = false;
   //#region @backend
   private static isBackend = false;
@@ -408,6 +440,7 @@ export const config = {
     'sl': 'show:last',
     'i': 'install',
     'si': 'sinstall',
+    'il': 'install:locally',
     'rc': 'recommit',
     'rp': 'release:prod',
     'r': 'release',
@@ -559,6 +592,49 @@ export const config = {
       ],
     }
   },
+  //#region @backend
+  /**
+   * Check if global system tools are available for isomorphic app development
+   */
+  checkEnvironment(globalDependencies: ConfigModels.GlobalDependencies = GlobalIsomorphicDependencies) {
+    const missingNpm: ConfigModels.GlobalNpmDependency[] = [];
+    globalDependencies.npm.forEach(pkg => {
+      if (!commandExistsSync(pkg.name)) {
+        missingNpm.push(pkg)
+      }
+    })
+
+    if (missingNpm.length > 0) {
+
+      const toInstall = missingNpm
+        .map(pkg => {
+          const n = pkg.installName ? pkg.installName : pkg.name;
+          return pkg.version ? `${n}@${pkg.version}` : n;
+        })
+        .join(' ');
+      console.log(chalk.red(`Missing npm dependencies.`))
+      const cmd = `npm install -g ${toInstall}`;
+      console.log(`Please run: ${chalk.green(cmd)}`)
+      process.exit(0)
+    }
+
+    globalDependencies.programs.forEach(p => {
+      if (!commandExistsSync(p.name)) {
+        console.log(chalk.red(`Missing command line tool "${p.name}".`))
+        console.log(`Please install it from: ${chalk.green(p.website)}`)
+        process.exit(0)
+      }
+    })
+
+
+    try {
+      child.execSync(`check-node-version --node ">= 9.2"`, { stdio: [0, 1, 2] })
+    } catch (error) {
+      process.exit(0)
+    }
+  },
+
+  //#endregion
   // environmentName,
   localLibs: [
     'eslint',
@@ -637,10 +713,10 @@ export const config = {
       { name: 'cfonts' }, // draw super nice fonts in console
     ],
     programs: [,
-      //   {
-      //     name: 'code',
-      //     website: 'https://code.visualstudio.com/'
-      //   }
+      {
+        name: 'code',
+        website: 'https://code.visualstudio.com/'
+      }
     ]
   }
 }
