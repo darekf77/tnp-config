@@ -193,6 +193,7 @@ const filesNotAllowedToClean = {
 }
 
 const file = {
+  bower_json: 'bower.json',
   controllers_ts: 'controllers.ts',
   entities_ts: 'entities.ts',
   autob_actions_js: 'auto-actions.js',
@@ -266,6 +267,8 @@ const folder = {
   _bin: '.bin',
   _vscode: '.vscode',
   project: 'project',
+  external: 'external',
+  tmpDist: 'tmp-dist',
   ...tempFolders
 };
 
