@@ -254,6 +254,7 @@ const folder = {
   scripts: 'scripts',
   bower: 'bower',
   src: 'src',
+  out: 'out',
   custom: 'custom',
   components: 'components',
   assets: 'assets',
