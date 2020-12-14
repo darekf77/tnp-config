@@ -197,6 +197,7 @@ const file = {
   controllers_ts: 'controllers.ts',
   entities_ts: 'entities.ts',
   autob_actions_js: 'auto-actions.js',
+  local_config_js: 'local-config.js',
   package_json: 'package.json',
   package_json__tnp_json: 'package.json_tnp.json',
   package_json__devDependencies_json: 'package.json_devDependencies.json',
