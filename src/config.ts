@@ -28,7 +28,7 @@ export namespace ConfigModels {
   export type LibType = 'unknow'
     | 'isomorphic-lib'
     | 'angular-lib' // https://cli.angular.io/
-    | 'electron-lib' // https://github.com/maximegris/angular-electron
+    | 'electron-client' // https://github.com/maximegris/angular-electron
     | 'ionic-lib'
     | 'angular-client'
     | 'ionic-client'
@@ -90,7 +90,7 @@ export const GlobalIsomorphicDependencies: ConfigModels.GlobalDependencies = {
 export const GlobalLibTypeName = {
   isomorphicLib: 'isomorphic-lib',
   angularLib: 'angular-lib',
-  electronLib: 'electron-lib',
+  electronClient: 'electron-client',
   ionicLib: 'ionic-lib',
   angularClient: 'angular-client',
   ionicClient: 'ionic-client',
@@ -108,6 +108,7 @@ export const LibTypeArr: ConfigModels.LibType[] = [
   GlobalLibTypeName.isomorphicLib,
   GlobalLibTypeName.angularClient,
   GlobalLibTypeName.ionicClient,
+  GlobalLibTypeName.electronClient,
   GlobalLibTypeName.workspace,
   GlobalLibTypeName.container,
   GlobalLibTypeName.docker,
@@ -117,10 +118,11 @@ export const LibTypeArr: ConfigModels.LibType[] = [
 ] as ConfigModels.LibType[];
 
 
-export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [
+export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this is for what ?
   GlobalLibTypeName.angularLib,
   GlobalLibTypeName.isomorphicLib,
   GlobalLibTypeName.angularClient,
+  GlobalLibTypeName.electronClient,
   GlobalLibTypeName.ionicClient,
   GlobalLibTypeName.docker,
   'common'
