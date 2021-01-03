@@ -38,6 +38,7 @@ export namespace ConfigModels {
     | 'vscode-ext'
     | 'chrome-ext'
     | 'unknow-npm-project'
+    | 'navi'
     | 'game-engine-lib-pixi' // https://github.com/pixijs/pixi.js
     | 'game-engine-lib-phaser' // https://github.com/photonstorm/phaser
     | 'game-engine-lib-excalibur' // https://github.com/excaliburjs/Excalibur
@@ -101,6 +102,7 @@ export const GlobalLibTypeName = {
   vscodeExt: 'vscode-ext',
   chromeExt: 'chrome-ext',
   singleFileProject: 'single-file-project',
+  navi: 'navi'
 };
 
 export const LibTypeArr: ConfigModels.LibType[] = [
@@ -115,6 +117,7 @@ export const LibTypeArr: ConfigModels.LibType[] = [
   GlobalLibTypeName.unknowNpmProject,
   GlobalLibTypeName.vscodeExt,
   GlobalLibTypeName.chromeExt,
+  GlobalLibTypeName.navi,
 ] as ConfigModels.LibType[];
 
 
