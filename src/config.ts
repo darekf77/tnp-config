@@ -200,6 +200,7 @@ const file = {
   entities_ts: 'entities.ts',
   autob_actions_js: 'auto-actions.js',
   local_config_js: 'local-config.js',
+  local_config: 'local-config',
   package_json: 'package.json',
   package_json__tnp_json: 'package.json_tnp.json',
   package_json__devDependencies_json: 'package.json_devDependencies.json',
@@ -533,7 +534,8 @@ export const config = {
   },
   names: {
     env: allowedEnvironmentsObj,
-    baseline: 'baseline'
+    baseline: 'baseline',
+    defaultServer: 'default server',
   },
   extensions: {
     /**
