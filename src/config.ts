@@ -38,6 +38,7 @@ export namespace ConfigModels {
     | 'vscode-ext'
     | 'chrome-ext'
     | 'unknow-npm-project'
+    | 'scenario'
     | 'navi'
     | 'game-engine-lib-pixi' // https://github.com/pixijs/pixi.js
     | 'game-engine-lib-phaser' // https://github.com/photonstorm/phaser
@@ -102,7 +103,8 @@ export const GlobalLibTypeName = {
   vscodeExt: 'vscode-ext',
   chromeExt: 'chrome-ext',
   singleFileProject: 'single-file-project',
-  navi: 'navi'
+  navi: 'navi',
+  scenario: 'scenario'
 };
 
 export const LibTypeArr: ConfigModels.LibType[] = [
@@ -118,6 +120,7 @@ export const LibTypeArr: ConfigModels.LibType[] = [
   GlobalLibTypeName.vscodeExt,
   GlobalLibTypeName.chromeExt,
   GlobalLibTypeName.navi,
+  GlobalLibTypeName.scenario,
 ] as ConfigModels.LibType[];
 
 
@@ -254,7 +257,8 @@ const tempFolders = {
   node_modules: 'node_modules',
   client: 'client',
   tnp_tests_context: 'tmp-tests-context',
-  tmpPackage: 'tmp-package'
+  tmpPackage: 'tmp-package',
+  tmpScenarios: 'tmp-scenarios',
 }
 
 const folder = {
