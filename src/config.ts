@@ -258,7 +258,7 @@ const tempFolders = {
   client: 'client',
   tnp_tests_context: 'tmp-tests-context',
   tmpPackage: 'tmp-package',
-  tmpScenarios: 'tmp-scenarios',
+  tmpScenarios: 'scenarios',
 }
 
 const folder = {
