@@ -263,6 +263,7 @@ const tempFolders = {
 
 const folder = {
   scripts: 'scripts',
+  scenarios: 'scenarios',
   bower: 'bower',
   src: 'src',
   out: 'out',
