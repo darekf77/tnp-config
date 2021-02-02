@@ -231,6 +231,8 @@ const file = {
   tmpIsomorphicPackagesJson: 'tmp-isomorphic-packages.json',
   tsconfig_json: 'tsconfig.json',
   README_MD: 'README.md',
+  server_key: 'server.key',
+  server_cert: 'server.cert',
   ...filesNotAllowedToClean
 };
 
@@ -477,6 +479,14 @@ export const config = {
     'morphi-debug',
     'morphi-ins',
   ],
+  ports: {
+    VPN_SPLIT_CLIENT: 5656,
+    VPN_SPLIT_SERVER: 5757,
+  },
+  domains: {
+    localhost: 'localhost',
+    firedev_io: 'firedev.io',
+  },
   pathes: {
 
     logoSvg: 'logo.svg',
