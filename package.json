@@ -28,7 +28,7 @@
     "main": "index.js"
   },
   "name": "tnp-config",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {},
