@@ -25,9 +25,9 @@
     "requiredServers": [],
     "license": "MIT",
     "private": false,
-    "main": "index.js",
-    "lastBuildHash": "21369c5aa27a62d1f68f696e0328b82012e6288f"
+    "main": "index.js"
   },
+  "lastBuildTagHash": "21369c5aa27a62d1f68f696e0328b82012e6288f",
   "name": "tnp-config",
   "version": "0.0.31",
   "license": "MIT",
