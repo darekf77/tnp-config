@@ -25,7 +25,8 @@
     "requiredServers": [],
     "license": "MIT",
     "private": false,
-    "main": "index.js"
+    "main": "index.js",
+    "lastBuildHash": "21369c5aa27a62d1f68f696e0328b82012e6288f"
   },
   "name": "tnp-config",
   "version": "0.0.29",
@@ -235,7 +236,7 @@
     "svg-png-converter": "0.0.9",
     "systeminformation": "^3.45.7",
     "task.js": "^0.1.5",
-    "tnp-config": "~0.0.27",
+    "tnp-config": "~0.0.29",
     "tnp-db": "~0.0.17",
     "tnp-helpers": "~0.0.14",
     "tnp-models": "~0.0.16",
