@@ -234,6 +234,7 @@ const file = {
   README_MD: 'README.md',
   server_key: 'server.key',
   server_cert: 'server.cert',
+  server_chain_cert: 'server-chain.cert',
   ...filesNotAllowedToClean
 };
 
@@ -481,7 +482,7 @@ export const config = {
     'morphi-ins',
   ],
   ports: {
-    VPN_SPLIT_CLIENT: 5656,
+    // VPN_SPLIT_CLIENT: 5656,
     VPN_SPLIT_SERVER: 5757,
   },
   domains: {
