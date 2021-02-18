@@ -27,7 +27,7 @@
     "private": false,
     "main": "index.js"
   },
-  "lastBuildTagHash": "21369c5aa27a62d1f68f696e0328b82012e6288f",
+  "lastBuildTagHash": "2c7f5cf42ccffcda68d7d3bdc79b5bd8adad83de",
   "name": "tnp-config",
   "version": "0.0.32",
   "license": "MIT",
@@ -236,7 +236,7 @@
     "svg-png-converter": "0.0.9",
     "systeminformation": "^3.45.7",
     "task.js": "^0.1.5",
-    "tnp-config": "~0.0.29",
+    "tnp-config": "~0.0.32",
     "tnp-db": "~0.0.18",
     "tnp-helpers": "~0.0.20",
     "tnp-models": "~0.0.17",
