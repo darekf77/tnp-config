@@ -29,7 +29,7 @@
   },
   "lastBuildTagHash": "2c7f5cf42ccffcda68d7d3bdc79b5bd8adad83de",
   "name": "tnp-config",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {},
