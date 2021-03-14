@@ -209,6 +209,7 @@ const file = {
   local_config: 'local-config',
   start_backend_ts: 'start.backend.ts',
   package_json: 'package.json',
+  package_json5: 'package.json5',
   package_json__tnp_json: 'package.json_tnp.json',
   package_json__devDependencies_json: 'package.json_devDependencies.json',
   yarn_lock: 'yarn.lock',
