@@ -573,6 +573,9 @@ export const config = {
       ].map(f => `.${f}`)
     },
   },
+  notFiredevProjects : [
+    'unknow','unknow-npm-project','scenario','navi'
+  ] as ConfigModels.LibType[] ,
   /**
    * Build allowed types
    */
