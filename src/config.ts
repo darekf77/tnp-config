@@ -236,6 +236,7 @@ const file = {
   server_key: 'server.key',
   server_cert: 'server.cert',
   server_chain_cert: 'server-chain.cert',
+  meta_config_md: 'meta-content.md',
   ...filesNotAllowedToClean
 };
 
