@@ -317,7 +317,8 @@ if (dirnameForTnp.endsWith(`/tnp/node_modules/tnp-config`)) {
   tnp_folder_location = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
 }
 
-!global.hideLog && console.log(`tnp from: ${tnp_folder_location}`);
+// TODO
+// !global.hideLog && console.log(`tnp from: ${tnp_folder_location}`);
 // process.exit(0)
 //#endregion
 
