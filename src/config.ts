@@ -201,11 +201,13 @@ const filesNotAllowedToClean = {
 }
 
 const file = {
+  _bowerrc: '.bowerrc',
   bower_json: 'bower.json',
   controllers_ts: 'controllers.ts',
   entities_ts: 'entities.ts',
   autob_actions_js: 'auto-actions.js',
   local_config_js: 'local-config.js',
+  build_config_js: 'build-config.js',
   local_config: 'local-config',
   start_backend_ts: 'start.backend.ts',
   package_json: 'package.json',
