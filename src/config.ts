@@ -267,7 +267,8 @@ const tempFolders = {
   tnp_tests_context: 'tmp-tests-context',
   tmpPackage: 'tmp-package',
   tmpScenarios: 'tmp-scenarios',
-  tmpTestsEnvironments: 'tmp-tests-environments'
+  tmpTestsEnvironments: 'tmp-tests-environments',
+  testsEnvironments: 'tests-environments',
 }
 
 const folder = {
