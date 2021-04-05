@@ -424,7 +424,8 @@ export const config = {
   },
   defaultFrameworkVersion: 'v1' as ('v1' | 'v2'),
   CONST: {
-    TEST_TIMEOUT: 3600000
+    UNIT_TEST_TIMEOUT: 5000,
+    INTEGRATION_TEST: 30000,
   },
   debug: {
     sourceModifier: [
