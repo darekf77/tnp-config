@@ -11,7 +11,9 @@
     "overrided": {
       "ignoreDepsPattern": [],
       "includeAsDev": "*",
-      "includeOnly": [],
+      "includeOnly": [
+        "tnp-core"
+      ],
       "dependencies": {},
       "linkedFolders": []
     },

@@ -4,13 +4,8 @@
  * Recommended config for all isomorphic libs *
  */
 //#region @backend
-import * as path from 'path';
-import * as os from 'os';
-import * as fse from 'fs-extra';
-import * as child from 'child_process';
-import check from 'check-node-version';
-import chalk from 'chalk';
-const commandExistsSync = require('command-exists').sync;
+import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core';
+
 //#endregion
 
 declare const global: any;
@@ -24,6 +19,14 @@ export namespace ConfigModels {
   export type EnvironmentName = 'local' | 'static' | 'dev' | 'stage' | 'prod' | 'online' | 'test' | 'qa' | 'custom';
   export type UIFramework = 'bootstrap' | 'material' | 'ionic';
   export type FrameworkVersion = 'v1' | 'v2' | 'v3';
+  export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';
+
+  export type FileExtension = 'ts' | 'js' | 'json' | 'html' | 'jpg' | 'png' | 'txt' | CutableFileExt;
+  export type PROGRESS_DATA_TYPE = 'info' | 'error' | 'warning' | 'event';
+
+  export type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'jsonp';
+  export type ParamType = 'Path' | 'Query' | 'Cookie' | 'Header' | 'Body';
+  export type TsUsage = 'import' | 'export';
 
   export type LibType = 'unknow'
     | 'isomorphic-lib'
@@ -70,6 +73,11 @@ export namespace ConfigModels {
     npm?: GlobalNpmDependency[];
     programs?: GlobalCommandLineProgramDependency[];
   }
+
+  export type FileEvent = 'created' | 'changed' | 'removed' | 'rename';
+  export type OutFolder = 'dist' | 'bundle' | 'browser';
+  export type FormlyInputType = 'input' | 'switch' | 'datepicker' | 'repeat' | 'group';
+  export type DatabaseType = 'sqlite' | 'mysql';
 
 }
 
@@ -298,12 +306,9 @@ const folder = {
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
 let dirnameForTnp: string;
 //#region @backend
-dirnameForTnp = __dirname;
+dirnameForTnp = crossPlatformPath(__dirname);
 //#endregion
 const firedevProjectsRelative = `../../../firedev-projects`;
-// console.log(`__filename: ${__filename}`);
-// console.log(`__dirname: ${__dirname}`);
-
 
 //#region @backend
 let tnp_folder_location: string;
@@ -345,7 +350,7 @@ function pathResolved(...partOfPath: string[]) {
           fse.mkdirpSync(path.dirname(morphiPathUserInUserDir))
         }
         try {
-          child.execSync(`git clone ${urlMorphi}`, { cwd: path.dirname(morphiPathUserInUserDir) });
+          child_process.execSync(`git clone ${urlMorphi}`, { cwd: path.dirname(morphiPathUserInUserDir) });
           fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
         } catch (error) {
           console.error(`[config] Not able to clone repository: ${urlMorphi} in:
@@ -353,7 +358,7 @@ function pathResolved(...partOfPath: string[]) {
         }
       } else {
         try {
-          child.execSync(`git reset --hard && git pull origin master`,
+          child_process.execSync(`git reset --hard && git pull origin master`,
             { cwd: morphiPathUserInUserDir });
           fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
         } catch (error) {
@@ -421,6 +426,9 @@ export const config = {
   },
   placeholders: {
     forProjectsInEnvironmentFile: '//<PLACEHOLDER_FOR_PROJECTS>'
+  },
+  array: {
+    isomorphicPackages: 'isomorphicPackages'
   },
   defaultFrameworkVersion: 'v1' as ('v1' | 'v2'),
   CONST: {
@@ -632,49 +640,6 @@ export const config = {
       ],
     }
   },
-  //#region @backend
-  /**
-   * Check if global system tools are available for isomorphic app development
-   */
-  checkEnvironment(globalDependencies: ConfigModels.GlobalDependencies = GlobalIsomorphicDependencies) {
-    const missingNpm: ConfigModels.GlobalNpmDependency[] = [];
-    globalDependencies.npm.forEach(pkg => {
-      if (!commandExistsSync(pkg.name)) {
-        missingNpm.push(pkg)
-      }
-    })
-
-    if (missingNpm.length > 0) {
-
-      const toInstall = missingNpm
-        .map(pkg => {
-          const n = pkg.installName ? pkg.installName : pkg.name;
-          return pkg.version ? `${n}@${pkg.version}` : n;
-        })
-        .join(' ');
-      console.log(chalk.red(`Missing npm dependencies.`))
-      const cmd = `npm install -g ${toInstall}`;
-      console.log(`Please run: ${chalk.green(cmd)}`)
-      process.exit(0)
-    }
-
-    globalDependencies.programs.forEach(p => {
-      if (!commandExistsSync(p.name)) {
-        console.log(chalk.red(`Missing command line tool "${p.name}".`))
-        console.log(`Please install it from: ${chalk.green(p.website)}`)
-        process.exit(0)
-      }
-    })
-
-
-    try {
-      child.execSync(`check-node-version --node ">= 9.2"`, { stdio: [0, 1, 2] })
-    } catch (error) {
-      process.exit(0)
-    }
-  },
-
-  //#endregion
   // environmentName,
   localLibs: [
     'eslint',
