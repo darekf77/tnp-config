@@ -308,7 +308,10 @@ let dirnameForTnp: string;
 //#region @backend
 dirnameForTnp = crossPlatformPath(__dirname);
 //#endregion
-const firedevProjectsRelative = `../../../firedev-projects`;
+let firedevProjectsRelative = `../../../firedev-projects`;
+if(process.platform === 'win32') { // TODO QUICK_FIX for windows
+  firedevProjectsRelative = `../firedev-projects`;
+}
 
 //#region @backend
 let tnp_folder_location: string;
@@ -317,14 +320,22 @@ let tnp_folder_location: string;
 //   tnp_folder_location = path.resolve(dirnameForTnp, '../..')
 // }
 // !global.hideLog && console.log(`!!!!!: ${tnp_folder_location}`);
+// console.log('dirnameForTnp',dirnameForTnp)
+if(process.platform === 'win32' && dirnameForTnp.endsWith('dist') ) { // TODO QUICK_FIX for windows
+  dirnameForTnp = path.dirname(dirnameForTnp);
+}
 
-if (dirnameForTnp.endsWith(`/tnp/node_modules/tnp-config`)) {
+if (dirnameForTnp.endsWith( `/tnp/node_modules/tnp-config`)) {
   // local folder with tnp
   tnp_folder_location = dirnameForTnp.replace(`/tnp/node_modules/tnp-config`, '/tnp');
 } else {
   // global tnp node_modules being use in firedev case
   tnp_folder_location = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
 }
+
+//  console.log('dirnameForTnp after',dirnameForTnp)
+//  console.log('tnp_folder_location ',tnp_folder_location)
+// process.exit(0)
 
 // TODO
 // !global.hideLog && console.log(`tnp from: ${tnp_folder_location}`);
@@ -337,11 +348,11 @@ function pathResolved(...partOfPath: string[]) {
 
   if (global['frameworkName'] && global['frameworkName'] === firedev) {
     const joined = partOfPath.join('/');
-    const projectsInUserFolder = path.join(os.homedir(), firedev, morphi, 'projects')
+    const projectsInUserFolder = path.join(crossPlatformPath(os.homedir()), firedev, morphi, 'projects')
     let pathResult = joined.replace((dirnameForTnp + '/' + firedevProjectsRelative), projectsInUserFolder);
 
     pathResult = path.resolve(pathResult);
-    const morphiPathUserInUserDir = path.join(os.homedir(), firedev, morphi);
+    const morphiPathUserInUserDir = path.join(crossPlatformPath(os.homedir()), firedev, morphi);
     if (pathResolved.prototype.resolved) {
       // console.info(`Firedev base projects in are ok.`);
     } else {
@@ -414,7 +425,7 @@ export const config = {
     if (global.testMode) {
       dbFileName = config.file.db_for_tests_json;
     }
-    const location = path.join(os.homedir(), `${config.frameworkName}`, dbFileName);
+    const location = path.join(crossPlatformPath(os.homedir()), `${config.frameworkName}`, dbFileName);
     return location;
   },
 
