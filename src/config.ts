@@ -322,7 +322,7 @@ let tnp_folder_location: string;
 // !global.hideLog && console.log(`!!!!!: ${tnp_folder_location}`);
 // console.log('dirnameForTnp',dirnameForTnp)
 if(process.platform === 'win32' && dirnameForTnp.endsWith('dist') ) { // TODO QUICK_FIX for windows
-  dirnameForTnp = path.dirname(dirnameForTnp);
+  dirnameForTnp =  crossPlatformPath(path.dirname(dirnameForTnp));
 }
 
 if (dirnameForTnp.endsWith( `/tnp/node_modules/tnp-config`)) {
@@ -332,7 +332,7 @@ if (dirnameForTnp.endsWith( `/tnp/node_modules/tnp-config`)) {
   // global tnp node_modules being use in firedev case
   tnp_folder_location = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
 }
-
+tnp_folder_location = crossPlatformPath(tnp_folder_location)
 //  console.log('dirnameForTnp after',dirnameForTnp)
 //  console.log('tnp_folder_location ',tnp_folder_location)
 // process.exit(0)
@@ -351,7 +351,7 @@ function pathResolved(...partOfPath: string[]) {
     const projectsInUserFolder = path.join(crossPlatformPath(os.homedir()), firedev, morphi, 'projects')
     let pathResult = joined.replace((dirnameForTnp + '/' + firedevProjectsRelative), projectsInUserFolder);
 
-    pathResult = path.resolve(pathResult);
+    pathResult = crossPlatformPath(path.resolve(pathResult));
     const morphiPathUserInUserDir = path.join(crossPlatformPath(os.homedir()), firedev, morphi);
     if (pathResolved.prototype.resolved) {
       // console.info(`Firedev base projects in are ok.`);
@@ -381,7 +381,7 @@ function pathResolved(...partOfPath: string[]) {
     }
     return pathResult;
   }
-  return path.resolve(path.join(...partOfPath))
+  return crossPlatformPath(path.resolve(path.join(...partOfPath)))
 }
 //#endregion
 
@@ -425,7 +425,7 @@ export const config = {
     if (global.testMode) {
       dbFileName = config.file.db_for_tests_json;
     }
-    const location = path.join(crossPlatformPath(os.homedir()), `${config.frameworkName}`, dbFileName);
+    const location = crossPlatformPath(path.join(crossPlatformPath(os.homedir()), `${config.frameworkName}`, dbFileName));
     return location;
   },
 
