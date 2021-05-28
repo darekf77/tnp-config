@@ -13,6 +13,8 @@ if (global && !global['ENV']) {
   global['ENV'] = {};
 }
 
+export { CoreHelpers as Helpers } from 'tnp-core';
+
 //#region config models
 
 export namespace ConfigModels {
@@ -22,7 +24,6 @@ export namespace ConfigModels {
   export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';
 
   export type FileExtension = 'ts' | 'js' | 'json' | 'html' | 'jpg' | 'png' | 'txt' | CutableFileExt;
-  export type PROGRESS_DATA_TYPE = 'info' | 'error' | 'warning' | 'event';
 
   export type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'jsonp';
   export type ParamType = 'Path' | 'Query' | 'Cookie' | 'Header' | 'Body';
@@ -144,48 +145,6 @@ export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this
 
 //#endregion
 
-//#region config helpers
-export class Helpers {
-  static simulateBrowser = false;
-  //#region @backend
-  private static isBackend = false;
-  static setIsBackend() {
-    Helpers.isBackend = true;
-  }
-  //#endregion
-  static get isBrowser() {
-    //#region @backend
-    if (Helpers.isBackend) {
-      return false;
-    }
-    //#endregion
-    return Helpers.simulateBrowser || !!(typeof window !== 'undefined' && window.document);
-  }
-  static get isNode() {
-    //#region @backend
-    if (Helpers.isBackend) {
-      return true;
-    }
-    //#endregion
-    return Helpers.simulateBrowser || !Helpers.isBrowser;
-  }
-  static contain(arr: any[], item: any): boolean {
-    return arr.filter(l => {
-      if (l instanceof RegExp) {
-        return l.test(item)
-      }
-      if (l === item) {
-        return true;
-      }
-      if ((item.match && typeof item.match === 'function') ? item.match(l) : false) {
-        return true
-      }
-      return false;
-    }).length > 0;
-  }
-
-}
-//#endregion
 
 
 const allowedEnvironments: ConfigModels.EnvironmentName[] = ['static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'];
@@ -309,7 +268,7 @@ let dirnameForTnp: string;
 dirnameForTnp = crossPlatformPath(__dirname);
 //#endregion
 let firedevProjectsRelative = `../../../firedev-projects`;
-if(process.platform === 'win32') { // TODO QUICK_FIX for windows
+if (process.platform === 'win32') { // TODO QUICK_FIX for windows
   firedevProjectsRelative = `../firedev-projects`;
 }
 
@@ -321,11 +280,11 @@ let tnp_folder_location: string;
 // }
 // !global.hideLog && console.log(`!!!!!: ${tnp_folder_location}`);
 // console.log('dirnameForTnp',dirnameForTnp)
-if(process.platform === 'win32' && dirnameForTnp.endsWith('dist') ) { // TODO QUICK_FIX for windows
-  dirnameForTnp =  crossPlatformPath(path.dirname(dirnameForTnp));
+if (process.platform === 'win32' && dirnameForTnp.endsWith('dist')) { // TODO QUICK_FIX for windows
+  dirnameForTnp = crossPlatformPath(path.dirname(dirnameForTnp));
 }
 
-if (dirnameForTnp.endsWith( `/tnp/node_modules/tnp-config`)) {
+if (dirnameForTnp.endsWith(`/tnp/node_modules/tnp-config`)) {
   // local folder with tnp
   tnp_folder_location = dirnameForTnp.replace(`/tnp/node_modules/tnp-config`, '/tnp');
 } else {
@@ -431,6 +390,11 @@ export const config = {
 
   //#endregion
   coreProjectVersions: ['v1', 'v2'],
+  quickFixes: {
+    missingLibs: [
+      'react-native-sqlite-storage'
+    ]
+  },
   packageJsonSplit,
   regexString: {
     pathPartStringRegex: `(\/([a-zA-Z0-9]|\\-|\\_|\\+|\\.)*)`
@@ -576,9 +540,6 @@ export const config = {
     }
   },
   SUBERIZED_PREFIX: `---stuberized`,
-  message: {
-    globalSystemToolMode: 'globalSystemToolMode'
-  },
   names: {
     env: allowedEnvironmentsObj,
     baseline: 'baseline',
