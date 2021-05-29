@@ -267,19 +267,11 @@ let dirnameForTnp: string;
 //#region @backend
 dirnameForTnp = crossPlatformPath(__dirname);
 //#endregion
-let firedevProjectsRelative = `../../../firedev-projects`;
-if (process.platform === 'win32') { // TODO QUICK_FIX for windows
-  firedevProjectsRelative = `../firedev-projects`;
-}
+let firedevProjectsRelative = `../firedev-projects`;
 
 //#region @backend
 let tnp_folder_location: string;
 
-// if (path.basename(path.dirname(dirnameForTnp)) === folder.node_modules) {
-//   tnp_folder_location = path.resolve(dirnameForTnp, '../..')
-// }
-// !global.hideLog && console.log(`!!!!!: ${tnp_folder_location}`);
-// console.log('dirnameForTnp',dirnameForTnp)
 if (process.platform === 'win32' && dirnameForTnp.endsWith('dist')) { // TODO QUICK_FIX for windows
   dirnameForTnp = crossPlatformPath(path.dirname(dirnameForTnp));
 }
@@ -292,8 +284,9 @@ if (dirnameForTnp.endsWith(`/tnp/node_modules/tnp-config`)) {
   tnp_folder_location = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
 }
 tnp_folder_location = crossPlatformPath(tnp_folder_location)
-//  console.log('dirnameForTnp after',dirnameForTnp)
-//  console.log('tnp_folder_location ',tnp_folder_location)
+// dirnameForTnp = tnp_folder_location;
+// console.log('dirnameForTnp after', dirnameForTnp)
+// console.log('tnp_folder_location ', tnp_folder_location)
 // process.exit(0)
 
 // TODO
@@ -494,22 +487,22 @@ export const config = {
      *  - <some-project>/node_modules/tnp-config
     */
     tnp_folder_location,
-    tnp_vscode_ext_location: pathResolved(dirnameForTnp, firedevProjectsRelative, 'plugins', 'tnp-vscode-ext'),
+    tnp_vscode_ext_location: pathResolved(tnp_folder_location, firedevProjectsRelative, 'plugins', 'tnp-vscode-ext'),
 
     tnp_tests_context: pathResolved(tnp_folder_location, folder.tnp_tests_context),
     tnp_db_for_tests_json: pathResolved(tnp_folder_location, folder.bin, file.db_for_tests_json),
 
     scripts: {
-      HELP_js: pathResolved(dirnameForTnp, folder.scripts, 'HELP.js'),
-      allHelpFiles: path.join(dirnameForTnp, folder.scripts, '/**/*.js'),
-      allPattern: path.join(dirnameForTnp, `/${folder.scripts}/**/*.js`),
+      HELP_js: pathResolved(tnp_folder_location, folder.scripts, 'HELP.js'),
+      allHelpFiles: path.join(tnp_folder_location, folder.scripts, '/**/*.js'),
+      allPattern: path.join(tnp_folder_location, `/${folder.scripts}/**/*.js`),
     },
 
     projectsExamples: (version?: ConfigModels.FrameworkVersion) => {
       version = (!version || version === 'v1') ? '' : `-${version}` as any;
       const result = {
-        workspace: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}`),
-        container: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}`),
+        workspace: pathResolved(tnp_folder_location, `${firedevProjectsRelative}/container${version}/workspace${version}`),
+        container: pathResolved(tnp_folder_location, `${firedevProjectsRelative}/container${version}`),
         projectByType(libType: ConfigModels.NewFactoryType) {
           if (libType === 'vscode-ext') {
             // @ts-ignore
@@ -517,11 +510,11 @@ export const config = {
               // @ts-ignore
               version = '-v2';
             }
-            return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/${libType}${version}`);
+            return pathResolved(tnp_folder_location, `${firedevProjectsRelative}/container${version}/${libType}${version}`);
           }
-          return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}/${libType}${version}`);
+          return pathResolved(tnp_folder_location, `${firedevProjectsRelative}/container${version}/workspace${version}/${libType}${version}`);
         },
-        singlefileproject: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/single-file-project${version}`)
+        singlefileproject: pathResolved(tnp_folder_location, `${firedevProjectsRelative}/container${version}/single-file-project${version}`)
       }
       return result;
     }
