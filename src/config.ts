@@ -5,7 +5,6 @@
  */
 //#region @backend
 import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core';
-
 //#endregion
 
 declare const global: any;
