@@ -177,6 +177,7 @@ const file = {
   local_config: 'local-config',
   start_backend_ts: 'start.backend.ts',
   package_json: 'package.json',
+  result_packages_json: 'result-packages.json',
   package_json5: 'package.json5',
   package_json__tnp_json: 'package.json_tnp.json',
   package_json__devDependencies_json: 'package.json_devDependencies.json',
@@ -420,7 +421,7 @@ export const config = {
       ]
     }
   },
-  frameworkName: (global['frameworkName'] ? global['frameworkName'] : 'tnp'),
+  frameworkName: (global['frameworkName'] ? global['frameworkName'] : 'tnp') as 'firedev' | 'tnp',
   startPort: 6001,
   frameworks: ['bootstrap', 'ionic', 'material'] as ConfigModels.UIFramework[],
   //#region @backend
