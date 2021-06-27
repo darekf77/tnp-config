@@ -632,11 +632,12 @@ export const config = {
     npm: [
       { name: 'extract-zip', version: '1.6.7' },
       { name: 'watch', version: '1.0.2' },
+      { name: 'cpr' },
       { name: 'check-node-version' },
       { name: 'npm-run', version: '4.1.2' },
       { name: 'rimraf' },
       { name: 'mkdirp' },
-      { name: 'renamer' },
+      { name: 'renamer', version: '2.0.1' },
       { name: 'nodemon' },
       { name: 'madge' },
       { name: 'http-server' },
