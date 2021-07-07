@@ -276,8 +276,8 @@ if (process.platform === 'win32' && dirnameForTnp.endsWith('dist')) { // TODO QU
 }
 
 if (dirnameForTnp.endsWith(`/tnp-config/dist`)) {
-// local folder with tnp
-dirnameForTnp = dirnameForTnp.replace(`/tnp-config/dist`, '/tnp');
+  // local folder with tnp
+  dirnameForTnp = dirnameForTnp.replace(`/tnp-config/dist`, '/tnp');
 } else if (dirnameForTnp.endsWith(`/tnp/node_modules/tnp-config`)) {
   // local folder with tnp
   dirnameForTnp = dirnameForTnp.replace(`/tnp/node_modules/tnp-config`, '/tnp');
@@ -319,13 +319,21 @@ function pathResolved(...partOfPath: string[]) {
            ${morphiPathUserInUserDir}`);
         }
       } else {
-        try {
-          child_process.execSync(`git reset --hard && git pull origin master`,
-            { cwd: morphiPathUserInUserDir });
-          fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
-        } catch (error) {
-          console.error(`[config] Not pull origin of morphi: ${urlMorphi} in:
+        const upgradeFiredev = global['firedev-upgrade-process'];
+        console.info(`upgrade firedev: ${upgradeFiredev}`)
+        if (global['firedev-upgrade-process']) {
+          try {
+
+            child_process.execSync(`git reset --hard && git pull origin master`,
+              { cwd: morphiPathUserInUserDir });
+            fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
+
+          } catch (error) {
+            console.error(`[config] Not pull origin of morphi: ${urlMorphi} in:
           ${morphiPathUserInUserDir}`);
+          }
+        } else {
+          console.log(`Ommiting firedev upgrade process..`)
         }
       }
       pathResolved.prototype.resolved = true;
