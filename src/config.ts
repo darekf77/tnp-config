@@ -324,9 +324,9 @@ function pathResolved(...partOfPath: string[]) {
         if (global['firedev-upgrade-process']) {
           try {
 
-            child_process.execSync(`git reset --hard && git pull origin master`,
-              { cwd: morphiPathUserInUserDir });
-            fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
+            // child_process.execSync(`git reset --hard && git pull origin master`,
+            //   { cwd: morphiPathUserInUserDir });
+            // fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
 
           } catch (error) {
             console.error(`[config] Not pull origin of morphi: ${urlMorphi} in:
@@ -407,7 +407,7 @@ export const config = {
   },
   defaultFrameworkVersion: 'v1' as ('v1' | 'v2'),
   CONST: {
-    UNIT_TEST_TIMEOUT: 5000,
+    UNIT_TEST_TIMEOUT: 30000,
     INTEGRATION_TEST: 30000,
   },
   debug: {
@@ -460,6 +460,13 @@ export const config = {
     '--version': 'version',
     '-v': 'version',
     'tpu': 'target:proj:update',
+    'occ': 'open:core:container',
+    'ocp': 'open:core:project',
+    'ugd': 'update:global:deps',
+    'ud': 'update:deps', // same as npm i
+    'twd': 'test:watch:debug',
+    'tw': 'test:watch',
+    'td': 'test:debug'
   },
   coreBuildFrameworkNames: [
     'tnp',
