@@ -552,6 +552,10 @@ export const config = {
     baseline: 'baseline',
     defaultServer: 'default server',
   },
+  reservedArgumentsNamesUglify: [
+    'reservedExpOne',
+    'reservedExpSec'
+  ],
   extensions: {
     /**
        * Modify source: import,export, requires
