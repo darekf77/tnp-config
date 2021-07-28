@@ -660,6 +660,7 @@ export const config = {
       { name: 'renamer', version: '2.0.1' },
       { name: 'nodemon' },
       { name: 'madge' },
+      { name: 'yarn' },
       { name: 'http-server' },
       { name: 'increase-memory-limit' },
       { name: 'bower' },
