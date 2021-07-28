@@ -455,6 +455,7 @@ export const config = {
     'rc': 'recommit',
     'rp': 'release:prod',
     'r': 'release',
+    'ar': 'auto:release',
     'lb': 'last:build',
     'scm': 'showcoremodules',
     '--version': 'version',
