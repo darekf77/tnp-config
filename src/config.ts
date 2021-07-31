@@ -467,7 +467,8 @@ export const config = {
     'ud': 'update:deps', // same as npm i
     'twd': 'test:watch:debug',
     'tw': 'test:watch',
-    'td': 'test:debug'
+    'td': 'test:debug',
+    't': 'test',
   },
   coreBuildFrameworkNames: [
     'tnp',
