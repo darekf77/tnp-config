@@ -238,6 +238,13 @@ const tempFolders = {
   testsEnvironments: 'tests-environments',
 }
 
+const stylesFilesExtension = [
+  'css',
+  'sass',
+  'scss',
+  'less',
+];
+
 const folder = {
   scripts: 'scripts',
   scenarios: 'scenarios',
@@ -566,10 +573,7 @@ export const config = {
       return [
         'ts',
         'js',
-        'css',
-        'sass',
-        'scss',
-        'less',
+        ...stylesFilesExtension,
       ].map(f => `.${f}`)
     },
   },
@@ -607,7 +611,8 @@ export const config = {
   moduleNameAngularLib,
   moduleNameIsomorphicLib,
   filesExtensions: {
-    filetemplate: 'filetemplate'
+    filetemplate: 'filetemplate',
+    styles: stylesFilesExtension,
   },
   projectTypes: {
     forNpmLibs: [
