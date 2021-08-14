@@ -473,6 +473,7 @@ export const config = {
     'ugd': 'update:global:deps',
     'ud': 'update:deps', // same as npm i
     'twd': 'test:watch:debug',
+    'tdw': 'test:watch:debug',
     'tw': 'test:watch',
     'td': 'test:debug',
     't': 'test',
