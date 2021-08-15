@@ -180,6 +180,7 @@ const file = {
   result_packages_json: 'result-packages.json',
   package_json5: 'package.json5',
   package_json__tnp_json: 'package.json_tnp.json',
+  package_json__tnp_json5: 'package.json_tnp.json5',
   package_json__devDependencies_json: 'package.json_devDependencies.json',
   yarn_lock: 'yarn.lock',
   package_lock_json: 'package-lock.json',
@@ -211,6 +212,7 @@ const file = {
 
 const packageJsonSplit = [
   file.package_json__tnp_json,
+  file.package_json__tnp_json5,
   file.package_json__devDependencies_json,
 ];
 
