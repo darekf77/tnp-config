@@ -418,6 +418,7 @@ export const config = {
   CONST: {
     UNIT_TEST_TIMEOUT: 30000,
     INTEGRATION_TEST: 30000,
+    BACKEND_HTTP_REQUEST_TIMEOUT: 3000,
   },
   debug: {
     sourceModifier: [
