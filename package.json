@@ -31,11 +31,11 @@
   },
   "lastBuildTagHash": "a70d9f6ca3932e14c7b0bd48a3ecd893d90a06f8",
   "name": "tnp-config",
-  "version": "0.0.70",
+  "version": "0.0.71",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
-    "tnp-core": "~0.0.47"
+    "tnp-core": "~0.0.50"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.901.3",
@@ -206,7 +206,7 @@
     "ngx-toastr": "11.2.1",
     "ngx-wig": "8.0.0",
     "node-cli-test": "0.0.2",
-    "node-cli-tester": "~0.0.12",
+    "node-cli-tester": "~0.0.15",
     "node-localstorage": "2.1.6",
     "node-notifier": "6.0.0",
     "nodemon": "1.14.11",
