@@ -333,8 +333,8 @@ function pathResolved(...partOfPath: string[]) {
         if (global['firedev-upgrade-process']) {
           try {
 
-            // child_process.execSync(`git reset --hard && git pull origin master`,
-            //   { cwd: morphiPathUserInUserDir });
+            child_process.execSync(`git reset --hard && git pull origin master`,
+              { cwd: morphiPathUserInUserDir });
             // fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
 
           } catch (error) {
@@ -675,7 +675,7 @@ export const config = {
       { name: 'increase-memory-limit' },
       { name: 'bower' },
       { name: 'fkill', installName: 'fkill-cli' },
-      { name: 'yo' },
+      // { name: 'yo' },
       { name: 'mocha' },
       // { name: 'chai' },
       { name: 'ts-node' },
