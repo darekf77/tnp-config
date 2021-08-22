@@ -31,11 +31,11 @@
   },
   "lastBuildTagHash": "3c164eb7c0591167da333f66099a3c700e12344c",
   "name": "tnp-config",
-  "version": "0.0.68",
+  "version": "0.0.69",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
-    "tnp-core": "~0.0.38"
+    "tnp-core": "~0.0.40"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.901.3",
@@ -245,7 +245,7 @@
     "systeminformation": "3.45.7",
     "task.js": "0.1.5",
     "tnp-cli": "~0.0.16",
-    "tnp-config": "~0.0.68",
+    "tnp-config": "~0.0.67",
     "tnp-db": "~0.0.27",
     "tnp-helpers": "~0.0.37",
     "tnp-models": "~0.0.28",
