@@ -31,11 +31,11 @@
   },
   "lastBuildTagHash": "e58b5b8f38a0a059e330c67f21b0572f476d1d46",
   "name": "tnp-config",
-  "version": "0.0.83",
+  "version": "0.0.85",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
-    "tnp-core": "~0.0.57"
+    "tnp-core": "~0.0.60"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.901.3",
