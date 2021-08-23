@@ -154,6 +154,9 @@ allowedEnvironments.forEach(s => {
 
 const firedev = 'firedev';
 const morphi = 'morphi';
+//#region @backend
+const morphiPathUserInUserDir = path.join(crossPlatformPath(os.homedir()), firedev, morphi);
+//#endregion
 const urlMorphi = 'https://github.com/darekf77/morphi.git';
 
 const filesNotAllowedToClean = {
@@ -312,7 +315,7 @@ function pathResolved(...partOfPath: string[]) {
     let pathResult = joined.replace((dirnameForTnp + '/' + firedevProjectsRelative), projectsInUserFolder);
 
     pathResult = crossPlatformPath(path.resolve(pathResult));
-    const morphiPathUserInUserDir = path.join(crossPlatformPath(os.homedir()), firedev, morphi);
+
     if (pathResolved.prototype.resolved) {
       // console.info(`Firedev base projects in are ok.`);
     } else {
@@ -398,7 +401,7 @@ export const config = {
   },
 
   //#endregion
-  coreProjectVersions: ['v1', 'v2'],
+  coreProjectVersions: ['v1', 'v2', 'v3'],
   quickFixes: {
     missingLibs: [
       'react-native-sqlite-storage'
@@ -443,6 +446,8 @@ export const config = {
   startPort: 6001,
   frameworks: ['bootstrap', 'ionic', 'material'] as ConfigModels.UIFramework[],
   //#region @backend
+  morphiPathUserInUserDir,
+  urlMorphi,
   argsReplacementsBuild,
   argsGlobalFlags: [ // TODO do I need this ?
     '-verbose',
