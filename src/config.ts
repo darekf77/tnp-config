@@ -331,22 +331,22 @@ function pathResolved(...partOfPath: string[]) {
            ${morphiPathUserInUserDir}`);
         }
       } else {
-        const upgradeFiredev = global['firedev-upgrade-process'];
-        console.info(`upgrade firedev: ${upgradeFiredev}`)
-        if (global['firedev-upgrade-process']) {
-          try {
+        // const upgradeFiredev = global['firedev-upgrade-process'];
+        // console.info(`upgrade firedev: ${upgradeFiredev}`)
+        // if (global['firedev-upgrade-process']) {
+        //   try {
 
-            // child_process.execSync(`git reset --hard && git pull origin master`,
-            //   { cwd: morphiPathUserInUserDir });
-            // fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
+        //     // child_process.execSync(`git reset --hard && git pull origin master`,
+        //     //   { cwd: morphiPathUserInUserDir });
+        //     // fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
 
-          } catch (error) {
-            console.error(`[config] Not pull origin of morphi: ${urlMorphi} in:
-          ${morphiPathUserInUserDir}`);
-          }
-        } else {
-          console.log(`Ommiting firedev upgrade process..`)
-        }
+        //   } catch (error) {
+        //     console.error(`[config] Not pull origin of morphi: ${urlMorphi} in:
+        //   ${morphiPathUserInUserDir}`);
+        //   }
+        // } else {
+        //   console.log(`Ommiting firedev upgrade process..`)
+        // }
       }
       pathResolved.prototype.resolved = true;
     }
