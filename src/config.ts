@@ -174,6 +174,7 @@ const file = {
   bower_json: 'bower.json',
   controllers_ts: 'controllers.ts',
   entities_ts: 'entities.ts',
+  angular_json: 'angular.json',
   autob_actions_js: 'auto-actions.js',
   local_config_js: 'local-config.js',
   build_config_js: 'build-config.js',
