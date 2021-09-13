@@ -418,7 +418,7 @@ export const config = {
   array: {
     isomorphicPackages: 'isomorphicPackages'
   },
-  defaultFrameworkVersion: 'v1' as ('v1' | 'v2'),
+  defaultFrameworkVersion: 'v3' as ConfigModels.FrameworkVersion,
   CONST: {
     UNIT_TEST_TIMEOUT: 30000,
     INTEGRATION_TEST: 30000,
