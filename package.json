@@ -29,7 +29,7 @@
     "private": false,
     "main": "index.js"
   },
-  "lastBuildTagHash": "114648b7f60d296a05175e6928e841d6fba3d7e3",
+  "lastBuildTagHash": "ff90dc0211e853df99b4f3a69c609f7eb32cf398",
   "name": "tnp-config",
   "version": "1.0.1",
   "license": "MIT",
@@ -252,7 +252,7 @@
     "systeminformation": "3.45.7",
     "task.js": "0.1.5",
     "tnp-cli": "~0.0.23",
-    "tnp-config": "~0.0.89",
+    "tnp-config": "~1.0.1",
     "tnp-db": "~0.0.31",
     "tnp-helpers": "~0.0.59",
     "tnp-models": "~0.0.30",
