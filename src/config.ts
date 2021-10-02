@@ -195,6 +195,7 @@ const file = {
   manifest_webmanifest: 'manifest.webmanifest',
   publicApi_ts: 'public_api.ts',
   publicApi_d_ts: 'public_api.d.ts',
+  publicapi_ts: 'public-api.ts',
   _babelrc: '.babelrc',
   index_d_ts: 'index.d.ts',
   index_ts: 'index.ts',
@@ -272,6 +273,9 @@ const folder = {
   project: 'project',
   external: 'external',
   tmpDist: 'tmp-dist',
+  tmpFor(d: ConfigModels.OutFolder) {
+    return `tmp-src-${d}`;
+  },
   ...tempFolders
 };
 
@@ -376,6 +380,8 @@ const argsReplacementsBuild = {
   'bap': 'build:app:prod',
   'bdw': 'build:dist:watch',
   'bw': 'build:watch',
+  'bng': 'build:ng',
+  'bngw': 'build:ng:watch',
   'bdpw': 'build:dist:prod:watch',
   'bd': 'build:dist',
   'bb': 'build:bundle',
@@ -447,6 +453,9 @@ export const config = {
   startPort: 6001,
   frameworks: ['bootstrap', 'ionic', 'material'] as ConfigModels.UIFramework[],
   //#region @backend
+  tempFiles: {
+    FILE_NAME_ISOMORPHIC_PACKAGES: 'tmp-isomorphic-packages.json'
+  },
   morphiPathUserInUserDir,
   urlMorphi,
   argsReplacementsBuild,
