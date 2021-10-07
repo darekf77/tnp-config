@@ -31,11 +31,11 @@
   },
   "lastBuildTagHash": "d82aed88e61dd2985cfb49824a70b580f1fbc5c0",
   "name": "tnp-config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
-    "tnp-core": "~1.0.17"
+    "tnp-core": "~1.0.18"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "12.2.8",
@@ -198,7 +198,7 @@
     "mkdirp": "0.5.1",
     "mocha": "5.2.0",
     "moment": "2.22.2",
-    "morphi": "~4.0.39",
+    "morphi": "~4.0.42",
     "ng-modal-lib": "0.0.6",
     "ng-packagr": "5.7.1",
     "ng-talkback": "~2.4.18",
