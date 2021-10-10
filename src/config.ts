@@ -3,8 +3,8 @@
  * @author darekf77@gmail.com
  * Recommended config for all isomorphic libs *
  */
-declare const global: any;
 //#region @backend
+declare const global: any;
 import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core';
 
 if (global && !global['ENV']) {
@@ -449,7 +449,9 @@ export const config = {
       ]
     }
   },
+  //#region @backend
   frameworkName: (global['frameworkName'] ? global['frameworkName'] : 'tnp') as 'firedev' | 'tnp',
+  //#endregion
   startPort: 6001,
   frameworks: ['bootstrap', 'ionic', 'material'] as ConfigModels.UIFramework[],
   //#region @backend
