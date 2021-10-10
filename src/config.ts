@@ -3,14 +3,14 @@
  * @author darekf77@gmail.com
  * Recommended config for all isomorphic libs *
  */
+declare const global: any;
 //#region @backend
 import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core';
-//#endregion
 
-declare const global: any;
 if (global && !global['ENV']) {
   global['ENV'] = {};
 }
+//#endregion
 
 export { CoreHelpers as Helpers } from 'tnp-core';
 
