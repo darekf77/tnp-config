@@ -276,6 +276,10 @@ const folder = {
   tmpFor(d: ConfigModels.OutFolder) {
     return `tmp-src-${d}`;
   },
+  targetProjects: {
+    DEFAULT_PATH_GENERATED: 'tmp-target-projects/generated',
+    DEFAULT_PATH_ORIGINS: 'tmp-target-projects/origins',
+  },
   ...tempFolders
 };
 
@@ -452,6 +456,10 @@ export const config = {
   //#region @backend
   frameworkName: (global['frameworkName'] ? global['frameworkName'] : 'tnp') as 'firedev' | 'tnp',
   //#endregion
+  frameworkNames: {
+    tnp: 'tnp',
+    firedev: 'firedev'
+  },
   startPort: 6001,
   frameworks: ['bootstrap', 'ionic', 'material'] as ConfigModels.UIFramework[],
   //#region @backend
@@ -482,6 +490,7 @@ export const config = {
     'rc': 'recommit',
     'rp': 'release:prod',
     'r': 'release',
+    'ra': 'release:all',
     'ar': 'auto:release',
     'lb': 'last:build',
     'scm': 'showcoremodules',
@@ -497,6 +506,8 @@ export const config = {
     'tw': 'test:watch',
     'td': 'test:debug',
     't': 'test',
+    'pt': 'push:tag',
+    'p': 'push'
   },
   coreBuildFrameworkNames: [
     'tnp',

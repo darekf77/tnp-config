@@ -31,11 +31,11 @@
   },
   "lastBuildTagHash": "0800aa19c6fd12ed16388fe4b28be108e88f005f",
   "name": "tnp-config",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "license": "MIT",
   "main": "index.js",
   "dependencies": {
-    "tnp-core": "~1.0.27"
+    "tnp-core": "~1.0.28"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "12.2.8",
@@ -271,7 +271,7 @@
     "underscore": "1.9.1",
     "uuid": "8.3.2",
     "validator": "9.2.0",
-    "vpn-split": "~0.0.13",
+    "vpn-split": "~0.0.14",
     "watch": "1.0.2",
     "webpack-cli": "3.3.11",
     "zone.js": "0.11.3"
