@@ -507,7 +507,8 @@ export const config = {
     'td': 'test:debug',
     't': 'test',
     'pt': 'push:tag',
-    'p': 'push'
+    'p': 'push',
+    'dgl': 'detect:global:libs'
   },
   coreBuildFrameworkNames: [
     'tnp',
