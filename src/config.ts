@@ -51,12 +51,12 @@ export namespace ConfigModels {
 
   export type NewFactoryType = LibType | 'model' | 'single-file-project';
   export type CoreLibCategory = LibType | 'common';
-  export type Position = {
+  export interface Position {
     x: number;
     y: number;
   }
 
-  export type Size = {
+  export interface Size {
     w: number;
     h: number;
   }
@@ -95,7 +95,7 @@ export const GlobalIsomorphicDependencies: ConfigModels.GlobalDependencies = {
     //   website: 'https://code.visualstudio.com/'
     // }
   ] as { name: string; website: string }[]
-}
+};
 
 export const GlobalLibTypeName = {
   isomorphicLib: 'isomorphic-lib',
@@ -149,7 +149,7 @@ export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this
 const allowedEnvironments: ConfigModels.EnvironmentName[] = ['static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'];
 const allowedEnvironmentsObj = {};
 allowedEnvironments.forEach(s => {
-  allowedEnvironmentsObj[s] = s
+  allowedEnvironmentsObj[s] = s;
 });
 
 const firedev = 'firedev';
@@ -167,7 +167,7 @@ const filesNotAllowedToClean = {
   _editorconfig: '.editorconfig',
   _angularCli_json: '.angular-cli.json',
   _vscode_launch_json: '.vscode/launch.json',
-}
+};
 
 const file = {
   _bowerrc: '.bowerrc',
@@ -243,7 +243,7 @@ const tempFolders = {
   tmpScenarios: 'tmp-scenarios',
   tmpTestsEnvironments: 'tmp-tests-environments',
   testsEnvironments: 'tests-environments',
-}
+};
 
 const stylesFilesExtension = [
   'css',
@@ -288,7 +288,7 @@ let dirnameForTnp: string;
 //#region @backend
 dirnameForTnp = crossPlatformPath(__dirname);
 //#endregion
-let firedevProjectsRelative = `../firedev-projects`;
+const firedevProjectsRelative = `../firedev-projects`;
 
 //#region @backend
 
@@ -320,7 +320,7 @@ function pathResolved(...partOfPath: string[]) {
 
   if (global['frameworkName'] && global['frameworkName'] === firedev) {
     const joined = partOfPath.join('/');
-    const projectsInUserFolder = path.join(crossPlatformPath(os.homedir()), firedev, morphi, 'projects')
+    const projectsInUserFolder = path.join(crossPlatformPath(os.homedir()), firedev, morphi, 'projects');
     let pathResult = joined.replace((dirnameForTnp + '/' + firedevProjectsRelative), projectsInUserFolder);
 
     pathResult = crossPlatformPath(path.resolve(pathResult));
@@ -330,7 +330,7 @@ function pathResolved(...partOfPath: string[]) {
     } else {
       if (!fse.existsSync(morphiPathUserInUserDir)) {
         if (!fse.existsSync(path.dirname(morphiPathUserInUserDir))) {
-          fse.mkdirpSync(path.dirname(morphiPathUserInUserDir))
+          fse.mkdirpSync(path.dirname(morphiPathUserInUserDir));
         }
         try {
           child_process.execSync(`git clone ${urlMorphi}`, { cwd: path.dirname(morphiPathUserInUserDir) });
@@ -361,7 +361,7 @@ function pathResolved(...partOfPath: string[]) {
     }
     return pathResult;
   }
-  return crossPlatformPath(path.resolve(path.join(...partOfPath)))
+  return crossPlatformPath(path.resolve(path.join(...partOfPath)));
 }
 //#endregion
 
@@ -400,7 +400,41 @@ const argsReplacementsBuild = {
   'cb': 'clean:build'
 };
 
+const areTrustedForPatchUpdate = [
+  '@angular',
+  '@ngrx',
+  'rxjs',
+  'zone.js',
+  'tslib',
+  'typescript'
+];
+
+const needToBeCopiedInstedLink = [
+  // '@*',
+  // 'typescript',
+  // 'tslib',
+  // 'webpack*',
+  // 'vscode*',
+  // 'temp*',
+  // 'rollup*',
+  // 'node*',
+  // 'npm*',
+  // 'esbuild*',
+  // 'babel*',
+  // 'reflect-metadata*',
+  // 'require*',
+  // 'ts*',
+  // 'ng*',
+  // 'ivy*',
+  // 'build*',
+  // '.*',
+];
+
 export const config = {
+  packagesThat: {
+    needToBeCopiedInstedLink,
+    areTrustedForPatchUpdate,
+  },
   //#region @backend
   get dbLocation() {
     let dbFileName = config.file.db_json;
@@ -571,7 +605,7 @@ export const config = {
           return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}/${libType}${version}`);
         },
         singlefileproject: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/single-file-project${version}`)
-      }
+      };
       return result;
     }
   },
@@ -607,7 +641,7 @@ export const config = {
         'ts',
         'js',
         ...stylesFilesExtension,
-      ].map(f => `.${f}`)
+      ].map(f => `.${f}`);
     },
   },
   notFiredevProjects: [
@@ -749,4 +783,4 @@ export const config = {
       }
     ]
   }
-}
+};
