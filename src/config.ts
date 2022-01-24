@@ -406,7 +406,8 @@ const areTrustedForPatchUpdate = [
   'rxjs',
   'zone.js',
   'tslib',
-  'typescript'
+  'typescript',
+  'webpack'
 ];
 
 const needToBeCopiedInstedLink = [
@@ -542,7 +543,8 @@ export const config = {
     't': 'test',
     'pt': 'push:tag',
     'p': 'push',
-    'dgl': 'detect:global:libs'
+    'dgl': 'detect:global:libs',
+    'pr': 'print:relatives',
   },
   coreBuildFrameworkNames: [
     'tnp',
