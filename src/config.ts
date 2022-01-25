@@ -501,6 +501,19 @@ export const config = {
   tempFiles: {
     FILE_NAME_ISOMORPHIC_PACKAGES: 'tmp-isomorphic-packages.json'
   },
+  OVERRIDE_FROM_TNP: [ // TODO put in config ?
+    'scripts',
+    'description',
+    'license',
+    'private',
+    'author',
+    'homepage',
+    'main',
+    'engines',
+    'categories',
+    'keywords',
+    'activationEvents',
+  ],
   morphiPathUserInUserDir,
   urlMorphi,
   argsReplacementsBuild,
