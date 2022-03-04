@@ -379,25 +379,82 @@ const moduleNameIsomorphicLib = [
 ];
 
 const argsReplacementsBuild = {
-  'baw': 'build:app:watch',
+  // SHORTCUTS
   'ba': 'build:app',
+  'baw': 'build:app:watch',
+  'bw': 'build:watch', // buid dist watch with automatic container/previewProjects popuilation
   'bap': 'build:app:prod',
-  'bdw': 'build:dist:watch',
-  'bw': 'build:watch',
-  'bng': 'build:ng',
-  'bngw': 'build:ng:watch',
-  'bdpw': 'build:dist:prod:watch',
-  'bd': 'build:dist',
-  'bb': 'build:bundle',
-  'bbp': 'build:bundle:prod',
-  'bbpw': 'build:bundle:prod:watch',
-  'bbw': 'build:bundle:watch',
+  'bapw': 'build:app:prod:watch',
+
+  // (dist)app build for normal development - watch is ng serve
+  'bda': 'build:dist:app',
+  'bdaw': 'build:dist:app:watch',
+
+  // (dist)app build for normal development (PRODUCTION MINIFIED CODE)
+  'badpw': 'build:app:dist:prod:watch',
+  'badp': 'build:app:dist:prod',
+
+  // (dist)lib build - watch is ng build
+  'bd': 'build:dist', 'bdw': 'build:dist:watch',
+  // (dist)lib build - watch is ng build (PRODUCTION MINIFIED CODE)
+  'bdp': 'build:dist:prod', 'bdpw': 'build:dist:prod:watch',
+
+  // (bundle)app build for static code (firedev plugins, project final code, etc.)
+  'bba': 'build:bundle:app', 'bbaw': 'build:bundle:app:watch',
+  // (bunle)lib build for static code (firedev plugins, project final code, etc.)
+  'bb': 'build:bundle', 'bbw': 'build:bundle:watch',
+  // (bunle)lib build for static code with ng build (PRODUCTION MINIFIED CODE)
+  'bbp': 'build:bundle:prod', 'bbpw': 'build:bundle:prod:watch',
+
   'sb': 'static:build',
   'sbp': 'static:build:prod',
   'sbd': 'static:build:dist',
   'sbl': 'static:build:lib',
   'sba': 'static:build:app',
   'cb': 'clean:build'
+};
+
+const argsReplacementsOther = {
+  // github docs
+  'ghpush': 'githubpush',
+  'ghpull': 'githubpull',
+  // last
+  'l': 'last',
+  'sl': 'show:last',
+  'lb': 'last:build',
+  // install
+  'i': 'install',
+  'si': 'sinstall',
+  'il': 'install:locally',
+  'rc': 'recommit',
+  // release
+  'rp': 'release:prod',
+  'r': 'release',
+  'ra': 'release:all',
+  'ar': 'auto:release',
+  // versopm
+  '--version': 'version',
+  '-v': 'version',
+  // open
+  'occ': 'open:core:container',
+  'ocp': 'open:core:project',
+  // test
+  'twd': 'test:watch:debug',
+  'tdw': 'test:watch:debug',
+  'tw': 'test:watch',
+  'td': 'test:debug',
+  't': 'test',
+  // git push
+  'pt': 'push:tag',
+  'p': 'push',
+  'pa': 'pushalll',
+  // other
+  'scm': 'showcoremodules',
+  'tpu': 'target:proj:update',
+  'ugd': 'update:global:deps',
+  'ud': 'update:deps', // same as npm i
+  'dgl': 'detect:global:libs',
+  'pr': 'print:relatives',
 };
 
 const areTrustedForPatchUpdate = [
@@ -528,36 +585,7 @@ export const config = {
   ],
   argsReplacements: {
     ...argsReplacementsBuild,
-    'ghpush': 'githubpush',
-    'ghpull': 'githubpull',
-    'l': 'last',
-    'sl': 'show:last',
-    'i': 'install',
-    'si': 'sinstall',
-    'il': 'install:locally',
-    'rc': 'recommit',
-    'rp': 'release:prod',
-    'r': 'release',
-    'ra': 'release:all',
-    'ar': 'auto:release',
-    'lb': 'last:build',
-    'scm': 'showcoremodules',
-    '--version': 'version',
-    '-v': 'version',
-    'tpu': 'target:proj:update',
-    'occ': 'open:core:container',
-    'ocp': 'open:core:project',
-    'ugd': 'update:global:deps',
-    'ud': 'update:deps', // same as npm i
-    'twd': 'test:watch:debug',
-    'tdw': 'test:watch:debug',
-    'tw': 'test:watch',
-    'td': 'test:debug',
-    't': 'test',
-    'pt': 'push:tag',
-    'p': 'push',
-    'dgl': 'detect:global:libs',
-    'pr': 'print:relatives',
+    ...argsReplacementsOther,
   },
   coreBuildFrameworkNames: [
     'tnp',
