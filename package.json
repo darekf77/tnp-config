@@ -1,8 +1,12 @@
 {
-  "version": "0.0.1",
+  "version": "1.0.22",
   "dependencies": {
     "tnp-core": "~1.0.37"
   },
+  "license": "MIT",
+  "private": false,
+  "main": "index.js",
+  "name": "tnp-config",
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.2.5",
     "@angular/animations": "~13.2.0",
@@ -187,9 +191,5 @@
     "vpn-split": "~0.0.18",
     "watch": "1.0.2",
     "zone.js": "~0.11.4"
-  },
-  "license": "MIT",
-  "private": false,
-  "main": "index.js",
-  "name": "tnp-config"
+  }
 }
