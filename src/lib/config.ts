@@ -21,8 +21,9 @@ export namespace ConfigModels {
   export type UIFramework = 'bootstrap' | 'material' | 'ionic';
   export type FrameworkVersion = 'v1' | 'v2' | 'v3';
   export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';
+  export type ImageFileExtension = 'jpg'| 'jpeg' | 'png' | 'svg';
+  export type FileExtension = 'ts' | 'js' | 'json' | 'html' | ImageFileExtension | 'txt' | CutableFileExt;
 
-  export type FileExtension = 'ts' | 'js' | 'json' | 'html' | 'jpg' | 'png' | 'txt' | CutableFileExt;
 
   export type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'jsonp';
   export type ParamType = 'Path' | 'Query' | 'Cookie' | 'Header' | 'Body';
@@ -149,6 +150,7 @@ export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this
 const allowedEnvironments: ConfigModels.EnvironmentName[] = ['static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'];
 const allowedEnvironmentsObj = {};
 allowedEnvironments.forEach(s => {
+  // @ts-ignore
   allowedEnvironmentsObj[s] = s;
 });
 
@@ -467,30 +469,8 @@ const areTrustedForPatchUpdate = [
   'webpack'
 ];
 
-const needToBeCopiedInstedLink = [
-  // '@*',
-  // 'typescript',
-  // 'tslib',
-  // 'webpack*',
-  // 'vscode*',
-  // 'temp*',
-  // 'rollup*',
-  // 'node*',
-  // 'npm*',
-  // 'esbuild*',
-  // 'babel*',
-  // 'reflect-metadata*',
-  // 'require*',
-  // 'ts*',
-  // 'ng*',
-  // 'ivy*',
-  // 'build*',
-  // '.*',
-];
-
 export const config = {
   packagesThat: {
-    needToBeCopiedInstedLink,
     areTrustedForPatchUpdate,
   },
   //#region @backend
@@ -656,6 +636,7 @@ export const config = {
   allowedEnvironments,
   folder,
   tempFolders,
+  // @ts-ignore
   filesNotAllowedToClean: Object.keys(filesNotAllowedToClean).map(key => filesNotAllowedToClean[key]) as string[],
   file,
   default: {
