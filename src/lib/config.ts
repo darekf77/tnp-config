@@ -21,7 +21,7 @@ export namespace ConfigModels {
   export type UIFramework = 'bootstrap' | 'material' | 'ionic';
   export type FrameworkVersion = 'v1' | 'v2' | 'v3';
   export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';
-  export type ImageFileExtension = 'jpg'| 'jpeg' | 'png' | 'svg';
+  export type ImageFileExtension = 'jpg' | 'jpeg' | 'png' | 'svg';
   export type FileExtension = 'ts' | 'js' | 'json' | 'html' | ImageFileExtension | 'txt' | CutableFileExt;
 
 
@@ -288,7 +288,7 @@ const folder = {
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
 let dirnameForTnp: string;
 //#region @backend
-dirnameForTnp = crossPlatformPath(__dirname);
+dirnameForTnp = crossPlatformPath(path.resolve(__dirname, '..'));
 //#endregion
 const firedevProjectsRelative = `../firedev-projects`;
 
