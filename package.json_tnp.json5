@@ -1,31 +1,28 @@
 {
-  "resources": [
-    "README.md"
-  ],
-  "overrided": {
-    "ignoreDepsPattern": [],
-    "includeAsDev": "*",
-    "includeOnly": [
-      "tnp-core"
-    ],
-    "dependencies": {},
-    "linkedFolders": []
+  resources: ["README.md"],
+  overrided: {
+    ignoreDepsPattern: [],
+    includeAsDev: "*",
+    includeOnly: ["tnp-core"],
+    dependencies: {},
+    linkedFolders: [],
   },
-  "linkedProjects": [],
-  "libReleaseOptions": {
-    "nodts": false,
-    "obscure": false,
-    "ugly": false
+  linkedProjects: [],
+  libReleaseOptions: {
+    nodts: false,
+    obscure: false,
+    ugly: false,
   },
-  "isCoreProject": false,
-  "useFramework": false,
-  "type": "isomorphic-lib",
-  "required": [],
-  "version": "v3",
-  "isGenerated": false,
-  "requiredServers": [],
-  "license": "MIT",
-  "private": false,
-  "main": "index.js",
-  "workerPlugins": {}
+  isCoreProject: false,
+  useFramework: false,
+  type: "isomorphic-lib",
+  required: [],
+  version: "v3",
+  additionalNpmNames: ["firedev-config"],
+  isGenerated: false,
+  requiredServers: [],
+  license: "MIT",
+  private: false,
+  main: "index.js",
+  workerPlugins: {},
 }
