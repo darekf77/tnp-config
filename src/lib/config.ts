@@ -432,6 +432,7 @@ const argsReplacementsOther = {
   // release
   'rp': 'release:prod',
   'r': 'release',
+  'rm': 'release:major',
   'ra': 'release:all',
   'ar': 'auto:release',
   // versopm

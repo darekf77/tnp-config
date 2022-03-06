@@ -6,5 +6,6 @@
   "license": "MIT",
   "private": false,
   "main": "index.js",
-  "name": "tnp-config"
+  "name": "tnp-config",
+  "devDependencies": {}
 }
