@@ -322,8 +322,16 @@ function pathResolved(...partOfPath: string[]) {
 
   if (global['frameworkName'] && global['frameworkName'] === firedev) {
     const joined = partOfPath.join('/');
-    const projectsInUserFolder = path.join(crossPlatformPath(os.homedir()), firedev, morphi, 'projects');
-    let pathResult = joined.replace((dirnameForTnp + '/' + firedevProjectsRelative), projectsInUserFolder);
+    const projectsInUserFolder = crossPlatformPath(path.join(
+      crossPlatformPath(os.homedir()),
+      firedev,
+      morphi,
+      'projects',
+    ));
+    let pathResult = joined.replace(
+      (dirnameForTnp + '/' + firedevProjectsRelative),
+      projectsInUserFolder,
+    );
 
     pathResult = crossPlatformPath(path.resolve(pathResult));
 
@@ -335,7 +343,9 @@ function pathResolved(...partOfPath: string[]) {
           fse.mkdirpSync(path.dirname(morphiPathUserInUserDir));
         }
         try {
-          child_process.execSync(`git clone ${urlMorphi}`, { cwd: path.dirname(morphiPathUserInUserDir) });
+          child_process.execSync(`git clone ${urlMorphi}`, {
+            cwd: path.dirname(morphiPathUserInUserDir)
+          });
           fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
         } catch (error) {
           console.error(`[config] Not able to clone repository: ${urlMorphi} in:
