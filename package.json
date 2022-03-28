@@ -1,7 +1,7 @@
 {
-  "version": "13.0.8",
+  "version": "13.0.9",
   "dependencies": {
-    "tnp-core": "~13.0.13"
+    "tnp-core": "~13.0.20"
   },
   "license": "MIT",
   "private": false,
