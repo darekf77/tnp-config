@@ -1,7 +1,7 @@
 {
-  "version": "13.0.13",
+  "version": "13.0.14",
   "dependencies": {
-    "tnp-core": "~13.0.30"
+    "tnp-core": "~13.0.31"
   },
   "license": "MIT",
   "private": false,
@@ -214,7 +214,7 @@
     "systeminformation": "3.45.7",
     "task.js": "0.1.5",
     "tnp-cli": "~13.0.8",
-    "tnp-config": "~13.0.12",
+    "tnp-config": "~13.0.13",
     "tnp-db": "~13.0.18",
     "tnp-helpers": "~13.0.15",
     "tnp-models": "~13.0.11",
@@ -230,7 +230,7 @@
     "underscore": "1.9.1",
     "uuid": "8.3.2",
     "validator": "9.2.0",
-    "vpn-split": "13.0.7",
+    "vpn-split": "13.0.13",
     "watch": "1.0.2",
     "zone.js": "~0.11.4"
   }
