@@ -2,7 +2,7 @@
   resources: ["README.md"],
   overrided: {
     ignoreDepsPattern: [],
-    includeAsDev: "*",
+    includeAsDev: [],
     includeOnly: ["tnp-core"],
     dependencies: {},
     linkedFolders: [],
