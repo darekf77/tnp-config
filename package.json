@@ -1,7 +1,7 @@
 {
-  "version": "13.0.11",
+  "version": "13.0.12",
   "dependencies": {
-    "tnp-core": "~13.0.26"
+    "tnp-core": "~13.0.27"
   },
   "license": "MIT",
   "private": false,
@@ -168,7 +168,7 @@
     "moment": "2.22.2",
     "morphi": "~13.0.15",
     "ng-packagr": "13.0.0",
-    "ng-talkback": "~13.0.6",
+    "ng-talkback": "13.0.6",
     "ng2-logger": "~13.0.7",
     "ng2-rest": "~13.0.10",
     "ng4-icons": "~13.0.8",
