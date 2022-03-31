@@ -758,6 +758,7 @@ export const config = {
   ],
   required: {
     npm: [
+      { name: '@angular/cli', version: '13' },
       { name: 'extract-zip', version: '1.6.7' },
       { name: 'watch', version: '1.0.2' },
       { name: 'cpr' },
