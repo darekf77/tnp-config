@@ -13,10 +13,9 @@
         "--nolazy",
         "-r",
         "ts-node/register",
-        "--experimental-worker",
         "--preserve-symlinks",
         "--preserve-symlinks-main",
-        "--experimental-modules"
+        "--experimental-worker"
       ]
     },
     {
@@ -42,9 +41,6 @@
       "port": 9229,
       "skipFiles": [
         "<node_internals>/**"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
       ]
     }
   ],
