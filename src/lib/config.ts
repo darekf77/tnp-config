@@ -78,7 +78,7 @@ export namespace ConfigModels {
   export type FileEvent = 'created' | 'changed' | 'removed' | 'rename';
   export type OutFolder = 'dist' | 'bundle' | 'browser';
   export type FormlyInputType = 'input' | 'switch' | 'datepicker' | 'repeat' | 'group';
-  export type DatabaseType = 'sqlite' | 'mysql';
+  export type DatabaseType = 'better-sqlite3' | 'sqlite' | 'mysql';
 
 }
 
