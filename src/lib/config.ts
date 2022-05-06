@@ -82,21 +82,6 @@ export namespace ConfigModels {
 
 }
 
-export const GlobalIsomorphicDependencies: ConfigModels.GlobalDependencies = {
-  npm: [
-    { name: 'rimraf' },
-    { name: 'npm-run', version: '4.1.2' },
-    { name: 'cpr' },
-    { name: 'check-node-version' },
-    { name: 'vsce' },
-  ],
-  programs: [
-    // {
-    //   name: 'code',
-    //   website: 'https://code.visualstudio.com/'
-    // }
-  ] as { name: string; website: string }[]
-};
 
 export const GlobalLibTypeName = {
   isomorphicLib: 'isomorphic-lib',
@@ -157,7 +142,7 @@ allowedEnvironments.forEach(s => {
 const firedev = 'firedev';
 const morphi = 'morphi';
 //#region @backend
-const morphiPathUserInUserDir = path.join(crossPlatformPath(os.homedir()), firedev, morphi);
+const morphiPathUserInUserDir = path.join(crossPlatformPath(os.homedir()), '.firedev', morphi);
 //#endregion
 const urlMorphi = 'https://github.com/darekf77/morphi.git';
 
@@ -324,7 +309,7 @@ function pathResolved(...partOfPath: string[]) {
     const joined = partOfPath.join('/');
     const projectsInUserFolder = crossPlatformPath(path.join(
       crossPlatformPath(os.homedir()),
-      firedev,
+      '.firedev',
       morphi,
       'projects',
     ));
@@ -490,7 +475,7 @@ export const config = {
     if (global.testMode) {
       dbFileName = config.file.db_for_tests_json;
     }
-    const location = crossPlatformPath(path.join(crossPlatformPath(os.homedir()), `${config.frameworkName}`, dbFileName));
+    const location = crossPlatformPath(path.join(crossPlatformPath(os.homedir()), `.${config.frameworkName}`, dbFileName));
     return location;
   },
 
@@ -820,3 +805,21 @@ export const config = {
     ]
   }
 };
+
+
+
+// export const GlobalIsomorphicDependencies: ConfigModels.GlobalDependencies = {
+//   npm: [
+//     { name: 'rimraf' },
+//     { name: 'npm-run', version: '4.1.2' },
+//     { name: 'cpr' },
+//     { name: 'check-node-version' },
+//     { name: 'vsce' },
+//   ],
+//   programs: [
+//     // {
+//     //   name: 'code',
+//     //   website: 'https://code.visualstudio.com/'
+//     // }
+//   ] as { name: string; website: string }[]
+// };
