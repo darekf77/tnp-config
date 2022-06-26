@@ -293,6 +293,7 @@ if (dirnameForTnp.endsWith(`/tnp-config/dist`)) {
   // global tnp node_modules being use in firedev case
   dirnameForTnp = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
 }
+global.dirnameForFiredev = dirnameForTnp;
 // console.log('dirnameForTnp after', dirnameForTnp)
 // process.exit(0)
 
