@@ -448,6 +448,7 @@ const argsReplacementsOther = {
   'p': 'push',
   'pa': 'pushalll',
   // other
+  'sj': 'select:java',
   'scm': 'showcoremodules',
   'tpu': 'target:proj:update',
   'ugd': 'update:global:deps',
