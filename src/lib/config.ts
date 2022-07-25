@@ -44,6 +44,7 @@ export namespace ConfigModels {
     | 'unknow-npm-project'
     | 'scenario'
     | 'navi'
+    | 'leaf'
     | 'game-engine-lib-pixi' // https://github.com/pixijs/pixi.js
     | 'game-engine-lib-phaser' // https://github.com/photonstorm/phaser
     | 'game-engine-lib-excalibur' // https://github.com/excaliburjs/Excalibur
