@@ -246,6 +246,7 @@ const folder = {
   bower: 'bower',
   src: 'src',
   out: 'out',
+  lib: 'lib',
   custom: 'custom',
   components: 'components',
   assets: 'assets',
