@@ -221,6 +221,7 @@ const tempFolders = {
   previewDistApp: 'dist-app',
   preview: 'preview',
   browser: 'browser',
+  websql: 'websql',
   _browser: '.browser',
   module: 'module',
   backup: 'backup',
