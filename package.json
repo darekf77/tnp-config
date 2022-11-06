@@ -166,7 +166,7 @@
     "morphi": "~13.0.48",
     "ng-packagr": "13.0.0",
     "ng-talkback": "~13.0.15",
-    "ng2-logger": "~13.0.25",
+    "ng2-logger": "~13.0.26",
     "ng2-rest": "~13.0.34",
     "ng4-icons": "~13.0.17",
     "ng4-modal": "~13.0.19",
@@ -237,6 +237,6 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "13.0.33",
+  "version": "13.0.34",
   "lastBuildTagHash": "836cb11717baf18f3acbf4e77e723cc9cfc6740a"
 }
