@@ -433,6 +433,8 @@ const argsReplacementsOther = {
   'r': 'release',
   'rmajor': 'release:major',
   'rminor': 'release:minor',
+  'r:major': 'release:major',
+  'r:minor': 'release:minor',
   // 'ra': 'release:all',
   'ar': 'auto:release',
   // versopm
