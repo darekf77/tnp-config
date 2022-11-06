@@ -237,5 +237,5 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "13.0.32"
+  "version": "13.0.33"
 }
