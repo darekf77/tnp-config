@@ -1,7 +1,7 @@
 {
   "": {},
   "dependencies": {
-    "tnp-core": "~13.1.22"
+    "tnp-core": "~13.1.23"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.9",
@@ -74,7 +74,7 @@
     "accepts": "1.3.4",
     "any-project-cli": "~13.1.12",
     "axios": "0.17.1",
-    "background-worker-process": "~13.1.26",
+    "background-worker-process": "~13.1.27",
     "bcryptjs": "2.4.3",
     "better-sqlite3": "7.6.2",
     "body-parser": "1.18.2",
@@ -238,6 +238,6 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "13.1.38",
+  "version": "13.1.39",
   "lastBuildTagHash": "540b044cc02d474768c2bb68077a98361ee8b57b"
 }
