@@ -387,36 +387,47 @@ const argsReplacementsBuild = {
   // SHORTCUTS
   'ba': 'build:app',
   'baw': 'build:app:watch',
-  'bw': 'build:watch', // buid dist watch with automatic container/previewProjects popuilation
-  'bap': 'build:app:prod',
-  'bapw': 'build:app:prod:watch',
+
+  'bw': 'build:watch',
+
+
+  // buid dist watch with automatic container/previewProjects popuilation
+  // 'bap': 'build:app:prod',
+  // 'bapw': 'build:app:prod:watch',
 
   // (dist)app build for normal development - watch is ng serve
   'bda': 'build:dist:app',
-  'bdaw': 'build:dist:app:watch',
+  'bdap': 'build:dist:app:prod',
+  // 'bdaw': 'build:dist:app:watch',
 
   // (dist)app build for normal development (PRODUCTION MINIFIED CODE)
-  'badpw': 'build:app:dist:prod:watch',
-  'badp': 'build:app:dist:prod',
+  // 'badpw': 'build:app:dist:prod:watch',
+  // 'badp': 'build:app:dist:prod',
 
   // (dist)lib build - watch is ng build
-  'bd': 'build:dist', 'bdw': 'build:dist:watch',
+  'bd': 'build:dist',
+  'bdw': 'build:dist:watch',
   // (dist)lib build - watch is ng build (PRODUCTION MINIFIED CODE)
-  'bdp': 'build:dist:prod', 'bdpw': 'build:dist:prod:watch',
+  // 'bdp': 'build:dist:prod',
+  // 'bdpw': 'build:dist:prod:watch',
 
   // (bundle)app build for static code (firedev plugins, project final code, etc.)
-  'bba': 'build:bundle:app', 'bbaw': 'build:bundle:app:watch',
+  'bba': 'build:bundle:app',
+  'bbap': 'build:bundle:app:prod',
+  // 'bbaw': 'build:bundle:app:watch',
   // (bunle)lib build for static code (firedev plugins, project final code, etc.)
-  'bb': 'build:bundle', 'bbw': 'build:bundle:watch',
+  'bb': 'build:bundle',
+  'bbw': 'build:bundle:watch',
   // (bunle)lib build for static code with ng build (PRODUCTION MINIFIED CODE)
-  'bbp': 'build:bundle:prod', 'bbpw': 'build:bundle:prod:watch',
+  // 'bbp': 'build:bundle:prod',
+  // 'bbpw': 'build:bundle:prod:watch',
 
-  'sb': 'static:build',
-  'sbp': 'static:build:prod',
-  'sbd': 'static:build:dist',
-  'sbl': 'static:build:lib',
-  'sba': 'static:build:app',
-  'cb': 'clean:build'
+  // 'sb': 'static:build',
+  // 'sbp': 'static:build:prod',
+  // 'sbd': 'static:build:dist',
+  // 'sbl': 'static:build:lib',
+  // 'sba': 'static:build:app',
+  // 'cb': 'clean:build'
 };
 
 const argsReplacementsOther = {
