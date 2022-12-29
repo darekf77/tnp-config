@@ -282,7 +282,7 @@ let dirnameForTnp: string;
 //#region @backend
 dirnameForTnp = crossPlatformPath(path.resolve(__dirname, '..'));
 //#endregion
-const firedevProjectsRelative = `../firedev-projects`;
+const firedevProjectsRelative = `../morphi/projects`;
 
 //#region @backend
 
