@@ -768,7 +768,7 @@ export const config = {
   required: {
     npm: [
       { name: '@angular/cli', version: '13' },
-      { name: '@vercel/ncc', version: '0.36.0' },
+      { name: 'ncc', version: '0.36.0', installName: '@vercel/ncc' },
       { name: 'extract-zip', version: '1.6.7' },
       { name: 'watch', version: '1.0.2' },
       { name: 'cpr' },
