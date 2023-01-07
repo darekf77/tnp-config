@@ -304,8 +304,12 @@ global.dirnameForFiredev = dirnameForTnp;
 // console.log('dirnameForTnp after', dirnameForTnp)
 // process.exit(0)
 
-// TODO
-// !global.hideLog && console.log(`tnp from: ${tnp_folder_location}`);
+if (path.basename(dirnameForTnp) === 'node_modules') {
+  dirnameForTnp = crossPlatformPath(path.join(dirnameForTnp, 'tnp'))
+}
+
+// TOD0
+// console.log(`[tnp-config] dirnameForTnp : ${dirnameForTnp}`);
 // process.exit(0)
 //#endregion
 
