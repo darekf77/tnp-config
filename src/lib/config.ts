@@ -13,6 +13,15 @@ if (global && !global['ENV']) {
 //#endregion
 
 export { CoreHelpers as Helpers } from 'tnp-core';
+import { Helpers } from 'tnp-core';
+
+const frameworkNameBe = (
+  ''
+  //#region @backend
+  || (global['frameworkName'] ? global['frameworkName'] : 'tnp')
+  //#endregion
+) as 'firedev' | 'tnp';
+const frameworkName = Helpers.isBrowser ? 'firedev' : frameworkNameBe;
 
 //#region config models
 
@@ -85,6 +94,7 @@ export namespace ConfigModels {
 
 
 export const GlobalLibTypeName = {
+  //#region @backend
   isomorphicLib: 'isomorphic-lib',
   angularLib: 'angular-lib',
   electronClient: 'electron-client',
@@ -99,10 +109,12 @@ export const GlobalLibTypeName = {
   chromeExt: 'chrome-ext',
   singleFileProject: 'single-file-project',
   navi: 'navi',
-  scenario: 'scenario'
+  scenario: 'scenario',
+  //#endregion
 };
 
 export const LibTypeArr: ConfigModels.LibType[] = [
+  //#region @backend
   GlobalLibTypeName.angularLib,
   GlobalLibTypeName.isomorphicLib,
   GlobalLibTypeName.angularClient,
@@ -116,10 +128,12 @@ export const LibTypeArr: ConfigModels.LibType[] = [
   GlobalLibTypeName.chromeExt,
   GlobalLibTypeName.navi,
   GlobalLibTypeName.scenario,
+  //#endregion
 ] as ConfigModels.LibType[];
 
 
 export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this is for what ?
+  //#region @backend
   GlobalLibTypeName.angularLib,
   GlobalLibTypeName.isomorphicLib,
   GlobalLibTypeName.angularClient,
@@ -127,13 +141,17 @@ export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this
   GlobalLibTypeName.ionicClient,
   GlobalLibTypeName.docker,
   'common'
+  //#endregion
 ] as ConfigModels.CoreLibCategory[];
 
 //#endregion
 
+const allowedEnvironments: ConfigModels.EnvironmentName[] = [
+  //#region @backend
+  'static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'
+  //#endregion
+];
 
-
-const allowedEnvironments: ConfigModels.EnvironmentName[] = ['static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'];
 const allowedEnvironmentsObj = {};
 allowedEnvironments.forEach(s => {
   // @ts-ignore
@@ -148,6 +166,7 @@ const morphiPathUserInUserDir = path.join(crossPlatformPath(os.homedir()), '.fir
 const urlMorphi = 'https://github.com/darekf77/morphi.git';
 
 const filesNotAllowedToClean = {
+  //#region @backend
   _gitignore: '.gitignore',
   _npmrc: '.npmrc',
   _npmignore: '.npmignore',
@@ -155,9 +174,11 @@ const filesNotAllowedToClean = {
   _editorconfig: '.editorconfig',
   _angularCli_json: '.angular-cli.json',
   _vscode_launch_json: '.vscode/launch.json',
+  //#endregion
 };
 
 const file = {
+  //#region @backend
   _bowerrc: '.bowerrc',
   bower_json: 'bower.json',
   controllers_ts: 'controllers.ts',
@@ -202,15 +223,19 @@ const file = {
   server_chain_cert: 'server-chain.cert',
   meta_config_md: 'meta-content.md',
   ...filesNotAllowedToClean
+  //#endregion
 };
 
 const packageJsonSplit = [
+  //#region @backend
   file.package_json__tnp_json,
   file.package_json__tnp_json5,
   file.package_json__devDependencies_json,
+  //#endregion
 ];
 
 const tempFolders = {
+  //#region @backend
   bundle: 'bundle',
   vendor: 'vendor',
   docs: 'docs',
@@ -233,16 +258,20 @@ const tempFolders = {
   tmpScenarios: 'tmp-scenarios',
   tmpTestsEnvironments: 'tmp-tests-environments',
   testsEnvironments: 'tests-environments',
+  //#endregion
 };
 
 const stylesFilesExtension = [
+  //#region @backend
   'css',
   'sass',
   'scss',
   'less',
+  //#endregion
 ];
 
 const folder = {
+  //#region @backend
   scripts: 'scripts',
   scenarios: 'scenarios',
   bower: 'bower',
@@ -275,6 +304,7 @@ const folder = {
     DEFAULT_PATH_ORIGINS: 'tmp-target-projects/origins',
   },
   ...tempFolders
+  //#endregion
 };
 
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
@@ -335,37 +365,40 @@ function pathResolved(...partOfPath: string[]) {
     if (pathResolved.prototype.resolved) {
       // console.info(`Firedev base projects in are ok.`);
     } else {
-      if (!fse.existsSync(morphiPathUserInUserDir)) {
+
+      const morhiVscode = path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode');
+
+      if (!fse.existsSync(morphiPathUserInUserDir) && !global.skipCoreCheck) {
         if (!fse.existsSync(path.dirname(morphiPathUserInUserDir))) {
           fse.mkdirpSync(path.dirname(morphiPathUserInUserDir));
         }
+
+        try {
+          child_process.execSync(`${frameworkName} env:install --skipCoreCheck`, { stdio: [0, 1, 2] })
+        } catch (error) {
+          Helpers.error(`[${frameworkName}][config] Not able to install local global environment`, false, true);
+        }
+
         try {
           child_process.execSync(`git clone ${urlMorphi}`, {
-            cwd: path.dirname(morphiPathUserInUserDir)
+            cwd: path.dirname(morphiPathUserInUserDir),
+            stdio: [0, 1, 2],
           });
-          fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
+          Helpers.remove(morhiVscode);
         } catch (error) {
-          console.error(`[config] Not able to clone repository: ${urlMorphi} in:
-           ${morphiPathUserInUserDir}`);
+          Helpers.error(`[${frameworkName}][config] Not able to clone repository: ${urlMorphi} in:
+           ${morphiPathUserInUserDir}`, false, true);
         }
-      } else {
-        // const upgradeFiredev = global['firedev-upgrade-process'];
-        // console.info(`upgrade firedev: ${upgradeFiredev}`)
-        // if (global['firedev-upgrade-process']) {
-        //   try {
 
-        //     // child_process.execSync(`git reset --hard && git pull origin master`,
-        //     //   { cwd: morphiPathUserInUserDir });
-        //     // fse.removeSync(path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode'));
-
-        //   } catch (error) {
-        //     console.error(`[config] Not pull origin of morphi: ${urlMorphi} in:
-        //   ${morphiPathUserInUserDir}`);
-        //   }
-        // } else {
-        //   console.log(`Ommiting firedev upgrade process..`)
-        // }
+        try {
+          child_process.execSync(`${frameworkName} init:core --skipCoreCheck`, {
+            stdio: [0, 1, 2]
+          });
+        } catch (error) {
+          Helpers.error(`[${frameworkName}][config] Not able init core project`, false, true);
+        }
       }
+
       pathResolved.prototype.resolved = true;
     }
     return pathResult;
@@ -375,19 +408,24 @@ function pathResolved(...partOfPath: string[]) {
 //#endregion
 
 const moduleNameAngularLib = [
+  //#region @backend
   folder.components,
   folder.module,
   folder.dist,
   folder.browser,
+  //#endregion
 ];
 
 const moduleNameIsomorphicLib = [
+  //#region @backend
   folder.src,
   folder.dist,
   folder.browser,
+  //#endregion
 ];
 
 const argsReplacementsBuild = {
+  //#region @backend
   // SHORTCUTS
   'ba': 'build:app',
   'baw': 'build:app:watch',
@@ -432,9 +470,11 @@ const argsReplacementsBuild = {
   // 'sbl': 'static:build:lib',
   // 'sba': 'static:build:app',
   // 'cb': 'clean:build'
+  //#endregion
 };
 
 const argsReplacementsOther = {
+  //#region @backend
   // github docs
   'ghpush': 'githubpush',
   'ghpull': 'githubpull',
@@ -481,9 +521,11 @@ const argsReplacementsOther = {
   'ud': 'update:deps', // same as npm i
   'dgl': 'detect:global:libs',
   'pr': 'print:relatives',
+  //#endregion
 };
 
 const areTrustedForPatchUpdate = [
+  //#region @backend
   '@angular',
   '@ngrx',
   'rxjs',
@@ -491,6 +533,7 @@ const areTrustedForPatchUpdate = [
   'tslib',
   'typescript',
   'webpack'
+  //#endregion
 ];
 
 export const config = {
@@ -503,16 +546,18 @@ export const config = {
     if (global.testMode) {
       dbFileName = config.file.db_for_tests_json;
     }
-    const location = crossPlatformPath(path.join(crossPlatformPath(os.homedir()), `.${config.frameworkName}`, dbFileName));
+    const location = crossPlatformPath(path.join(crossPlatformPath(os.homedir()), `.${frameworkName}`, dbFileName));
     return location;
   },
 
   //#endregion
   coreProjectVersions: ['v1', 'v2', 'v3'],
   quickFixes: {
+    //#region @backend
     missingLibs: [
       'react-native-sqlite-storage'
     ]
+    //#endregion
   },
   packageJsonSplit,
   regexString: {
@@ -526,11 +571,14 @@ export const config = {
   },
   defaultFrameworkVersion: 'v3' as ConfigModels.FrameworkVersion,
   CONST: {
+    //#region @backend
     UNIT_TEST_TIMEOUT: 30000,
     INTEGRATION_TEST: 30000,
     BACKEND_HTTP_REQUEST_TIMEOUT: 3000,
+    //#endregion
   },
   debug: {
+    //#region @backend
     sourceModifier: [
 
     ],
@@ -548,10 +596,9 @@ export const config = {
         // '/src/app/+preview-components/components/+preview-buildtnpprocess/preview-buildtnpprocess.component.ts'
       ]
     }
+    //#endregion
   },
-  //#region @backend
-  frameworkName: (global['frameworkName'] ? global['frameworkName'] : 'tnp') as 'firedev' | 'tnp',
-  //#endregion
+  frameworkName,
   frameworkNames: {
     tnp: 'tnp',
     firedev: 'firedev'
@@ -649,7 +696,7 @@ export const config = {
             }
             return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/${libType}${version}`);
           }
-          return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}/${libType}${version}`);
+          return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/${libType}${version}`);
         },
         singlefileproject: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/single-file-project${version}`)
       };
@@ -664,11 +711,13 @@ export const config = {
   filesNotAllowedToClean: Object.keys(filesNotAllowedToClean).map(key => filesNotAllowedToClean[key]) as string[],
   file,
   default: {
+    //#region @backend
     cloud: {
       environment: {
         name: 'online' as ConfigModels.EnvironmentName
       }
     }
+    //#endregion
   },
   SUBERIZED_PREFIX: `---stuberized`,
   names: {
@@ -681,6 +730,7 @@ export const config = {
     'reservedExpSec'
   ],
   extensions: {
+    //#region @backend
     /**
        * Modify source: import,export, requires
        */
@@ -691,14 +741,18 @@ export const config = {
         ...stylesFilesExtension,
       ].map(f => `.${f}`);
     },
+    //#endregion
   },
   notFiredevProjects: [
+    //#region @backend
     'unknow', 'unknow-npm-project', 'scenario', 'navi'
+    //#endregion
   ] as ConfigModels.LibType[],
   /**
    * Build allowed types
    */
   allowedTypes: {
+    //#region @backend
     /**
      * Projects for build:app:watch command
      */
@@ -722,6 +776,7 @@ export const config = {
       GlobalLibTypeName.docker,
       GlobalLibTypeName.vscodeExt,
     ] as ConfigModels.LibType[]
+    //#endregion
   },
   moduleNameAngularLib,
   moduleNameIsomorphicLib,
@@ -730,6 +785,7 @@ export const config = {
     styles: stylesFilesExtension,
   },
   projectTypes: {
+    //#region @backend
     forNpmLibs: [
       GlobalLibTypeName.angularLib,
       GlobalLibTypeName.isomorphicLib,
@@ -744,9 +800,11 @@ export const config = {
         GlobalLibTypeName.angularLib,
       ],
     }
+    //#endregion
   },
   // environmentName,
   localLibs: [
+    //#region @backend
     'eslint',
     'mkdirp',
     'gulp',
@@ -762,6 +820,7 @@ export const config = {
     'concurrently',
     'sloc',
     'morphi'
+    //#endregion
   ],
   helpAlias: [
     '-h',
@@ -771,6 +830,7 @@ export const config = {
   ],
   required: {
     npm: [
+      //#region @backend
       { name: '@angular/cli', version: '13' },
       { name: 'ncc', version: '0.36.0', installName: '@vercel/ncc' },
       { name: 'extract-zip', version: '1.6.7' },
@@ -784,7 +844,7 @@ export const config = {
       { name: 'nodemon' },
       { name: 'madge' },
       { name: 'yarn' },
-      { name: 'http-server' },
+      { name: 'firedev-http-server' },
       { name: 'increase-memory-limit' },
       { name: 'bower' },
       { name: 'fkill', installName: 'fkill-cli' },
@@ -792,7 +852,7 @@ export const config = {
       { name: 'mocha' },
       // { name: 'chai' },
       { name: 'ts-node' },
-      { name: 'vsce' },
+      { name: 'firedev-vsce' },
       // { name: 'stmux' },
       { name: 'webpack-bundle-analyzer' },
       // { name: 'ng', installName: '@angular/cli' },
@@ -801,8 +861,10 @@ export const config = {
       { name: 'babel', installName: 'babel-cli' },
       { name: 'javascript-obfuscator', version: '4' },
       { name: 'uglifyjs', installName: 'uglify-js' },
+      //#endregion
     ],
     niceTools: [
+      //#region @backend
       { name: 'speed-test' },
       { name: 'npm-name' }, // check if name is available on npm
       { name: 'vantage', platform: 'linux' }, // inspect you live applicaiton
@@ -825,12 +887,15 @@ export const config = {
       { name: 'columnify', isNotCli: true }, // draw nice columns in node,
       { name: 'multispinner', isNotCli: true }, // progres for multiple async actions
       { name: 'cfonts' }, // draw super nice fonts in console
+      //#endregion
     ],
     programs: [,
+      //#region @backend
       {
         name: 'code',
         website: 'https://code.visualstudio.com/'
       }
+      //#endregion
     ]
   }
 };
