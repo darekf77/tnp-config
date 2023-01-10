@@ -271,7 +271,7 @@ const stylesFilesExtension = [
 ];
 
 const folder = {
-  //#region @backend
+
   scripts: 'scripts',
   scenarios: 'scenarios',
   bower: 'bower',
@@ -304,7 +304,7 @@ const folder = {
     DEFAULT_PATH_ORIGINS: 'tmp-target-projects/origins',
   },
   ...tempFolders
-  //#endregion
+
 };
 
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
