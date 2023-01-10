@@ -178,7 +178,7 @@ const filesNotAllowedToClean = {
 };
 
 const file = {
-  //#region @backend
+
   _bowerrc: '.bowerrc',
   bower_json: 'bower.json',
   controllers_ts: 'controllers.ts',
@@ -223,7 +223,7 @@ const file = {
   server_chain_cert: 'server-chain.cert',
   meta_config_md: 'meta-content.md',
   ...filesNotAllowedToClean
-  //#endregion
+
 };
 
 const packageJsonSplit = [
@@ -235,7 +235,7 @@ const packageJsonSplit = [
 ];
 
 const tempFolders = {
-  //#region @backend
+
   bundle: 'bundle',
   vendor: 'vendor',
   docs: 'docs',
@@ -258,7 +258,7 @@ const tempFolders = {
   tmpScenarios: 'tmp-scenarios',
   tmpTestsEnvironments: 'tmp-tests-environments',
   testsEnvironments: 'tests-environments',
-  //#endregion
+
 };
 
 const stylesFilesExtension = [
