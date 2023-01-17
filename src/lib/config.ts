@@ -554,9 +554,7 @@ export const config = {
   coreProjectVersions: ['v1', 'v2', 'v3'],
   quickFixes: {
     //#region @backend
-    missingLibs: [
-      'react-native-sqlite-storage'
-    ]
+    missingLibs: []
     //#endregion
   },
   packageJsonSplit,

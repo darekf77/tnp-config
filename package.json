@@ -163,7 +163,7 @@
     "mkdirp": "0.5.1",
     "mocha": "5.2.0",
     "moment": "2.22.2",
-    "morphi": "~13.1.29",
+    "morphi": "~13.1.32",
     "ng-packagr": "13.0.0",
     "ng-talkback": "~13.1.19",
     "ng2-logger": "~13.1.9",
@@ -215,8 +215,8 @@
     "tnp-cli": "~13.1.41",
     "tnp-config": "~13.1.53",
     "tnp-db": "~13.1.7",
-    "tnp-helpers": "~13.1.10",
-    "tnp-models": "~13.1.8",
+    "tnp-helpers": "~13.1.11",
+    "tnp-models": "~13.1.9",
     "tnp-ui": "~13.1.27",
     "ts-debug": "1.3.0",
     "ts-loader": "2.3.1",
@@ -237,6 +237,6 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "13.1.53",
+  "version": "13.1.54",
   "lastBuildTagHash": "3d7c1791e0941a4a015df0cebceb9062df0a4255"
 }
