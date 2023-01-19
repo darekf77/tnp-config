@@ -12,16 +12,10 @@ if (global && !global['ENV']) {
 }
 //#endregion
 
+import { frameworkName } from 'tnp-core';
+
 export { CoreHelpers as Helpers } from 'tnp-core';
 import { Helpers } from 'tnp-core';
-
-const frameworkNameBe = (
-  ''
-  //#region @backend
-  || (global['frameworkName'] ? global['frameworkName'] : 'tnp')
-  //#endregion
-) as 'firedev' | 'tnp';
-const frameworkName = Helpers.isBrowser ? 'firedev' : frameworkNameBe;
 
 //#region config models
 
