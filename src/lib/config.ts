@@ -333,7 +333,7 @@ if (path.basename(dirnameForTnp) === 'node_modules') {
 }
 
 // TOD0
-// console.log(`[tnp-config] dirnameForTnp : ${dirnameForTnp}`);
+// console.log(`[firedev-config] dirnameForTnp : ${dirnameForTnp}`);
 // process.exit(0)
 //#endregion
 
