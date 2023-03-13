@@ -22,7 +22,7 @@ import { Helpers } from 'tnp-core';
 export namespace ConfigModels {
   export type EnvironmentName = 'local' | 'static' | 'dev' | 'stage' | 'prod' | 'online' | 'test' | 'qa' | 'custom';
   export type UIFramework = 'bootstrap' | 'material' | 'ionic';
-  export type FrameworkVersion = 'v1' | 'v2' | 'v3';
+  export type FrameworkVersion = 'v1' | 'v2' | 'v3' | 'v4' | 'v5';
   export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';
   export type ImageFileExtension = 'jpg' | 'jpeg' | 'png' | 'svg';
   export type FileExtension = 'ts' | 'js' | 'json' | 'html' | ImageFileExtension | 'txt' | CutableFileExt;
@@ -515,6 +515,9 @@ const argsReplacementsOther = {
   'ud': 'update:deps', // same as npm i
   'dgl': 'detect:global:libs',
   'pr': 'print:relatives',
+  'c': 'container',
+  'au': 'autoupdate',
+
   //#endregion
 };
 
@@ -823,7 +826,7 @@ export const config = {
   required: {
     npm: [
       //#region @backend
-      { name: '@angular/cli', version: '13' },
+      // { name: '@angular/cli', version: '13' },
       { name: 'ncc', version: '0.36.0', installName: '@vercel/ncc' },
       { name: 'extract-zip', version: '1.6.7' },
       { name: 'watch', version: '1.0.2' },
