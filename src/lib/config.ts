@@ -425,6 +425,7 @@ const argsReplacementsBuild = {
   'baw': 'build:app:watch',
 
   'bw': 'build:watch',
+  'sw': 'start:watch',
 
 
   // buid dist watch with automatic container/previewProjects popuilation
@@ -517,6 +518,8 @@ const argsReplacementsOther = {
   'pr': 'print:relatives',
   'c': 'container',
   'au': 'autoupdate',
+  'up': 'update',
+  'rev': 'revert',
 
   //#endregion
 };
