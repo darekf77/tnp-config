@@ -498,6 +498,7 @@ const argsReplacementsOther = {
   // open
   'occ': 'open:core:container',
   'ocp': 'open:core:project',
+  'o': 'open',
   // test
   'twd': 'test:watch:debug',
   'tdw': 'test:watch:debug',
@@ -520,6 +521,7 @@ const argsReplacementsOther = {
   'au': 'autoupdate',
   'up': 'update',
   'rev': 'revert',
+  'rw': 'revert',
 
   //#endregion
 };
