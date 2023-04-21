@@ -246,6 +246,6 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "13.1.63",
+  "version": "13.1.64",
   "lastBuildTagHash": "b12e0e552015299ba6000082932ec4b73aed1255"
 }
