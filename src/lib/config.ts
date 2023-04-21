@@ -216,6 +216,8 @@ const file = {
   server_cert: 'server.cert',
   server_chain_cert: 'server-chain.cert',
   meta_config_md: 'meta-content.md',
+  logo_png: 'logo.png',
+  logo_svg: 'logo.svg',
   ...filesNotAllowedToClean
 
 };
@@ -278,6 +280,7 @@ const folder = {
   custom: 'custom',
   components: 'components',
   assets: 'assets',
+  generated: 'generated',
   apps: 'apps',
   // entities: 'entities',
   // controllers: 'controllers',
