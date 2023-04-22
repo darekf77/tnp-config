@@ -223,7 +223,7 @@
     "tnp-cli": "~13.1.50",
     "tnp-config": "~13.1.64",
     "tnp-db": "~13.1.16",
-    "tnp-helpers": "~13.1.25",
+    "tnp-helpers": "~13.1.26",
     "tnp-models": "~13.1.17",
     "tnp-ui": "~13.1.27",
     "ts-debug": "1.3.0",
@@ -246,6 +246,6 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "13.1.64",
+  "version": "13.1.65",
   "lastBuildTagHash": "dcb88bf839140116d3c9f83f65d334a4c48be770"
 }
