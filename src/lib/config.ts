@@ -494,6 +494,8 @@ const argsReplacementsOther = {
   'r:minor': 'release:minor',
   // 'ra': 'release:all',
   'ar': 'auto:release',
+  'ard': 'auto:release:docs',
+
   're': 'reinstall',
   // versopm
   '--version': 'version',
