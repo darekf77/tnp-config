@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "tnp-core": "~13.2.7"
+    "tnp-core": "~13.2.8"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.9",
@@ -224,7 +224,7 @@
     "tnp-config": "~13.1.65",
     "tnp-db": "~13.1.16",
     "tnp-helpers": "~13.1.26",
-    "tnp-models": "~13.1.17",
+    "tnp-models": "~13.1.18",
     "tnp-ui": "~13.1.27",
     "ts-debug": "1.3.0",
     "ts-loader": "2.3.1",
@@ -246,6 +246,6 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "13.1.65",
+  "version": "13.1.66",
   "lastBuildTagHash": "5d137027d28e84406e40153b4a658cbb4c5bc03b"
 }
