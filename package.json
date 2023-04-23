@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "tnp-core": "~13.2.8"
+    "tnp-core": "~13.2.9"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.9",
@@ -215,7 +215,7 @@
     "socket.io": "2.4.1",
     "sort-package-json": "1.11.0",
     "sql.js": "1.8.0",
-    "static-columns": "~13.1.31",
+    "static-columns": "~13.3.2",
     "string-similarity": "4.0.2",
     "sudo-block": "3.0.0",
     "systeminformation": "3.45.7",
@@ -246,6 +246,6 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "13.1.66",
+  "version": "13.1.67",
   "lastBuildTagHash": "4ef773259d62aba05013321e06e76f23200e3e20"
 }
