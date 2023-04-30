@@ -230,7 +230,7 @@ const packageJsonSplit = [
   //#endregion
 ];
 
-const tempFolders = {
+const tempFolders = { // DO NOT PUT ANYTHING SUPID HERE!!!
 
   bundle: 'bundle',
   vendor: 'vendor',
@@ -282,6 +282,7 @@ const folder = {
   assets: 'assets',
   generated: 'generated',
   apps: 'apps',
+  shared: 'shared',
   // entities: 'entities',
   // controllers: 'controllers',
   // projects: 'projects',
