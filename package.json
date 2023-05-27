@@ -221,7 +221,7 @@
     "systeminformation": "3.45.7",
     "threads": "1.7.0",
     "tnp-cli": "~13.1.57",
-    "tnp-config": "~13.1.73",
+    "tnp-config": "~13.1.74",
     "tnp-db": "~13.1.19",
     "tnp-helpers": "~13.1.32",
     "tnp-models": "~13.1.25",
@@ -248,5 +248,5 @@
   "main": "index.js",
   "name": "tnp-config",
   "version": "13.1.74",
-  "lastBuildTagHash": "41ddf5b9649979838108ce56d308d6917887177a"
+  "lastBuildTagHash": "d30d7e58cd6904783e9d208799fc653b1bafac58"
 }
