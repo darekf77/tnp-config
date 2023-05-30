@@ -7,6 +7,7 @@
     includeOnly: ["tnp-core"],
     dependencies: {},
     linkedFolders: [],
+    npmFixes: [],
   },
 
   linkedProjects: [],
