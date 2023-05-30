@@ -428,6 +428,7 @@ const argsReplacementsBuild = {
   'baw': 'build:app:watch',
 
   'bw': 'build:watch',
+  's': 'start',
   'sw': 'start:watch',
 
 
