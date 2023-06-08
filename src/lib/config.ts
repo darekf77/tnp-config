@@ -22,7 +22,7 @@ import { Helpers } from 'tnp-core';
 export namespace ConfigModels {
   export type EnvironmentName = 'local' | 'static' | 'dev' | 'stage' | 'prod' | 'online' | 'test' | 'qa' | 'custom';
   export type UIFramework = 'bootstrap' | 'material' | 'ionic';
-  export type FrameworkVersion = 'v1' | 'v2' | 'v3' | 'v4' | 'v5';
+  export type FrameworkVersion = 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9';
   export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';
   export type ImageFileExtension = 'jpg' | 'jpeg' | 'png' | 'svg';
   export type FileExtension = 'ts' | 'js' | 'json' | 'html' | ImageFileExtension | 'txt' | CutableFileExt;
@@ -544,6 +544,8 @@ const areTrustedForPatchUpdate = [
   //#endregion
 ];
 
+const activeFramewrokVersions = ['v3', 'v4'] as ConfigModels.FrameworkVersion[];
+
 export const config = {
   packagesThat: {
     areTrustedForPatchUpdate,
@@ -559,7 +561,7 @@ export const config = {
   },
 
   //#endregion
-  coreProjectVersions: ['v1', 'v2', 'v3'],
+
   quickFixes: {
     //#region @backend
     missingLibs: []
@@ -575,7 +577,9 @@ export const config = {
   array: {
     isomorphicPackages: 'isomorphicPackages'
   },
-  defaultFrameworkVersion: 'v3' as ConfigModels.FrameworkVersion,
+  defaultFrameworkVersion: 'v4' as ConfigModels.FrameworkVersion,
+  activeFramewrokVersions,
+  coreProjectVersions: ['v1', ...activeFramewrokVersions],
   CONST: {
     //#region @backend
     UNIT_TEST_TIMEOUT: 30000,
