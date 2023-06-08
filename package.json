@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "tnp-core": "~16.0.5"
+    "tnp-core": "~16.0.6"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~16.0.5",
@@ -251,6 +251,6 @@
   "private": false,
   "main": "index.js",
   "name": "tnp-config",
-  "version": "16.0.2",
+  "version": "16.0.3",
   "lastBuildTagHash": "acb0157e12b871f8f5938c374358720b12a6deac"
 }
