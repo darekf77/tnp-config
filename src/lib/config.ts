@@ -544,7 +544,7 @@ const areTrustedForPatchUpdate = [
   //#endregion
 ];
 
-const activeFramewrokVersions = ['v3', 'v4'] as ConfigModels.FrameworkVersion[];
+const activeFramewrokVersions = ['v4'] as ConfigModels.FrameworkVersion[];
 
 export const config = {
   packagesThat: {
