@@ -1,4 +1,43 @@
 {
+  "tnp": {
+    "resources": [
+      "README.md"
+    ],
+    "overrided": {
+      "ignoreDepsPattern": [],
+      "includeAsDev": [],
+      "includeOnly": [
+        "tnp-core"
+      ],
+      "dependencies": {},
+      "linkedFolders": [],
+      "npmFixes": []
+    },
+    "linkedProjects": [],
+    "smartContainerBuildTarget": "",
+    "linkedRepos": [],
+    "libReleaseOptions": {
+      "nodts": false,
+      "obscure": false,
+      "ugly": false,
+      "includeNodeModules": false
+    },
+    "smartContainerTarget": "",
+    "type": "isomorphic-lib",
+    "isCoreProject": false,
+    "useFramework": false,
+    "required": [],
+    "version": "v4",
+    "additionalNpmNames": [
+      "firedev-config"
+    ],
+    "isGenerated": false,
+    "requiredServers": [],
+    "license": "MIT",
+    "private": false,
+    "main": "index.js",
+    "workerPlugins": {}
+  },
   "dependencies": {
     "tnp-core": "~16.0.8"
   },
@@ -249,7 +288,6 @@
   },
   "license": "MIT",
   "private": false,
-  "main": "index.js",
   "name": "tnp-config",
   "version": "16.0.4",
   "lastBuildTagHash": "3bac2f3365a3648671c29b5dc7bb27decfe9277d"
