@@ -860,6 +860,7 @@ export const config = {
       { name: 'fkill', installName: 'fkill-cli' },
       // { name: 'yo' },
       { name: 'mocha' },
+      { name: 'jest' },
       // { name: 'chai' },
       { name: 'ts-node' },
       { name: 'firedev-vsce' },
