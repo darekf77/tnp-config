@@ -528,7 +528,9 @@ const argsReplacementsOther = {
   'up': 'update',
   'rev': 'revert',
   'rw': 'revert',
-
+  'a': 'app',
+  'wa': 'webapp',
+  'bta': 'build:to:all',
   //#endregion
 };
 
