@@ -277,6 +277,7 @@ const folder = {
   libs: 'libs',
   source: 'source',
   custom: 'custom',
+  migrations: 'migrations',
   components: 'components',
   assets: 'assets',
   generated: 'generated',
