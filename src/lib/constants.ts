@@ -76,6 +76,10 @@ export const frontendFiles = [
   'selectors.ts',
   'selector.ts',
   'routes.ts',
+  'resolver.ts',
+  'resolvers.ts',
+  'guard.ts',
+  'guards.ts',
   'store.ts',
   'spec.ts',
   'e2e.ts',
@@ -114,3 +118,11 @@ export const TAGS = {
   COMMENT_END_REGION: `//${'#end' + 'region'}`,
 }
 
+export const BaselineSiteJoinprefix = '__';
+
+export const PREFIXES = {
+  BASELINE: BaselineSiteJoinprefix,
+  DELETED: '____DELETED____',
+  ORIGINAL: '____ORIGINAL____',
+  RESTORE_NPM: '____',
+}

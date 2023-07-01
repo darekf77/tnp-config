@@ -32,6 +32,16 @@ export namespace ConfigModels {
   export type ParamType = 'Path' | 'Query' | 'Cookie' | 'Header' | 'Body';
   export type TsUsage = 'import' | 'export';
 
+  export interface VSCodeSettings {
+    'files.exclude': { [files: string]: boolean; };
+    'workbench.colorTheme': 'Default Light+' | 'Kimbie Dark',
+    'workbench.colorCustomizations': {
+      'activityBar.background'?: string;
+      'activityBar.foreground'?: string;
+      'statusBar.background'?: string;
+    }
+  }
+
   export type LibType = 'unknow'
     | 'isomorphic-lib'
     | 'angular-lib' // https://cli.angular.io/
