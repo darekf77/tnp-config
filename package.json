@@ -96,7 +96,6 @@
     "@types/glob": "5.0.35",
     "@types/http-proxy": "1.16.0",
     "@types/http-proxy-middleware": "0.19.2",
-    "@types/inquirer": "7.3.1",
     "@types/jest": "29.5.2",
     "@types/json-stringify-safe": "5.0.0",
     "@types/json5": "0.0.29",
@@ -306,6 +305,6 @@
   "license": "MIT",
   "private": false,
   "name": "tnp-config",
-  "version": "16.0.12",
+  "version": "16.0.13",
   "lastBuildTagHash": "69fba3f17b4ed89dd702be91678514a574d749b1"
 }
