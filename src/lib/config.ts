@@ -861,7 +861,7 @@ export const config = {
       { name: 'cpr' },
       { name: 'check-node-version' },
       { name: 'npm-run', version: '4.1.2' },
-      { name: 'rimraf' },
+      { name: 'rimraf', version: '3.0.2' },
       { name: 'mkdirp' },
       { name: 'renamer', version: '2.0.1' },
       { name: 'nodemon' },
