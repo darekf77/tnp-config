@@ -21,6 +21,21 @@ import { Helpers } from 'tnp-core';
 
 export namespace ConfigModels {
   export type EnvironmentName = 'local' | 'static' | 'dev' | 'stage' | 'prod' | 'online' | 'test' | 'qa' | 'custom';
+  export type PUSHTYPE =
+    'feat'
+    | 'chore'
+    | 'feature'
+    | 'refactor'
+    | 'perf'
+    | 'styles'
+    | 'ci'
+    | 'build'
+    | 'fix'
+    | 'bugfix'
+    | 'release'
+    | 'docs'
+    ;
+    
   export type UIFramework = 'bootstrap' | 'material' | 'ionic';
   export type FrameworkVersion = 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9';
   export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';

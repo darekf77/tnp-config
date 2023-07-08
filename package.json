@@ -286,7 +286,7 @@
     "task.js": "0.1.5",
     "threads": "1.7.0",
     "tnp-cli": "~16.0.6",
-    "tnp-config": "~16.0.14",
+    "tnp-config": "~16.0.13",
     "tnp-db": "~16.0.27",
     "tnp-helpers": "~16.0.9",
     "tnp-models": "~16.0.36",
