@@ -39,7 +39,7 @@
     "workerPlugins": {}
   },
   "dependencies": {
-    "tnp-core": "~16.0.14"
+    "tnp-core": "~16.0.15"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~16.0.5",
@@ -312,6 +312,6 @@
   "license": "MIT",
   "private": false,
   "name": "tnp-config",
-  "version": "16.0.17",
+  "version": "16.0.18",
   "lastBuildTagHash": "9300c65fcdf24ee12ec901681d7fdc804be51c6c"
 }
