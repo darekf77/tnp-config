@@ -11,6 +11,7 @@ if (global && !global['ENV']) {
   global['ENV'] = {};
 }
 //#endregion
+import { ContentType } from 'tnp-core';
 
 import { frameworkName } from 'tnp-core';
 
@@ -35,7 +36,7 @@ export namespace ConfigModels {
     | 'release'
     | 'docs'
     ;
-    
+
   export type UIFramework = 'bootstrap' | 'material' | 'ionic';
   export type FrameworkVersion = 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9';
   export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';
@@ -46,6 +47,22 @@ export namespace ConfigModels {
   export type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'jsonp';
   export type ParamType = 'Path' | 'Query' | 'Cookie' | 'Header' | 'Body';
   export type TsUsage = 'import' | 'export';
+
+
+  export interface UploadedBackendFile {
+    data: any
+    //#region @backend
+    | Buffer
+       //#endregion
+    encoding: string;
+    md5: string;
+    tempFilePath: string;
+    mimetype: ContentType;
+    mv: (path, callback) => any;
+    name: string;
+    truncated: boolean;
+  }
+
 
   export interface VSCodeSettings {
     'files.exclude': { [files: string]: boolean; };
