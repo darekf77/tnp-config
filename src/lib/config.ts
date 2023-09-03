@@ -574,6 +574,7 @@ const argsReplacementsOther = {
   'a': 'app',
   'wa': 'webapp',
   'bta': 'build:to:all',
+  'rb': 'build:to:all',
   //#endregion
 };
 
