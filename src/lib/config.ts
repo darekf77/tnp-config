@@ -53,7 +53,7 @@ export namespace ConfigModels {
     data: any
     //#region @backend
     | Buffer
-       //#endregion
+    //#endregion
     encoding: string;
     md5: string;
     tempFilePath: string;
@@ -75,13 +75,7 @@ export namespace ConfigModels {
   }
 
   export type LibType = 'unknow'
-    | 'isomorphic-lib'
-    | 'angular-lib' // https://cli.angular.io/
-    | 'electron-client' // https://github.com/maximegris/angular-electron
-    | 'ionic-lib'
-    | 'angular-client'
-    | 'ionic-client'
-    | 'workspace'
+    | 'isomorphic-lib' // + https://github.com/maximegris/angular-electron
     | 'container'
     | 'docker'
     | 'vscode-ext'
@@ -131,12 +125,6 @@ export namespace ConfigModels {
 export const GlobalLibTypeName = {
   //#region @backend
   isomorphicLib: 'isomorphic-lib',
-  angularLib: 'angular-lib',
-  electronClient: 'electron-client',
-  ionicLib: 'ionic-lib',
-  angularClient: 'angular-client',
-  ionicClient: 'ionic-client',
-  workspace: 'workspace',
   container: 'container',
   docker: 'docker',
   unknowNpmProject: 'unknow-npm-project',
@@ -150,12 +138,7 @@ export const GlobalLibTypeName = {
 
 export const LibTypeArr: ConfigModels.LibType[] = [
   //#region @backend
-  GlobalLibTypeName.angularLib,
   GlobalLibTypeName.isomorphicLib,
-  GlobalLibTypeName.angularClient,
-  GlobalLibTypeName.ionicClient,
-  GlobalLibTypeName.electronClient,
-  GlobalLibTypeName.workspace,
   GlobalLibTypeName.container,
   GlobalLibTypeName.docker,
   GlobalLibTypeName.unknowNpmProject,
@@ -169,11 +152,7 @@ export const LibTypeArr: ConfigModels.LibType[] = [
 
 export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this is for what ?
   //#region @backend
-  GlobalLibTypeName.angularLib,
   GlobalLibTypeName.isomorphicLib,
-  GlobalLibTypeName.angularClient,
-  GlobalLibTypeName.electronClient,
-  GlobalLibTypeName.ionicClient,
   GlobalLibTypeName.docker,
   'common'
   //#endregion
@@ -325,10 +304,6 @@ const folder = {
   generated: 'generated',
   apps: 'apps',
   shared: 'shared',
-  // entities: 'entities',
-  // controllers: 'controllers',
-  // projects: 'projects',
-  workspace: 'workspace',
   container: 'container',
   bin: 'bin',
   _bin: '.bin',
@@ -741,7 +716,6 @@ export const config = {
     projectsExamples: (version?: ConfigModels.FrameworkVersion) => {
       version = (!version || version === 'v1') ? '' : `-${version}` as any;
       const result = {
-        workspace: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/workspace${version}`),
         container: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}`),
         projectByType(libType: ConfigModels.NewFactoryType) {
           if (libType === 'vscode-ext') {
@@ -813,10 +787,7 @@ export const config = {
      * Projects for build:app:watch command
      */
     app: [
-      GlobalLibTypeName.angularClient,
-      GlobalLibTypeName.angularLib,
       GlobalLibTypeName.isomorphicLib,
-      GlobalLibTypeName.ionicClient,
       GlobalLibTypeName.docker,
       GlobalLibTypeName.container,
       GlobalLibTypeName.vscodeExt,
@@ -825,9 +796,7 @@ export const config = {
      * Projects for build:(dist|bundle):(watch) command
      */
     libs: [
-      GlobalLibTypeName.angularLib,
       GlobalLibTypeName.isomorphicLib,
-      GlobalLibTypeName.workspace,
       GlobalLibTypeName.container,
       GlobalLibTypeName.docker,
       GlobalLibTypeName.vscodeExt,
@@ -843,19 +812,8 @@ export const config = {
   projectTypes: {
     //#region @backend
     forNpmLibs: [
-      GlobalLibTypeName.angularLib,
       GlobalLibTypeName.isomorphicLib,
     ],
-    with: {
-      angularAsCore: [
-        GlobalLibTypeName.angularClient,
-        GlobalLibTypeName.angularLib,
-        GlobalLibTypeName.ionicClient,
-      ],
-      componetsAsSrc: [
-        GlobalLibTypeName.angularLib,
-      ],
-    }
     //#endregion
   },
   // environmentName,

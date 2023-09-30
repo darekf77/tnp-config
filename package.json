@@ -39,7 +39,7 @@
     "workerPlugins": {}
   },
   "dependencies": {
-    "tnp-core": "~16.0.15"
+    "tnp-core": "~16.0.20"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~16.0.5",
