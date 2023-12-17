@@ -102,6 +102,7 @@ export const appRelatedFiles = [
   ...frontendFiles.map(ext => `app${ext}`),
   'app.models.ts',
   'app.constants.ts',
+  'app.hosts.ts',
 ];
 
 export const TAGS = {
