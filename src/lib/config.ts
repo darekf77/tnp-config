@@ -5,18 +5,18 @@
  */
 //#region @backend
 declare const global: any;
-import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core';
+import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core/src';
 
 if (global && !global['ENV']) {
   global['ENV'] = {};
 }
 //#endregion
-import { ContentType } from 'tnp-core';
+import { ContentType } from 'tnp-core/src';
 
-import { frameworkName } from 'tnp-core';
+import { frameworkName } from 'tnp-core/src';
 
-export { CoreHelpers as Helpers } from 'tnp-core';
-import { Helpers } from 'tnp-core';
+export { CoreHelpers as Helpers } from 'tnp-core/src';
+import { Helpers } from 'tnp-core/src';
 
 //#region config models
 

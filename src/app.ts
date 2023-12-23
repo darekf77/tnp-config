@@ -1,4 +1,4 @@
-import { Helpers } from "tnp-core";
+import { Helpers } from "tnp-core/src";
 
 console.log('nothing here')
 
