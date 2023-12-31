@@ -101,6 +101,7 @@ export const appRelatedFiles = [
   ...extAllowedToReplace.map(ext => `app${ext}`),
   ...frontendFiles.map(ext => `app${ext}`),
   'app.models.ts',
+  'app.env.ts',
   'app.constants.ts',
   'app.hosts.ts',
 ];
