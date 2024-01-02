@@ -238,6 +238,7 @@ const file = {
   meta_config_md: 'meta-content.md',
   logo_png: 'logo.png',
   logo_svg: 'logo.svg',
+  ric_proj_json: 'ric-project.json',
   ...filesNotAllowedToClean
 
 };
