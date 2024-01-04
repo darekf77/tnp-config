@@ -119,6 +119,44 @@ export namespace ConfigModels {
   export type OutFolder = 'dist' | 'bundle' | 'browser';
   export type DatabaseType = 'better-sqlite3' | 'mysql';
 
+  export interface TsConfigJson {
+    extends: string;
+    exclude: string[];
+    compileOnSave: boolean;
+    compilerOptions: CompilerOptions;
+    angularCompilerOptions: AngularCompilerOptions;
+  }
+
+  interface AngularCompilerOptions {
+    fullTemplateTypeCheck: boolean;
+    strictInjectionParameters: boolean;
+    compilationMode: string;
+    preserveSymlinks: boolean;
+    enableIvy: boolean;
+  }
+
+  interface CompilerOptions {
+    baseUrl: string;
+    outDir: string;
+    sourceMap: boolean;
+    declaration: boolean;
+    strictNullChecks: boolean;
+    downlevelIteration: boolean;
+    experimentalDecorators: boolean;
+    emitDecoratorMetadata: boolean;
+    esModuleInterop: boolean;
+    module: string;
+    moduleResolution: string;
+    importHelpers: boolean;
+    skipLibCheck: boolean;
+    target: string;
+    typeRoots: string[];
+    types: string[];
+    lib: string[];
+    paths: { [fullPackageName: string]: string[]; };
+    useDefineForClassFields: boolean;
+  }
+
 }
 
 
@@ -231,6 +269,7 @@ const file = {
   tmp_recent_json: 'recent.json',
   tmpIsomorphicPackagesJson: 'tmp-isomorphic-packages.json',
   tsconfig_json: 'tsconfig.json',
+  tsconfig_lib_json: 'tsconfig.lib.json',
   README_MD: 'README.md',
   server_key: 'server.key',
   server_cert: 'server.cert',
@@ -296,6 +335,7 @@ const folder = {
   out: 'out',
   app: 'app',
   lib: 'lib',
+  libraries: 'libraries',
   libs: 'libs',
   source: 'source',
   custom: 'custom',
