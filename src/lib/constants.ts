@@ -104,6 +104,7 @@ export const appRelatedFiles = [
   'app.env.ts',
   'app.constants.ts',
   'app.hosts.ts',
+  'app.electron.ts',
 ];
 
 export const TAGS = {

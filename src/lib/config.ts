@@ -503,7 +503,7 @@ const argsReplacementsBuild = {
   // (dist)app build for normal development (PRODUCTION MINIFIED CODE)
   // 'badpw': 'build:app:dist:prod:watch',
   // 'badp': 'build:app:dist:prod',
-
+  'ew': 'electron:watch',
   // (dist)lib build - watch is ng build
   'bd': 'build:dist',
   'bdw': 'build:dist:watch',
