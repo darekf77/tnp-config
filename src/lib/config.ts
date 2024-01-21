@@ -902,6 +902,7 @@ export const config = {
       { name: 'firedev-http-server' },
       { name: 'increase-memory-limit' },
       { name: 'bower' },
+      { name: 'prettier' },
       { name: 'fkill', installName: 'fkill-cli' },
       // { name: 'yo' },
       { name: 'mocha' },
