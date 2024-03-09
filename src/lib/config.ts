@@ -116,7 +116,7 @@ export namespace ConfigModels {
   }
 
   export type FileEvent = 'created' | 'changed' | 'removed' | 'rename';
-  export type OutFolder = 'dist' | 'bundle' | 'browser';
+  export type OutFolder = 'dist' | 'browser';
   export type DatabaseType = 'better-sqlite3' | 'mysql';
 
   export interface TsConfigJson {
@@ -291,13 +291,11 @@ const packageJsonSplit = [
 ];
 
 const tempFolders = { // DO NOT PUT ANYTHING SUPID HERE!!!
-
-  bundle: 'bundle',
   vendor: 'vendor',
   docs: 'docs',
   dist: 'dist',
   tmp: 'tmp',
-  tmpBundleRelease: 'tmp-bundle-release',
+  tmpDistRelease: 'tmp-dist-release',
   tempSrc: 'tmp-src',
   tempSrcDist: 'tmp-src-dist',
   previewDistApp: 'dist-app',
@@ -490,44 +488,12 @@ const argsReplacementsBuild = {
   's': 'start',
   'sw': 'start:watch',
 
-
-  // buid dist watch with automatic container/previewProjects popuilation
-  // 'bap': 'build:app:prod',
-  // 'bapw': 'build:app:prod:watch',
-
-  // (dist)app build for normal development - watch is ng serve
   'bda': 'build:dist:app',
   'bdap': 'build:dist:app:prod',
-  // 'bdaw': 'build:dist:app:watch',
-
-  // (dist)app build for normal development (PRODUCTION MINIFIED CODE)
-  // 'badpw': 'build:app:dist:prod:watch',
-  // 'badp': 'build:app:dist:prod',
   'ew': 'electron:watch',
-  // (dist)lib build - watch is ng build
   'bd': 'build:dist',
   'bdw': 'build:dist:watch',
-  // (dist)lib build - watch is ng build (PRODUCTION MINIFIED CODE)
-  // 'bdp': 'build:dist:prod',
-  // 'bdpw': 'build:dist:prod:watch',
 
-  // (bundle)app build for static code (firedev plugins, project final code, etc.)
-  'bba': 'build:bundle:app',
-  'bbap': 'build:bundle:app:prod',
-  // 'bbaw': 'build:bundle:app:watch',
-  // (bunle)lib build for static code (firedev plugins, project final code, etc.)
-  'bb': 'build:bundle',
-  'bbw': 'build:bundle:watch',
-  // (bunle)lib build for static code with ng build (PRODUCTION MINIFIED CODE)
-  // 'bbp': 'build:bundle:prod',
-  // 'bbpw': 'build:bundle:prod:watch',
-
-  // 'sb': 'static:build',
-  // 'sbp': 'static:build:prod',
-  // 'sbd': 'static:build:dist',
-  // 'sbl': 'static:build:lib',
-  // 'sba': 'static:build:app',
-  // 'cb': 'clean:build'
   //#endregion
 };
 
@@ -587,10 +553,10 @@ const argsReplacementsOther = {
   'up': 'update',
   'rev': 'revert',
   'rw': 'revert',
+
   'a': 'app',
   'wa': 'webapp',
-  'bta': 'build:to:all',
-  'rb': 'build:to:all',
+  'b': 'build',
   //#endregion
 };
 
@@ -704,7 +670,6 @@ export const config = {
     '-restartWorker',
     '-useWorker',
     '-dist',
-    '-bundle',
   ],
   argsReplacements: {
     ...argsReplacementsBuild,
@@ -738,7 +703,6 @@ export const config = {
      * Location of compiled source code for tnp framework
      * Can be in 3 places:
      * - <..>/tnp/dist @DEPRACATED
-     * - <..>/tnp/bundle @DEPRACATED
      * - <some-project>/node_modules/tnp @DEPRACATED
      *  - <some-project>/node_modules/tnp-config
     */
@@ -834,7 +798,7 @@ export const config = {
       GlobalLibTypeName.vscodeExt,
     ] as ConfigModels.LibType[],
     /**
-     * Projects for build:(dist|bundle):(watch) command
+     * Projects for build:(dist):(watch) command
      */
     libs: [
       GlobalLibTypeName.isomorphicLib,
