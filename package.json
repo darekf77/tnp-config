@@ -295,7 +295,7 @@
     "task.js": "0.1.5",
     "threads": "1.7.0",
     "tnp-cli": "~16.5.12",
-    "tnp-config": "~16.5.13",
+    "tnp-config": "~16.5.14",
     "tnp-db": "~16.5.12",
     "tnp-helpers": "~16.5.14",
     "tnp-models": "~16.5.12",
@@ -322,5 +322,5 @@
   "private": false,
   "name": "tnp-config",
   "version": "16.5.14",
-  "lastBuildTagHash": "191829628c42f40fee88a201e7ea2f57604b9288"
+  "lastBuildTagHash": "4b8e60f7166b0732aa84be618205770c25fb2701"
 }
