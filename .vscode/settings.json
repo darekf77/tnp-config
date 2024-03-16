@@ -8,6 +8,7 @@
     "node_modules": true,
     "tmp*": true,
     "dist*": true,
+    "bundle*": true,
     "browser": true,
     "browser*": true,
     "websql": true,
