@@ -1,8 +1,4 @@
-/**
- * Dariusz Filipiak
- * @author darekf77@gmail.com
- * Recommended config for all isomorphic libs *
- */
+//#region imports & constants
 //#region @backend
 declare const global: any;
 import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core/src';
@@ -17,6 +13,8 @@ import { frameworkName } from 'tnp-core/src';
 
 export { CoreHelpers as Helpers } from 'tnp-core/src';
 import { Helpers } from 'tnp-core/src';
+
+//#endregion
 
 //#region config models
 
@@ -198,25 +196,24 @@ export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this
 
 //#endregion
 
+//#region constants /  allowed Environments
 const allowedEnvironments: ConfigModels.EnvironmentName[] = [
   //#region @backend
   'static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'
   //#endregion
 ];
-
 const allowedEnvironmentsObj = {};
 allowedEnvironments.forEach(s => {
   // @ts-ignore
   allowedEnvironmentsObj[s] = s;
 });
-
-const firedev = 'firedev';
-const morphi = 'morphi';
-//#region @backend
-const morphiPathUserInUserDir = path.join(crossPlatformPath(os.homedir()), '.firedev', morphi);
 //#endregion
-const urlMorphi = 'https://github.com/darekf77/morphi.git';
 
+//#region constants / morphi url
+const urlMorphi = 'https://github.com/darekf77/morphi.git';
+//#endregion
+
+//#region constants / files not allowed to clean
 const filesNotAllowedToClean = {
   //#region @backend
   _gitignore: '.gitignore',
@@ -228,9 +225,10 @@ const filesNotAllowedToClean = {
   _vscode_launch_json: '.vscode/launch.json',
   //#endregion
 };
+//#endregion
 
+//#region constants / file (files aliases)
 const file = {
-
   _bowerrc: '.bowerrc',
   bower_json: 'bower.json',
   controllers_ts: 'controllers.ts',
@@ -278,10 +276,11 @@ const file = {
   logo_png: 'logo.png',
   logo_svg: 'logo.svg',
   ric_proj_json: 'ric-project.json',
-  ...filesNotAllowedToClean
-
+  ...filesNotAllowedToClean,
 };
+//#endregion
 
+//#region constants / package json split
 const packageJsonSplit = [
   //#region @backend
   file.package_json__tnp_json,
@@ -289,7 +288,9 @@ const packageJsonSplit = [
   file.package_json__devDependencies_json,
   //#endregion
 ];
+//#endregion
 
+//#region constants / temp folders
 const tempFolders = { // DO NOT PUT ANYTHING SUPID HERE!!!
   vendor: 'vendor',
   docs: 'docs',
@@ -314,18 +315,10 @@ const tempFolders = { // DO NOT PUT ANYTHING SUPID HERE!!!
   testsEnvironments: 'tests-environments',
 
 };
+//#endregion
 
-const stylesFilesExtension = [
-  //#region @backend
-  'css',
-  'sass',
-  'scss',
-  'less',
-  //#endregion
-];
-
+//#region constants / folder (folders aliases)
 const folder = {
-
   scripts: 'scripts',
   scenarios: 'scenarios',
   bower: 'bower',
@@ -357,127 +350,11 @@ const folder = {
     DEFAULT_PATH_GENERATED: 'tmp-target-projects/generated',
     DEFAULT_PATH_ORIGINS: 'tmp-target-projects/origins',
   },
-  ...tempFolders
-
+  ...tempFolders,
 };
-
-// @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
-let dirnameForTnp: string;
-//#region @backend
-dirnameForTnp = crossPlatformPath(path.resolve(__dirname, '..'));
-//#endregion
-const firedevProjectsRelative = `../morphi/projects`;
-
-//#region @backend
-
-if (process.platform === 'win32' && dirnameForTnp.endsWith('dist')) { // TODO QUICK_FIX for windows
-  dirnameForTnp = crossPlatformPath(path.dirname(dirnameForTnp));
-}
-
-if (dirnameForTnp.endsWith(`/tnp-config/dist`)) {
-  // local folder with tnp
-  dirnameForTnp = dirnameForTnp.replace(`/tnp-config/dist`, '/tnp');
-} else if (dirnameForTnp.endsWith(`/tnp/node_modules/tnp-config`)) {
-  // local folder with tnp
-  dirnameForTnp = dirnameForTnp.replace(`/tnp/node_modules/tnp-config`, '/tnp');
-} else {
-  // global tnp node_modules being use in firedev case
-  dirnameForTnp = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
-}
-global.dirnameForFiredev = dirnameForTnp;
-// console.log('dirnameForTnp after', dirnameForTnp)
-// process.exit(0)
-
-if (path.basename(dirnameForTnp) === 'node_modules') {
-  dirnameForTnp = crossPlatformPath(path.join(dirnameForTnp, 'tnp'))
-}
-
-// TOD0
-// console.log(`[firedev-config] dirnameForTnp : ${dirnameForTnp}`);
-// process.exit(0)
 //#endregion
 
-//#region @backend
-function pathResolved(...partOfPath: string[]) {
-  // console.log('pathResolved', partOfPath);
-
-  if (global['frameworkName'] && global['frameworkName'] === firedev) {
-    const joined = partOfPath.join('/');
-    const projectsInUserFolder = crossPlatformPath(path.join(
-      crossPlatformPath(os.homedir()),
-      '.firedev',
-      morphi,
-      'projects',
-    ));
-    let pathResult = joined.replace(
-      (dirnameForTnp + '/' + firedevProjectsRelative),
-      projectsInUserFolder,
-    );
-
-    pathResult = crossPlatformPath(path.resolve(pathResult));
-
-    if (pathResolved.prototype.resolved) {
-      // console.info(`Firedev base projects in are ok.`);
-    } else {
-
-      const morhiVscode = path.join(path.dirname(morphiPathUserInUserDir), 'morphi/.vscode');
-
-      if (!fse.existsSync(morphiPathUserInUserDir) && !global.skipCoreCheck) {
-        if (!fse.existsSync(path.dirname(morphiPathUserInUserDir))) {
-          fse.mkdirpSync(path.dirname(morphiPathUserInUserDir));
-        }
-
-        try {
-          child_process.execSync(`${frameworkName} env:install --skipCoreCheck`, { stdio: [0, 1, 2] })
-        } catch (error) {
-          Helpers.error(`[${frameworkName}][config] Not able to install local global environment`, false, true);
-        }
-
-        try {
-          child_process.execSync(`git clone ${urlMorphi}`, {
-            cwd: path.dirname(morphiPathUserInUserDir),
-            stdio: [0, 1, 2],
-          });
-          Helpers.remove(morhiVscode);
-        } catch (error) {
-          Helpers.error(`[${frameworkName}][config] Not able to clone repository: ${urlMorphi} in:
-           ${morphiPathUserInUserDir}`, false, true);
-        }
-
-        try {
-          child_process.execSync(`${frameworkName} init:core --skipCoreCheck`, {
-            stdio: [0, 1, 2]
-          });
-        } catch (error) {
-          Helpers.error(`[${frameworkName}][config] Not able init core project`, false, true);
-        }
-      }
-
-      pathResolved.prototype.resolved = true;
-    }
-    return pathResult;
-  }
-  return crossPlatformPath(path.resolve(path.join(...partOfPath)));
-}
-//#endregion
-
-const moduleNameAngularLib = [
-  //#region @backend
-  folder.components,
-  folder.module,
-  folder.dist,
-  folder.browser,
-  //#endregion
-];
-
-const moduleNameIsomorphicLib = [
-  //#region @backend
-  folder.src,
-  folder.dist,
-  folder.browser,
-  //#endregion
-];
-
+//#region config / args replacement firedev
 const argsReplacementsBuild = {
   //#region @backend
   // SHORTCUTS
@@ -559,7 +436,9 @@ const argsReplacementsOther = {
   'b': 'build',
   //#endregion
 };
+//#endregion
 
+//#region constants / trusted packages for update
 const areTrustedForPatchUpdate = [
   //#region @backend
   '@angular',
@@ -571,27 +450,56 @@ const areTrustedForPatchUpdate = [
   'webpack'
   //#endregion
 ];
+//#endregion
 
+//#region constants / active framework version
 const activeFramewrokVersions = ['v4'] as ConfigModels.FrameworkVersion[];
+//#endregion
 
+
+//#region resolve tnp location
+// @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
+let dirnameForTnp: string;
+//#region @backend
+dirnameForTnp = crossPlatformPath(path.resolve(__dirname, '..'));
+
+if (process.platform === 'win32' && dirnameForTnp.endsWith('dist')) { // TODO QUICK_FIX for windows
+  dirnameForTnp = crossPlatformPath(path.dirname(dirnameForTnp));
+}
+
+if (dirnameForTnp.endsWith(`/tnp-config/dist`)) {
+  // local folder with tnp
+  dirnameForTnp = dirnameForTnp.replace(`/tnp-config/dist`, '/tnp');
+} else if (dirnameForTnp.endsWith(`/tnp/node_modules/tnp-config`)) {
+  // local folder with tnp
+  dirnameForTnp = dirnameForTnp.replace(`/tnp/node_modules/tnp-config`, '/tnp');
+} else {
+  // global tnp node_modules being use in firedev case
+  dirnameForTnp = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
+}
+global.dirnameForFiredev = dirnameForTnp;
+
+if (path.basename(dirnameForTnp) === 'node_modules') {
+  dirnameForTnp = crossPlatformPath(path.join(dirnameForTnp, 'tnp'))
+}
+
+//#endregion
+//#endregion
+
+//#region config
 export const config = {
+  dirnameForTnp,
   packagesThat: {
     areTrustedForPatchUpdate,
   },
-  //#region @backend
-  get dbLocation() {
-    let dbFileName = config.file.db_json;
-    if (global.testMode) {
-      dbFileName = config.file.db_for_tests_json;
-    }
-    const location = crossPlatformPath(path.join(crossPlatformPath(os.homedir()), `.${frameworkName}`, dbFileName));
-    return location;
-  },
-
-  //#endregion
-
+  /**
+   * @deprecated
+   */
   quickFixes: {
     //#region @backend
+    /**
+     * @deprecated
+     */
     missingLibs: []
     //#endregion
   },
@@ -660,7 +568,6 @@ export const config = {
     'keywords',
     'activationEvents',
   ],
-  morphiPathUserInUserDir,
   urlMorphi,
   argsReplacementsBuild,
   argsGlobalFlags: [ // TODO do I need this ?
@@ -699,44 +606,6 @@ export const config = {
     logoSvg: 'logo.svg',
     logoPng: 'logo.png',
 
-    /**
-     * Location of compiled source code for tnp framework
-     * Can be in 3 places:
-     * - <..>/tnp/dist @DEPRACATED
-     * - <some-project>/node_modules/tnp @DEPRACATED
-     *  - <some-project>/node_modules/tnp-config
-    */
-    tnp_folder_location: dirnameForTnp,
-    tnp_vscode_ext_location: pathResolved(dirnameForTnp, firedevProjectsRelative, 'plugins', 'tnp-vscode-ext'),
-
-    tnp_tests_context: pathResolved(dirnameForTnp, folder.tnp_tests_context),
-    tnp_db_for_tests_json: pathResolved(dirnameForTnp, folder.bin, file.db_for_tests_json),
-
-    scripts: {
-      HELP_js: pathResolved(dirnameForTnp, folder.scripts, 'HELP.js'),
-      allHelpFiles: path.join(dirnameForTnp, folder.scripts, '/**/*.js'),
-      allPattern: path.join(dirnameForTnp, `/${folder.scripts}/**/*.js`),
-    },
-
-    projectsExamples: (version?: ConfigModels.FrameworkVersion) => {
-      version = (!version || version === 'v1') ? '' : `-${version}` as any;
-      const result = {
-        container: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}`),
-        projectByType(libType: ConfigModels.NewFactoryType) {
-          if (libType === 'vscode-ext') {
-            // @ts-ignore
-            if (version === '') { // TODO current version handle somehow
-              // @ts-ignore
-              version = '-v2';
-            }
-            return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/${libType}${version}`);
-          }
-          return pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/${libType}${version}`);
-        },
-        singlefileproject: pathResolved(dirnameForTnp, `${firedevProjectsRelative}/container${version}/single-file-project${version}`)
-      };
-      return result;
-    }
   },
   //#endregion
   allowedEnvironments,
@@ -773,7 +642,10 @@ export const config = {
       return [
         'ts',
         'js',
-        ...stylesFilesExtension,
+        'css',
+        'sass',
+        'scss',
+        'less',
       ].map(f => `.${f}`);
     },
     //#endregion
@@ -808,11 +680,8 @@ export const config = {
     ] as ConfigModels.LibType[]
     //#endregion
   },
-  moduleNameAngularLib,
-  moduleNameIsomorphicLib,
   filesExtensions: {
     filetemplate: 'filetemplate',
-    styles: stylesFilesExtension,
   },
   projectTypes: {
     //#region @backend
@@ -920,9 +789,9 @@ export const config = {
     ]
   }
 };
+//#endregion
 
-
-
+//#region globa isomorphic deps
 // export const GlobalIsomorphicDependencies: ConfigModels.GlobalDependencies = {
 //   npm: [
 //     { name: 'rimraf' },
@@ -938,3 +807,4 @@ export const config = {
 //     // }
 //   ] as { name: string; website: string }[]
 // };
+//#endregion
