@@ -246,7 +246,7 @@ const argsReplacementsOther = {
   // install
   'i': 'install',
   'si': 'sinstall',
-  'il': 'install:locally',
+  'il': 'release:installlocally',
   'rc': 'recommit',
   // release
   'rp': 'release:prod',
