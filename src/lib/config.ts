@@ -1,4 +1,5 @@
 //#region imports & constants
+import { CoreModels } from 'tnp-core/src';
 //#region @backend
 declare const global: any;
 import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core/src';
@@ -7,155 +8,14 @@ if (global && !global['ENV']) {
   global['ENV'] = {};
 }
 //#endregion
-import { ContentType } from 'tnp-core/src';
 
 import { frameworkName } from 'tnp-core/src';
 
 export { CoreHelpers as Helpers } from 'tnp-core/src';
-import { Helpers } from 'tnp-core/src';
 
 //#endregion
 
 //#region config models
-
-export namespace ConfigModels {
-  export type EnvironmentName = 'local' | 'static' | 'dev' | 'stage' | 'prod' | 'online' | 'test' | 'qa' | 'custom';
-  export type PUSHTYPE =
-    'feat'
-    | 'chore'
-    | 'feature'
-    | 'refactor'
-    | 'perf'
-    | 'styles'
-    | 'ci'
-    | 'build'
-    | 'fix'
-    | 'bugfix'
-    | 'release'
-    | 'docs'
-    ;
-
-  export type UIFramework = 'bootstrap' | 'material' | 'ionic';
-  export type FrameworkVersion = 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9';
-  export type CutableFileExt = 'scss' | 'css' | 'sass' | 'html' | 'ts';
-  export type ImageFileExtension = 'jpg' | 'jpeg' | 'png' | 'svg';
-  export type FileExtension = 'ts' | 'js' | 'json' | 'html' | ImageFileExtension | 'txt' | CutableFileExt;
-
-
-  export type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'jsonp';
-  export type ParamType = 'Path' | 'Query' | 'Cookie' | 'Header' | 'Body';
-  export type TsUsage = 'import' | 'export';
-
-
-  export interface UploadedBackendFile {
-    data: any
-    //#region @backend
-    | Buffer
-    //#endregion
-    encoding: string;
-    md5: string;
-    tempFilePath: string;
-    mimetype: ContentType;
-    mv: (path, callback) => any;
-    name: string;
-    truncated: boolean;
-  }
-
-
-  export interface VSCodeSettings {
-    'files.exclude': { [files: string]: boolean; };
-    'workbench.colorTheme': 'Default Light+' | 'Kimbie Dark',
-    'workbench.colorCustomizations': {
-      'activityBar.background'?: string;
-      'activityBar.foreground'?: string;
-      'statusBar.background'?: string;
-    }
-  }
-
-  export type LibType = 'unknow'
-    | 'isomorphic-lib' // + https://github.com/maximegris/angular-electron
-    | 'container'
-    | 'docker'
-    | 'vscode-ext'
-    | 'chrome-ext'
-    | 'unknow-npm-project'
-    | 'scenario'
-    | 'navi'
-    | 'leaf'
-    | 'game-engine-lib-pixi' // https://github.com/pixijs/pixi.js
-    | 'game-engine-lib-phaser' // https://github.com/photonstorm/phaser
-    | 'game-engine-lib-excalibur' // https://github.com/excaliburjs/Excalibur
-    | 'game-engine-lib-babylon' // https://github.com/BabylonJS/Babylon.js
-    ;
-
-  export type NewFactoryType = LibType | 'model' | 'single-file-project';
-  export type CoreLibCategory = LibType | 'common';
-  export interface Position {
-    x: number;
-    y: number;
-  }
-
-  export interface Size {
-    w: number;
-    h: number;
-  }
-
-
-  export interface GlobalNpmDependency {
-    name: string; installName?: string; version?: string | number;
-  }
-
-  export interface GlobalCommandLineProgramDependency {
-    name: string; website: string; version?: string;
-  }
-  export interface GlobalDependencies {
-    npm?: GlobalNpmDependency[];
-    programs?: GlobalCommandLineProgramDependency[];
-  }
-
-  export type FileEvent = 'created' | 'changed' | 'removed' | 'rename';
-  export type OutFolder = 'dist' | 'browser';
-  export type DatabaseType = 'better-sqlite3' | 'mysql';
-
-  export interface TsConfigJson {
-    extends: string;
-    exclude: string[];
-    compileOnSave: boolean;
-    compilerOptions: CompilerOptions;
-    angularCompilerOptions: AngularCompilerOptions;
-  }
-
-  interface AngularCompilerOptions {
-    fullTemplateTypeCheck: boolean;
-    strictInjectionParameters: boolean;
-    compilationMode: string;
-    preserveSymlinks: boolean;
-    enableIvy: boolean;
-  }
-
-  interface CompilerOptions {
-    baseUrl: string;
-    outDir: string;
-    sourceMap: boolean;
-    declaration: boolean;
-    strictNullChecks: boolean;
-    downlevelIteration: boolean;
-    experimentalDecorators: boolean;
-    emitDecoratorMetadata: boolean;
-    esModuleInterop: boolean;
-    module: string;
-    moduleResolution: string;
-    importHelpers: boolean;
-    skipLibCheck: boolean;
-    target: string;
-    typeRoots: string[];
-    types: string[];
-    lib: string[];
-    paths: { [fullPackageName: string]: string[]; };
-    useDefineForClassFields: boolean;
-  }
-
-}
 
 
 export const GlobalLibTypeName = {
@@ -172,7 +32,7 @@ export const GlobalLibTypeName = {
   //#endregion
 };
 
-export const LibTypeArr: ConfigModels.LibType[] = [
+export const LibTypeArr: CoreModels.LibType[] = [
   //#region @backend
   GlobalLibTypeName.isomorphicLib,
   GlobalLibTypeName.container,
@@ -183,21 +43,21 @@ export const LibTypeArr: ConfigModels.LibType[] = [
   GlobalLibTypeName.navi,
   GlobalLibTypeName.scenario,
   //#endregion
-] as ConfigModels.LibType[];
+] as CoreModels.LibType[];
 
 
-export const CoreLibCategoryArr: ConfigModels.CoreLibCategory[] = [ // TODO this is for what ?
+export const CoreLibCategoryArr: CoreModels.CoreLibCategory[] = [ // TODO this is for what ?
   //#region @backend
   GlobalLibTypeName.isomorphicLib,
   GlobalLibTypeName.docker,
   'common'
   //#endregion
-] as ConfigModels.CoreLibCategory[];
+] as CoreModels.CoreLibCategory[];
 
 //#endregion
 
 //#region constants /  allowed Environments
-const allowedEnvironments: ConfigModels.EnvironmentName[] = [
+const allowedEnvironments: CoreModels.EnvironmentName[] = [
   //#region @backend
   'static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'
   //#endregion
@@ -343,7 +203,7 @@ const folder = {
   project: 'project',
   external: 'external',
   tmpDist: 'tmp-dist',
-  tmpFor(d: ConfigModels.OutFolder) {
+  tmpFor(d: CoreModels.OutFolder) {
     return `tmp-src-${d}`;
   },
   targetProjects: {
@@ -453,7 +313,7 @@ const areTrustedForPatchUpdate = [
 //#endregion
 
 //#region constants / active framework version
-const activeFramewrokVersions = ['v4'] as ConfigModels.FrameworkVersion[];
+const activeFramewrokVersions = ['v4'] as CoreModels.FrameworkVersion[];
 //#endregion
 
 
@@ -513,7 +373,7 @@ export const config = {
   array: {
     isomorphicPackages: 'isomorphicPackages'
   },
-  defaultFrameworkVersion: 'v4' as ConfigModels.FrameworkVersion,
+  defaultFrameworkVersion: 'v4' as CoreModels.FrameworkVersion,
   activeFramewrokVersions,
   coreProjectVersions: ['v1', ...activeFramewrokVersions],
   CONST: {
@@ -550,7 +410,7 @@ export const config = {
     firedev: 'firedev'
   },
   startPort: 6001,
-  frameworks: ['bootstrap', 'ionic', 'material'] as ConfigModels.UIFramework[],
+  frameworks: ['bootstrap', 'ionic', 'material'] as CoreModels.UIFramework[],
   //#region @backend
   tempFiles: {
     FILE_NAME_ISOMORPHIC_PACKAGES: 'tmp-isomorphic-packages.json'
@@ -618,7 +478,7 @@ export const config = {
     //#region @backend
     cloud: {
       environment: {
-        name: 'online' as ConfigModels.EnvironmentName
+        name: 'online' as CoreModels.EnvironmentName
       }
     }
     //#endregion
@@ -654,7 +514,7 @@ export const config = {
     //#region @backend
     'unknow', 'unknow-npm-project', 'scenario', 'navi'
     //#endregion
-  ] as ConfigModels.LibType[],
+  ] as CoreModels.LibType[],
   /**
    * Build allowed types
    */
@@ -668,7 +528,7 @@ export const config = {
       GlobalLibTypeName.docker,
       GlobalLibTypeName.container,
       GlobalLibTypeName.vscodeExt,
-    ] as ConfigModels.LibType[],
+    ] as CoreModels.LibType[],
     /**
      * Projects for build:(dist):(watch) command
      */
@@ -677,7 +537,7 @@ export const config = {
       GlobalLibTypeName.container,
       GlobalLibTypeName.docker,
       GlobalLibTypeName.vscodeExt,
-    ] as ConfigModels.LibType[]
+    ] as CoreModels.LibType[]
     //#endregion
   },
   filesExtensions: {
