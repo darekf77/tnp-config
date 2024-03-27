@@ -214,90 +214,6 @@ const folder = {
 };
 //#endregion
 
-//#region config / args replacement firedev
-const argsReplacementsBuild = {
-  //#region @backend
-  // SHORTCUTS
-  'ba': 'build:app',
-  'baw': 'build:app:watch',
-
-  'bw': 'build:watch',
-  's': 'start',
-  'sw': 'start:watch',
-
-  'bda': 'build:dist:app',
-  'bdap': 'build:dist:app:prod',
-  'ew': 'electron:watch',
-  'bd': 'build:dist',
-  'bdw': 'build:dist:watch',
-
-  //#endregion
-};
-
-const argsReplacementsOther = {
-  //#region @backend
-  // github docs
-  'ghpush': 'githubpush',
-  'ghpull': 'githubpull',
-  // last
-  'l': 'last',
-  'sl': 'show:last',
-  'lb': 'last:build',
-  // install
-  'i': 'install',
-  'si': 'sinstall',
-  'il': 'release:installlocally',
-  'rc': 'recommit',
-  // release
-  'rp': 'release:prod',
-  'r': 'release',
-  'rmajor': 'release:major',
-  'rminor': 'release:minor',
-  'r:major': 'release:major',
-  'r:minor': 'release:minor',
-  // 'ra': 'release:all',
-  'ar': 'auto:release',
-  'ard': 'auto:release:docs',
-
-  're': 'reinstall',
-  // versopm
-  '--version': 'version',
-  '-v': 'version',
-  // open
-  'occ': 'open:core:container',
-  'ocp': 'open:core:project',
-  'o': 'open',
-  // test
-  'twd': 'test:watch:debug',
-  'tdw': 'test:watch:debug',
-  'tw': 'test:watch',
-  'td': 'test:debug',
-  't': 'test',
-  // git push
-  'pt': 'push:tag',
-  'p': 'push',
-  'pa': 'pushalll',
-  // other
-  'sj': 'select:java',
-  'scm': 'showcoremodules',
-  'tpu': 'target:proj:update',
-  'ugd': 'update:global:deps',
-  'ud': 'update:deps', // same as npm i
-  'dgl': 'detect:global:libs',
-  'pr': 'print:relatives',
-  'c': 'container',
-  'au': 'autoupdate',
-  'up': 'update',
-  'rev': 'revert',
-  'rw': 'revert',
-
-  'a': 'app',
-  'wa': 'webapp',
-  'b': 'build',
-  //#endregion
-};
-//#endregion
-
 //#region constants / trusted packages for update
 const areTrustedForPatchUpdate = [
   //#region @backend
@@ -429,7 +345,6 @@ export const config = {
     'activationEvents',
   ],
   urlMorphi,
-  argsReplacementsBuild,
   argsGlobalFlags: [ // TODO do I need this ?
     '-verbose',
     '-firedev',
@@ -438,10 +353,6 @@ export const config = {
     '-useWorker',
     '-dist',
   ],
-  argsReplacements: {
-    ...argsReplacementsBuild,
-    ...argsReplacementsOther,
-  },
   coreBuildFrameworkNames: [
     'tnp',
     'tnp-ins',
