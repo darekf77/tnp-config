@@ -27,6 +27,8 @@ export const extAllowedToReplace = [
   ...extAllowedToExportAndReplaceTSJSCodeFiles,
 ];
 
+
+
 export const REGEX_REGION = {
   TS_JS_SCSS_SASS: {
     START: new RegExp('\\/\\/\\s*\\#region'),
