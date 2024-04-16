@@ -70,7 +70,7 @@ allowedEnvironments.forEach(s => {
 //#endregion
 
 //#region constants / morphi url
-const urlMorphi = 'https://github.com/darekf77/morphi.git';
+const urlRepoFiredev = 'https://github.com/darekf77/firedev.git';
 //#endregion
 
 //#region constants / files not allowed to clean
@@ -292,7 +292,7 @@ export const config = {
   tempFiles: {
     FILE_NAME_ISOMORPHIC_PACKAGES: 'tmp-isomorphic-packages.json'
   },
-  urlMorphi,
+  urlRepoFiredev,
   pathes: {
     logoSvg: 'logo.svg',
     logoPng: 'logo.png',
@@ -337,7 +337,6 @@ export const config = {
     'sort-package-json',
     'concurrently',
     'sloc',
-    'morphi'
     //#endregion
   ],
   helpAlias: [
@@ -352,7 +351,7 @@ export const config = {
       // { name: '@angular/cli', version: '13' },
       { name: 'ncc', version: '0.36.0', installName: '@vercel/ncc' },
       { name: 'extract-zip', version: '1.6.7' },
-      { name: 'watch', version: '1.0.2' },
+      // { name: 'watch', version: '1.0.2' },
       { name: 'cpr' },
       { name: 'check-node-version' },
       { name: 'npm-run', version: '4.1.2' },
@@ -364,7 +363,7 @@ export const config = {
       { name: 'yarn' },
       { name: 'firedev-http-server' },
       { name: 'increase-memory-limit' },
-      { name: 'bower' },
+      // { name: 'bower' },
       { name: 'prettier' },
       { name: 'fkill', installName: 'fkill-cli' },
       // { name: 'yo' },
