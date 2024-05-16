@@ -136,6 +136,7 @@ const file = {
   logo_png: 'logo.png',
   logo_svg: 'logo.svg',
   ric_proj_json: 'ric-project.json',
+  linked_projects_json: 'linked-projects.json',
   ...filesNotAllowedToClean,
 };
 //#endregion
