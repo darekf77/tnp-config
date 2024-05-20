@@ -99,12 +99,28 @@ const file = {
   build_config_js: 'build-config.js',
   local_config: 'local-config',
   start_backend_ts: 'start.backend.ts',
-  package_json: 'package.json',
   result_packages_json: 'result-packages.json',
-  package_json5: 'package.json5',
+
+  package_json: 'package.json',
+  firedev_jsonc: 'firedev.jsonc',
+  /**
+   * @deprecated
+   */
+  firedev_json: 'firedev.json',
+  /**
+   * @deprecated
+   */
   package_json__tnp_json: 'package.json_tnp.json',
+  /**
+   * @deprecated
+   */
   package_json__tnp_json5: 'package.json_tnp.json5',
+  /**
+   * @deprecated
+   */
   package_json__devDependencies_json: 'package.json_devDependencies.json',
+  devDependencies_json: 'devDependencies.json',
+
   yarn_lock: 'yarn.lock',
   package_lock_json: 'package-lock.json',
   tnpEnvironment_json: 'tmp-environment.json',
@@ -139,16 +155,6 @@ const file = {
   linked_projects_json: 'linked-projects.json',
   ...filesNotAllowedToClean,
 };
-//#endregion
-
-//#region constants / package json split
-const packageJsonSplit = [
-  //#region @backend
-  file.package_json__tnp_json,
-  file.package_json__tnp_json5,
-  file.package_json__devDependencies_json,
-  //#endregion
-];
 //#endregion
 
 //#region constants / temp folders
@@ -269,7 +275,6 @@ export const config = {
   packagesThat: {
     areTrustedForPatchUpdate,
   },
-  packageJsonSplit,
   regexString: {
     pathPartStringRegex: `(\/([a-zA-Z0-9]|\\-|\\_|\\+|\\.)*)`
   },

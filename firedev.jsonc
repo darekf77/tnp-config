@@ -1,0 +1,40 @@
+{
+  "resources": ["README.md"],
+
+  "overrided": {
+    "ignoreDepsPattern": [],
+    "includeAsDev": [],
+    "includeOnly": ["tnp-core"],
+    "dependencies": {},
+    "linkedFolders": [],
+    "npmFixes": [],
+  },
+
+  "smartContainerBuildTarget": "",
+  "linkedRepos": [],
+
+  "libReleaseOptions": {
+    "nodts": false,
+    "obscure": false,
+    "ugly": false,
+    "includeNodeModules": false,
+    "cliBuildNoDts": false,
+    "cliBuildObscure": false,
+    "cliBuildIncludeNodeModules": false,
+    "cliBuildUglify": false,
+  },
+
+  "smartContainerTarget": "",
+  "type": "isomorphic-lib",
+  "isCoreProject": false,
+  "useFramework": false,
+  "required": [],
+  "version": "v4",
+  "additionalNpmNames": ["firedev-config"],
+  "isGenerated": false,
+  "requiredServers": [],
+  "license": "MIT",
+  "private": false,
+  "main": "index.js",
+  "workerPlugins": {},
+}
