@@ -42,7 +42,7 @@
     "workerPlugins": {}
   },
   "dependencies": {
-    "tnp-core": "16.100.6"
+    "tnp-core": "16.100.15"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "~16.0.2-beta.2",
@@ -107,7 +107,6 @@
     "@types/json5": "0.0.29",
     "@types/lockfile": "1.0.0",
     "@types/lodash": "4.14.92",
-    "@types/lowdb": "1.0.6",
     "@types/mocha": "5.2.5",
     "@types/node": "16.18.21",
     "@types/node-notifier": "5.4.0",
@@ -189,6 +188,7 @@
     "fs-extra": "8.1.0",
     "fuzzy": "0.1.3",
     "glob": "7.1.2",
+    "google-libphonenumber": "3.2.25",
     "gulp": "3.9.1",
     "helmet": "7.0.0",
     "hostile": "1.3.3",
@@ -225,7 +225,7 @@
     "lockfile": "1.0.4",
     "lodash": "4.17.20",
     "lodash-walk-object": "16.100.3",
-    "lowdb": "1.0.0",
+    "lowdb": "7.0.1",
     "magic-renamer": "16.100.4",
     "material-design-icons": "3.0.1",
     "method-override": "2.3.10",
@@ -239,6 +239,7 @@
     "ng-packagr": "16.0.1",
     "ng-talkback": "16.100.3",
     "ng2-logger": "16.100.4",
+    "ng2-pdfjs-viewer": "16.0.4",
     "ng2-rest": "16.100.3",
     "ngx-ace-wrapper": "14.0.0",
     "ngx-editor": "15.3.0",
@@ -300,11 +301,12 @@
     "task.js": "0.1.5",
     "threads": "1.7.0",
     "tnp-cli": "16.100.3",
-    "tnp-config": "16.100.4",
+    "tnp-config": "16.100.5",
     "tnp-db": "16.100.4",
     "tnp-helpers": "16.100.4",
     "tnp-models": "16.100.4",
     "ts-debug": "1.3.0",
+    "ts-json-schema-generator": "2.1.1",
     "ts-loader": "2.3.1",
     "ts-node": "10.9.1",
     "tslib": "~2.3.0",
@@ -328,7 +330,7 @@
   "license": "MIT",
   "private": false,
   "name": "tnp-config",
-  "version": "16.100.4",
-  "lastBuildTagHash": "af2b60083a2ecbf4f716fb412eebc7cd9ff197a8",
+  "version": "16.100.5",
+  "lastBuildTagHash": "224b8b04f440dd7a513017345c75e2bf197cc223",
   "main": "index.js"
 }
