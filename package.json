@@ -42,7 +42,7 @@
     "workerPlugins": {}
   },
   "dependencies": {
-    "tnp-core": "16.444.1"
+    "tnp-core": "16.444.2"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "~16.0.2-beta.2",
@@ -226,7 +226,7 @@
     "jscodeshift": "0.6.3",
     "json-stringify-safe": "5.0.1",
     "json10": "16.100.7",
-    "json10-writer": "16.100.10",
+    "json10-writer": "16.444.1",
     "json5": "2.2.1",
     "json5-writer": "0.2.0",
     "jszip": "3.10.1",
@@ -249,7 +249,7 @@
     "ng-lock": "16.0.1",
     "ng-packagr": "16.0.1",
     "ng-talkback": "16.100.5",
-    "ng2-logger": "16.100.10",
+    "ng2-logger": "16.444.1",
     "ng2-pdfjs-viewer": "16.0.4",
     "ng2-rest": "16.100.7",
     "ngx-ace-wrapper": "14.0.0",
@@ -313,10 +313,10 @@
     "task.js": "0.1.5",
     "threads": "1.7.0",
     "tnp-cli": "16.100.5",
-    "tnp-config": "16.444.1",
+    "tnp-config": "16.444.2",
     "tnp-db": "16.100.9",
-    "tnp-helpers": "16.100.32",
-    "tnp-models": "16.100.10",
+    "tnp-helpers": "16.444.1",
+    "tnp-models": "16.444.1",
     "ts-debug": "1.3.0",
     "ts-json-schema-generator": "2.1.1",
     "ts-loader": "2.3.1",
@@ -325,7 +325,7 @@
     "tslint": "5.9.1",
     "turndown": "7.1.2",
     "typescript": "~5.0.2",
-    "typescript-class-helpers": "~16.100.10",
+    "typescript-class-helpers": "~16.444.1",
     "typescript-formatter": "~7.2.2",
     "underscore": "1.9.1",
     "uuid": "8.3.2",
@@ -344,7 +344,7 @@
   "license": "MIT",
   "private": false,
   "name": "tnp-config",
-  "version": "16.444.1",
-  "lastBuildTagHash": "fb57e0fa748cae065114e038bac340e2139b9d43",
+  "version": "16.444.2",
+  "lastBuildTagHash": "d59e91dcb12823b3d9ccd55a5cf3d79609357c3d",
   "main": "index.js"
 }
