@@ -236,7 +236,7 @@ const areTrustedForPatchUpdate = [
 //#endregion
 
 //#region constants / active framework version
-const activeFramewrokVersions = ['v4'] as CoreModels.FrameworkVersion[];
+const activeFramewrokVersions = ['v16'] as CoreModels.FrameworkVersion[];
 //#endregion
 
 
@@ -284,9 +284,9 @@ export const config = {
   array: {
     isomorphicPackages: 'isomorphicPackages'
   },
-  defaultFrameworkVersion: 'v4' as CoreModels.FrameworkVersion,
+  defaultFrameworkVersion: 'v16' as CoreModels.FrameworkVersion,
   activeFramewrokVersions,
-  coreProjectVersions: ['v1', ...activeFramewrokVersions],
+  coreProjectVersions: ['v1','v4', ...activeFramewrokVersions],
   frameworkName,
   frameworkNames: {
     tnp: 'tnp',
