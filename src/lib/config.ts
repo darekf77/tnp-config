@@ -100,6 +100,7 @@ const file = {
   local_config: 'local-config',
   start_backend_ts: 'start.backend.ts',
   result_packages_json: 'result-packages.json',
+  build_info_generated_ts: 'build-info._auto-generated_.ts',
 
   package_json: 'package.json',
   firedev_jsonc: 'firedev.jsonc',
@@ -290,7 +291,9 @@ export const config = {
   frameworkName,
   frameworkNames: {
     tnp: 'tnp',
-    firedev: 'firedev'
+    firedev: 'firedev',
+    productionFrameworkName: 'firedev',
+    developmentFrameworkName: 'tnp',
   },
   startPort: 6001,
   frameworks: ['bootstrap', 'ionic', 'material'] as CoreModels.UIFramework[],
