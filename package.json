@@ -42,7 +42,7 @@
     "workerPlugins": {}
   },
   "dependencies": {
-    "tnp-core": "16.444.6"
+    "tnp-core": "16.444.7"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "~16.0.2-beta.2",
@@ -314,7 +314,7 @@
     "task.js": "0.1.5",
     "threads": "1.7.0",
     "tnp-cli": "16.444.1",
-    "tnp-config": "16.444.5",
+    "tnp-config": "16.444.6",
     "tnp-db": "16.444.4",
     "tnp-helpers": "16.444.6",
     "tnp-models": "16.444.5",
@@ -347,7 +347,7 @@
   "license": "MIT",
   "private": false,
   "name": "tnp-config",
-  "version": "16.444.5",
-  "lastBuildTagHash": "ac7ddd120698c69980634693d7a5889db948280b",
+  "version": "16.444.6",
+  "lastBuildTagHash": "39cf30be636548f15a7a167ae772b08f4279b8dc",
   "main": "index.js"
 }
