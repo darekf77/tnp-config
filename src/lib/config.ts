@@ -18,6 +18,7 @@ export { CoreHelpers as Helpers } from 'tnp-core/src';
 //#region config models
 
 
+
 export const GlobalLibTypeName = {
   //#region @backend
   isomorphicLib: 'isomorphic-lib',
@@ -45,12 +46,12 @@ export const LibTypeArr: CoreModels.LibType[] = [
   //#endregion
 ] as CoreModels.LibType[];
 
-
-export const CoreLibCategoryArr: CoreModels.CoreLibCategory[] = [ // TODO this is for what ?
+export const CoreLibCategoryArr: CoreModels.CoreLibCategory[] = [
+  // TODO this is for what ?
   //#region @backend
   GlobalLibTypeName.isomorphicLib,
   GlobalLibTypeName.docker,
-  'common'
+  'common',
   //#endregion
 ] as CoreModels.CoreLibCategory[];
 
@@ -59,7 +60,14 @@ export const CoreLibCategoryArr: CoreModels.CoreLibCategory[] = [ // TODO this i
 //#region constants /  allowed Environments
 const allowedEnvironments: CoreModels.EnvironmentName[] = [
   //#region @backend
-  'static', 'dev', 'prod', 'stage', 'online', 'test', 'qa', 'custom'
+  'static',
+  'dev',
+  'prod',
+  'stage',
+  'online',
+  'test',
+  'qa',
+  'custom',
   //#endregion
 ];
 const allowedEnvironmentsObj = {};
@@ -159,7 +167,8 @@ const file = {
 //#endregion
 
 //#region constants / temp folders
-const tempFolders = { // DO NOT PUT ANYTHING SUPID HERE!!!
+const tempFolders = {
+  // DO NOT PUT ANYTHING SUPID HERE!!!
   vendor: 'vendor',
   docs: 'docs',
   dist: 'dist',
@@ -181,7 +190,6 @@ const tempFolders = { // DO NOT PUT ANYTHING SUPID HERE!!!
   tmpScenarios: 'tmp-scenarios',
   tmpTestsEnvironments: 'tmp-tests-environments',
   testsEnvironments: 'tests-environments',
-
 };
 //#endregion
 
@@ -209,6 +217,7 @@ const folder = {
   _bin: '.bin',
   _vscode: '.vscode',
   project: 'project',
+  projects: 'projects',
   external: 'external',
   tmpDist: 'tmp-dist',
   tmpFor(d: CoreModels.OutFolder) {
@@ -231,7 +240,7 @@ const areTrustedForPatchUpdate = [
   'zone.js',
   'tslib',
   'typescript',
-  'webpack'
+  'webpack',
   //#endregion
 ];
 //#endregion
@@ -240,14 +249,14 @@ const areTrustedForPatchUpdate = [
 const activeFramewrokVersions = ['v16'] as CoreModels.FrameworkVersion[];
 //#endregion
 
-
 //#region resolve tnp location
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
 let dirnameForTnp: string;
 //#region @backend
 dirnameForTnp = crossPlatformPath(path.resolve(__dirname, '..'));
 
-if (process.platform === 'win32' && dirnameForTnp.endsWith('dist')) { // TODO QUICK_FIX for windows
+if (process.platform === 'win32' && dirnameForTnp.endsWith('dist')) {
+  // TODO QUICK_FIX for windows
   dirnameForTnp = crossPlatformPath(path.dirname(dirnameForTnp));
 }
 
@@ -264,7 +273,7 @@ if (dirnameForTnp.endsWith(`/tnp-config/dist`)) {
 global.dirnameForFiredev = dirnameForTnp;
 
 if (path.basename(dirnameForTnp) === 'node_modules') {
-  dirnameForTnp = crossPlatformPath(path.join(dirnameForTnp, 'tnp'))
+  dirnameForTnp = crossPlatformPath(path.join(dirnameForTnp, 'tnp'));
 }
 
 //#endregion
@@ -277,17 +286,17 @@ export const config = {
     areTrustedForPatchUpdate,
   },
   regexString: {
-    pathPartStringRegex: `(\/([a-zA-Z0-9]|\\-|\\_|\\+|\\.)*)`
+    pathPartStringRegex: `(\/([a-zA-Z0-9]|\\-|\\_|\\+|\\.)*)`,
   },
   placeholders: {
-    forProjectsInEnvironmentFile: '//<PLACEHOLDER_FOR_PROJECTS>'
+    forProjectsInEnvironmentFile: '//<PLACEHOLDER_FOR_PROJECTS>',
   },
   array: {
-    isomorphicPackages: 'isomorphicPackages'
+    isomorphicPackages: 'isomorphicPackages',
   },
   defaultFrameworkVersion: 'v16' as CoreModels.FrameworkVersion,
   activeFramewrokVersions,
-  coreProjectVersions: ['v1','v4', ...activeFramewrokVersions],
+  coreProjectVersions: ['v1', 'v4', ...activeFramewrokVersions],
   frameworkName,
   frameworkNames: {
     tnp: 'tnp',
@@ -299,7 +308,7 @@ export const config = {
   frameworks: ['bootstrap', 'ionic', 'material'] as CoreModels.UIFramework[],
   //#region @backend
   tempFiles: {
-    FILE_NAME_ISOMORPHIC_PACKAGES: 'tmp-isomorphic-packages.json'
+    FILE_NAME_ISOMORPHIC_PACKAGES: 'tmp-isomorphic-packages.json',
   },
   urlRepoFiredev,
   pathes: {
@@ -311,21 +320,20 @@ export const config = {
   folder,
   tempFolders,
   // @ts-ignore
-  filesNotAllowedToClean: Object.keys(filesNotAllowedToClean).map(key => filesNotAllowedToClean[key]) as string[],
+  filesNotAllowedToClean: Object.keys(filesNotAllowedToClean).map(
+    key => filesNotAllowedToClean[key],
+  ) as string[],
   file,
   default: {
     //#region @backend
     cloud: {
       environment: {
-        name: 'online' as CoreModels.EnvironmentName
-      }
-    }
+        name: 'online' as CoreModels.EnvironmentName,
+      },
+    },
     //#endregion
   },
-  reservedArgumentsNamesUglify: [
-    'reservedExpOne',
-    'reservedExpSec'
-  ],
+  reservedArgumentsNamesUglify: ['reservedExpOne', 'reservedExpSec'],
   filesExtensions: {
     filetemplate: 'filetemplate',
   },
@@ -348,12 +356,7 @@ export const config = {
     'sloc',
     //#endregion
   ],
-  helpAlias: [
-    '-h',
-    '--help',
-    '-help',
-    'help'
-  ],
+  helpAlias: ['-h', '--help', '-help', 'help'],
   required: {
     npm: [
       //#region @backend
@@ -416,15 +419,16 @@ export const config = {
       { name: 'cfonts' }, // draw super nice fonts in console
       //#endregion
     ],
-    programs: [,
+    programs: [
+      ,
       //#region @backend
       {
         name: 'code',
-        website: 'https://code.visualstudio.com/'
-      }
+        website: 'https://code.visualstudio.com/',
+      },
       //#endregion
-    ]
-  }
+    ],
+  },
 };
 //#endregion
 
