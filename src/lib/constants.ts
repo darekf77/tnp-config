@@ -4,22 +4,14 @@ export const extAllowedToExportAndReplaceTSJSCodeFiles = [
   'tsx',
 ].map(ext => `.${ext}`);
 
-export const extTemplatesFiles = [
-  'html'
-].map(ext => `.${ext}`);
+export const extTemplatesFiles = ['html'].map(ext => `.${ext}`);
 
-export const extForSassLikeFiles = [
-  'scss',
-  'sass',
-].map(ext => `.${ext}`);
+export const extForSassLikeFiles = ['scss', 'sass'].map(ext => `.${ext}`);
 
 export const extForStyles = [
   ...extForSassLikeFiles,
-  ...[
-    'css',
-    'less',
-  ].map(ext => `.${ext}`),
-]
+  ...['css', 'less'].map(ext => `.${ext}`),
+];
 
 export const extAllowedToReplace = [
   ...extForStyles,
@@ -27,16 +19,11 @@ export const extAllowedToReplace = [
   ...extAllowedToExportAndReplaceTSJSCodeFiles,
 ];
 
-
-
 export const REGEX_REGION = {
   TS_JS_SCSS_SASS: {
     START: new RegExp('\\/\\/\\s*\\#region'),
     END: new RegExp('\\/\\/\\s*\\#endregion'),
-    EXT: [
-      ...extAllowedToExportAndReplaceTSJSCodeFiles,
-      ...extForSassLikeFiles,
-    ],
+    EXT: [...extAllowedToExportAndReplaceTSJSCodeFiles, ...extForSassLikeFiles],
   },
   HTML: {
     START: new RegExp('\\<\\!\\-\\-\\s*\\#region'),
@@ -55,10 +42,9 @@ export const backendNodejsOnlyFiles = [
   // '.repository.ts', // deprecated in typeorm
 ].map(ext => `.${ext}`);
 
-export const backendWebsqlNodejsFiles = [
-  'subscriber.ts',
-  'test.ts'
-].map(ext => `.${ext}`);
+export const backendWebsqlNodejsFiles = ['subscriber.ts', 'test.ts'].map(
+  ext => `.${ext}`,
+);
 
 export const frontendFiles = [
   'browser.ts',
@@ -89,15 +75,13 @@ export const frontendFiles = [
   'e2e-spec.ts',
 ].map(ext => `.${ext}`);
 
-export const notNeededForExportFiles = [
-  'routes.ts'
-].map(ext => `.${ext}`);
+export const notNeededForExportFiles = ['routes.ts'].map(ext => `.${ext}`);
 
 export const frontEndOnly = [
   ...extTemplatesFiles,
   ...extForStyles,
   ...frontendFiles,
-]
+];
 
 export const appRelatedFiles = [
   ...extAllowedToReplace.map(ext => `app${ext}`),
@@ -121,7 +105,7 @@ export const TAGS = {
   CUT_CODE_IF_FALSE: '@cutCode' + 'IfFalse',
   COMMENT_REGION: `//${'#reg' + 'ion'}`,
   COMMENT_END_REGION: `//${'#end' + 'region'}`,
-}
+};
 
 export const BaselineSiteJoinprefix = '__';
 
@@ -130,4 +114,9 @@ export const PREFIXES = {
   DELETED: '____DELETED____',
   ORIGINAL: '____ORIGINAL____',
   RESTORE_NPM: '____',
-}
+};
+
+export const HOST_FILE_PATH =
+  process.platform === 'win32'
+    ? 'C:/Windows/System32/drivers/etc/hosts'
+    : '/etc/hosts';
