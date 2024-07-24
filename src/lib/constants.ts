@@ -116,7 +116,12 @@ export const PREFIXES = {
   RESTORE_NPM: '____',
 };
 
-export const HOST_FILE_PATH =
+let HOST_FILE_PATH = '';
+//#region @backend
+HOST_FILE_PATH =
   process.platform === 'win32'
     ? 'C:/Windows/System32/drivers/etc/hosts'
     : '/etc/hosts';
+//#endregion
+
+export { HOST_FILE_PATH };
