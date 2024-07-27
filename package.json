@@ -42,7 +42,7 @@
     "workerPlugins": {}
   },
   "dependencies": {
-    "tnp-core": "~16.444.15"
+    "tnp-core": "~16.444.16"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "~16.0.2-beta.2",
@@ -73,6 +73,7 @@
     "@compodoc/compodoc": "1.1.23",
     "@iconify/icons-fa-solid": "1.2.2",
     "@iconify/icons-mdi": "1.2.1",
+    "@inquirer/prompts": "5.3.2",
     "@mdi/js": "7.2.96",
     "@ng-matero/extensions": "16.0.0",
     "@ngneat/falso": "6.4.0",
@@ -298,7 +299,7 @@
     "rimraf": "2.6.2",
     "rxjs": "~7.8.0",
     "semver": "6.3.0",
-    "simple-git": "1.96.0",
+    "simple-git": "3.25.0",
     "sinon": "15.2.0",
     "sloc": "0.2.0",
     "socket.io": "4.7.5",
@@ -314,7 +315,7 @@
     "task.js": "0.1.5",
     "threads": "1.7.0",
     "tnp-cli": "~16.444.5",
-    "tnp-config": "~16.444.13",
+    "tnp-config": "~16.444.14",
     "tnp-db": "~16.444.12",
     "tnp-helpers": "~16.444.20",
     "tnp-models": "~16.444.13",
@@ -347,7 +348,7 @@
   "license": "MIT",
   "private": false,
   "name": "tnp-config",
-  "version": "16.444.13",
-  "lastBuildTagHash": "53e8ab287619b17b11e39254f21259f2fb1b6c37",
+  "version": "16.444.14",
+  "lastBuildTagHash": "82d9110bcee8bcaf3dbc86fcc5b788ad0272c973",
   "main": "index.js"
 }
