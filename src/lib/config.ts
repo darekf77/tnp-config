@@ -17,8 +17,6 @@ export { CoreHelpers as Helpers } from 'tnp-core/src';
 
 //#region config models
 
-
-
 export const GlobalLibTypeName = {
   //#region @backend
   isomorphicLib: 'isomorphic-lib',
@@ -249,7 +247,12 @@ const areTrustedForPatchUpdate = [
 //#endregion
 
 //#region constants / active framework version
-const activeFramewrokVersions = ['v16'] as CoreModels.FrameworkVersion[];
+/**
+ * Active framework versions for
+ * development => I've developing packages for
+ * all of them
+ */
+const activeFramewrokVersions = ['v16', 'v18'] as CoreModels.FrameworkVersion[];
 //#endregion
 
 //#region resolve tnp location
