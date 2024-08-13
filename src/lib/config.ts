@@ -304,6 +304,10 @@ export const config = {
   activeFramewrokVersions,
   coreProjectVersions: ['v1', 'v4', ...activeFramewrokVersions],
   frameworkName,
+  /**
+   * @deprecated pacakge json will be generated
+   */
+  packageJsonFrameworkKey: 'tnp',
   frameworkNames: {
     tnp: 'tnp',
     firedev: 'firedev',
