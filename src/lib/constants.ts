@@ -125,3 +125,7 @@ HOST_FILE_PATH =
 //#endregion
 
 export { HOST_FILE_PATH };
+
+export namespace FilesNames {
+  export const tmpLastSelectedJsonFile = 'tmp-last-selected.json';
+}

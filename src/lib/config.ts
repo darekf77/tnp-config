@@ -252,7 +252,7 @@ const areTrustedForPatchUpdate = [
  * development => I've developing packages for
  * all of them
  */
-const activeFramewrokVersions = ['v16', 'v18'] as CoreModels.FrameworkVersion[];
+const activeFramewrokVersions = ['v18'] as CoreModels.FrameworkVersion[];
 //#endregion
 
 //#region resolve tnp location
