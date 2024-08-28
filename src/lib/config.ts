@@ -1,17 +1,17 @@
 //#region imports & constants
-import { CoreModels } from 'tnp-core/lib';
+import { CoreModels } from 'tnp-core/src';
 //#region @backend
 declare const global: any;
-import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core/lib';
+import { path, fse, os, child_process, crossPlatformPath } from 'tnp-core/src';
 
 if (global && !global['ENV']) {
   global['ENV'] = {};
 }
 //#endregion
 
-import { frameworkName } from 'tnp-core/lib';
+import { frameworkName } from 'tnp-core/src';
 
-export { CoreHelpers as Helpers } from 'tnp-core/lib';
+export { CoreHelpers as Helpers } from 'tnp-core/src';
 
 //#endregion
 
