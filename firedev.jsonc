@@ -30,7 +30,7 @@
   "useFramework": false,
   "required": [],
   "version": "v18",
-  "additionalNpmNames": ["firedev-config"],
+  "additionalNpmNames": ["taon-config"],
   "isGenerated": false,
   "requiredServers": [],
   "license": "MIT",

@@ -76,7 +76,7 @@ allowedEnvironments.forEach(s => {
 //#endregion
 
 //#region constants / morphi url
-const urlRepoFiredev = 'https://github.com/darekf77/firedev.git';
+const urlRepoTaon = 'https://github.com/darekf77/taon.git';
 //#endregion
 
 //#region constants / files not allowed to clean
@@ -109,6 +109,10 @@ const file = {
   build_info_generated_ts: 'build-info._auto-generated_.ts',
 
   package_json: 'package.json',
+  taon_jsonc: 'taon.jsonc',
+   /**
+   * @deprecated
+   */
   firedev_jsonc: 'firedev.jsonc',
   /**
    * @deprecated
@@ -126,6 +130,9 @@ const file = {
    * @deprecated
    */
   package_json__devDependencies_json: 'package.json_devDependencies.json',
+   /**
+   * @deprecated
+   */
   devDependencies_json: 'devDependencies.json',
 
   yarn_lock: 'yarn.lock',
@@ -133,6 +140,9 @@ const file = {
   tnpEnvironment_json: 'tmp-environment.json',
   environment: 'environment',
   environment_js: 'environment.js',
+   /**
+   * @deprecated
+   */
   tmp_transaction_pid_txt: 'tmp-transaction-pid.txt',
   manifest_webmanifest: 'manifest.webmanifest',
   public_api_d_ts: 'public-api.d.ts',
@@ -148,6 +158,9 @@ const file = {
   index_js_map: 'index.js.map',
   db_json: 'db.json',
   db_for_tests_json: 'db-for-tests.json',
+   /**
+   * @deprecated
+   */
   tmpDockerImageId: 'tmp-docker-image-id',
   tmp_recent_json: 'recent.json',
   tmpIsomorphicPackagesJson: 'tmp-isomorphic-packages.json',
@@ -310,8 +323,8 @@ export const config = {
   packageJsonFrameworkKey: 'tnp',
   frameworkNames: {
     tnp: 'tnp',
-    firedev: 'firedev',
-    productionFrameworkName: 'firedev',
+    taon: 'taon',
+    productionFrameworkName: 'taon',
     developmentFrameworkName: 'tnp',
   },
   startPort: 6001,
@@ -320,7 +333,7 @@ export const config = {
   tempFiles: {
     FILE_NAME_ISOMORPHIC_PACKAGES: 'tmp-isomorphic-packages.json',
   },
-  urlRepoFiredev,
+  urlRepoTaon,
   pathes: {
     logoSvg: 'logo.svg',
     logoPng: 'logo.png',
@@ -366,79 +379,7 @@ export const config = {
     'sloc',
     //#endregion
   ],
-  helpAlias: ['-h', '--help', '-help', 'help'],
-  required: {
-    npm: [
-      //#region @backend
-      // { name: '@angular/cli', version: '13' },
-      { name: 'ncc', version: '0.36.0', installName: '@vercel/ncc' },
-      { name: 'extract-zip', version: '1.6.7' },
-      // { name: 'watch', version: '1.0.2' },
-      { name: 'cpr' },
-      { name: 'check-node-version' },
-      { name: 'npm-run', version: '4.1.2' },
-      { name: 'rimraf', version: '3.0.2' },
-      { name: 'mkdirp' },
-      // { name: 'renamer', version: '2.0.1' },
-      { name: 'nodemon' },
-      // { name: 'madge' },
-      { name: 'yarn' },
-      { name: 'firedev-http-server' },
-      // { name: 'bower' },
-      { name: 'prettier' },
-      { name: 'fkill', installName: 'fkill-cli' },
-      // { name: 'yo' },
-      { name: 'mocha' },
-      { name: 'jest' },
-      // { name: 'chai' },
-      { name: 'ts-node' },
-      { name: 'firedev-vsce' },
-      // { name: 'stmux' },
-      { name: 'webpack-bundle-analyzer' },
-      // { name: 'ng', installName: '@angular/cli' },
-      // { name: 'ngx-pwa-icons', version: '0.1.2' },
-      // { name: 'real-favicon', installName: 'cli-real-favicon' },
-      { name: 'babel', installName: 'babel-cli' },
-      { name: 'javascript-obfuscator', version: '4' },
-      { name: 'uglifyjs', installName: 'uglify-js' },
-      //#endregion
-    ],
-    niceTools: [
-      //#region @backend
-      { name: 'speed-test' },
-      { name: 'npm-name' }, // check if name is available on npm
-      { name: 'vantage', platform: 'linux' }, // inspect you live applicaiton
-      { name: 'clinic', platform: 'linux' }, // check why nodejs is slow
-      { name: 'vtop', platform: 'linux' }, // inspect you live applicaiton,
-      { name: 'public-ip' },
-      { name: 'empty-trash' },
-      { name: 'is-up' }, // check if website is ok
-      { name: 'is-online' }, // check if internet is ok,
-      { name: 'ttystudio' }, // record terminal actions,
-      { name: 'bcat' }, // redirect any stream to browser,
-      { name: 'wifi-password', installName: 'wifi-password-cli' },
-      { name: 'wallpaper', installName: 'wallpaper-cli' },
-      { name: 'brightness', installName: 'brightness-cli' },
-      { name: 'subdownloader' },
-      { name: 'rtail' }, // monitor multiple server
-      { name: 'iponmap' }, // show ip in terminal map,
-      { name: 'jsome' }, // display colored jsons,
-      { name: 'drawille', isNotCli: true }, // 3d drwa in temrinal
-      { name: 'columnify', isNotCli: true }, // draw nice columns in node,
-      { name: 'multispinner', isNotCli: true }, // progres for multiple async actions
-      { name: 'cfonts' }, // draw super nice fonts in console
-      //#endregion
-    ],
-    programs: [
-      ,
-      //#region @backend
-      {
-        name: 'code',
-        website: 'https://code.visualstudio.com/',
-      },
-      //#endregion
-    ],
-  },
+  helpAlias: ['-h', '--help', '-help', 'help']
 };
 //#endregion
 
