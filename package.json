@@ -244,6 +244,7 @@
     "ng2-logger": "~18.0.8",
     "ng2-pdfjs-viewer": "18.0.0",
     "ng2-rest": "~18.0.6",
+    "ng2-rest-swagger-generator": "18.0.5",
     "ngx-ace-wrapper": "17.0.0",
     "ngx-editor": "17.5.4",
     "ngx-highlightjs": "12.0.0",
@@ -311,7 +312,7 @@
     "task.js": "0.1.5",
     "threads": "1.7.0",
     "tnp": "~18.0.6",
-    "tnp-config": "~18.0.8",
+    "tnp-config": "~18.0.11",
     "tnp-core": "~18.0.30",
     "tnp-helpers": "~18.0.6",
     "tnp-models": "~18.0.7",
@@ -345,7 +346,7 @@
   "license": "MIT",
   "private": false,
   "name": "tnp-config",
-  "version": "18.0.10",
-  "lastBuildTagHash": "6c06cfdc76ab02f4be7cb693239a3a689b809296",
+  "version": "18.0.11",
+  "lastBuildTagHash": "c0f861a8d4912c06bba1fa141be56f5d7f7fdcb9",
   "main": "index.js"
 }
