@@ -4,7 +4,7 @@
   "overrided": {
     "ignoreDepsPattern": [],
     "includeAsDev": [],
-    "includeOnly": ["tnp-core"],
+    "includeOnly": ["taon-core"],
     "dependencies": {},
     "linkedFolders": [],
     "npmFixes": []
