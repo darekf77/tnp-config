@@ -345,7 +345,7 @@
   "license": "MIT",
   "private": false,
   "name": "tnp-config",
-  "version": "18.0.9",
+  "version": "18.0.10",
   "lastBuildTagHash": "6c06cfdc76ab02f4be7cb693239a3a689b809296",
   "main": "index.js"
 }
