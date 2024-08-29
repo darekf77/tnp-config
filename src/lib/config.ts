@@ -313,17 +313,24 @@ export const config = {
   array: {
     isomorphicPackages: 'isomorphicPackages',
   },
-  defaultFrameworkVersion: 'v16' as CoreModels.FrameworkVersion,
+  /**
+   * default when creating new
+   */
+  defaultFrameworkVersion: 'v18' as CoreModels.FrameworkVersion,
+  /**
+   * active development support
+   */
   activeFramewrokVersions,
-  coreProjectVersions: ['v1', 'v4', ...activeFramewrokVersions],
+  /**
+   * core projects that need to be installed
+   */
+  coreProjectVersions: ['v1', ...activeFramewrokVersions],
   frameworkName,
   /**
    * @deprecated pacakge json will be generated
    */
   packageJsonFrameworkKey: 'tnp',
   frameworkNames: {
-    tnp: 'tnp',
-    taon: 'taon',
     productionFrameworkName: 'taon',
     developmentFrameworkName: 'tnp',
   },
