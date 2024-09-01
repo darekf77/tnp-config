@@ -289,7 +289,7 @@ if (dirnameForTnp.endsWith(`/tnp-config/dist`)) {
   // global tnp node_modules being use in firedev case
   dirnameForTnp = dirnameForTnp.replace(/\/tnp\-config$/, '/tnp');
 }
-global.dirnameForFiredev = dirnameForTnp;
+global.dirnameForTaon = dirnameForTnp;
 
 if (path.basename(dirnameForTnp) === 'node_modules') {
   dirnameForTnp = crossPlatformPath(path.join(dirnameForTnp, 'tnp'));
