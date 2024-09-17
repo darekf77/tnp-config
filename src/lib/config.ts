@@ -107,6 +107,7 @@ const file = {
   start_backend_ts: 'start.backend.ts',
   result_packages_json: 'result-packages.json',
   build_info_generated_ts: 'build-info._auto-generated_.ts',
+  index_generated_ts: 'index._auto-generated_.ts',
 
   package_json: 'package.json',
   taon_jsonc: 'taon.jsonc',
