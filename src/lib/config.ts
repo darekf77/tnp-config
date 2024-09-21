@@ -108,7 +108,7 @@ const file = {
   result_packages_json: 'result-packages.json',
   build_info_generated_ts: 'build-info._auto-generated_.ts',
   index_generated_ts: 'index._auto-generated_.ts',
-
+  docs_config_jsonc  : 'docs-config.jsonc',
   package_json: 'package.json',
   taon_jsonc: 'taon.jsonc',
    /**
