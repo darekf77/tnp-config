@@ -3,7 +3,8 @@
 {
   "build": true,
   "prod": false,
-  "websql": false,
+  "websql": true,
   "projName": "tnp-config"
 }
 
+    
