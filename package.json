@@ -39,7 +39,8 @@
     "license": "MIT",
     "private": false,
     "main": "index.js",
-    "workerPlugins": {}
+    "workerPlugins": {},
+    "packageJsonOverride": {}
   },
   "dependencies": {},
   "devDependencies": {
