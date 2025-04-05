@@ -55,26 +55,6 @@ export const CoreLibCategoryArr: CoreModels.CoreLibCategory[] = [
 
 //#endregion
 
-//#region constants /  allowed Environments
-const allowedEnvironments: CoreModels.EnvironmentName[] = [
-  //#region @backend
-  'static',
-  'dev',
-  'prod',
-  'stage',
-  'online',
-  'test',
-  'qa',
-  'custom',
-  //#endregion
-];
-const allowedEnvironmentsObj = {};
-allowedEnvironments.forEach(s => {
-  // @ts-ignore
-  allowedEnvironmentsObj[s] = s;
-});
-//#endregion
-
 //#region constants / morphi url
 const urlRepoTaon = 'https://github.com/darekf77/taon.git';
 //#endregion
@@ -347,7 +327,6 @@ export const config = {
     logoPng: 'logo.png',
   },
   //#endregion
-  allowedEnvironments,
   folder,
   tempFolders,
   // @ts-ignore
@@ -355,15 +334,6 @@ export const config = {
     key => filesNotAllowedToClean[key],
   ) as string[],
   file,
-  default: {
-    //#region @backend
-    cloud: {
-      environment: {
-        name: 'online' as CoreModels.EnvironmentName,
-      },
-    },
-    //#endregion
-  },
   reservedArgumentsNamesUglify: ['reservedExpOne', 'reservedExpSec'],
   filesExtensions: {
     filetemplate: 'filetemplate',

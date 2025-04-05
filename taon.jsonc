@@ -1,40 +1,14 @@
 {
+  "type": "isomorphic-lib",
+  "version": "v18",
+  "dependenciesNamesForNpmLib": ["taon-core"],
+  "additionalNpmNames": ["taon-config"],
+  "isCoreProject": false,
   "resources": ["README.md"],
 
-  "overrided": {
-    "ignoreDepsPattern": [],
-    "includeAsDev": [],
-    "includeOnly": ["taon-core"],
-    "dependencies": {},
-    "linkedFolders": [],
-    "npmFixes": []
-  },
-
-  "smartContainerBuildTarget": "",
-  "linkedRepos": [],
-
-  "libReleaseOptions": {
-    "nodts": false,
-    "obscure": false,
-    "ugly": false,
-    "includeNodeModules": false,
-    "cliBuildNoDts": false,
-    "cliBuildObscure": false,
-    "cliBuildIncludeNodeModules": false,
-    "cliBuildUglify": false
-  },
-
-  "smartContainerTarget": "",
-  "type": "isomorphic-lib",
-  "isCoreProject": false,
-  "useFramework": false,
-  "required": [],
-  "version": "v18",
-  "additionalNpmNames": ["taon-config"],
-  "isGenerated": false,
-  "requiredServers": [],
-  "license": "MIT",
-  "private": false,
-  "main": "index.js",
-  "workerPlugins": {}
+  "packageJsonOverride": {
+    "author": "Dariusz Filipiak",
+    "license": "MIT",
+    "private": false
+  }
 }

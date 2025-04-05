@@ -91,6 +91,8 @@ export const appRelatedFiles = [
   'app.constants.ts',
   'app.hosts.ts',
   'app.electron.ts',
+  'app.vscode.ts',
+  'app.mobile.ts',
 ];
 
 export const TAGS = {
