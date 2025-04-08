@@ -3,6 +3,11 @@
   "version": "v18",
   "dependenciesNamesForNpmLib": ["taon-core"],
   "additionalNpmNames": ["taon-config"],
+
+  "autoReleaseConfigAllowedItems": [{
+    "artifactName": "npm-lib-and-cli-tool"
+  }],
+
   "isCoreProject": false,
   "resources": ["README.md"],
 
