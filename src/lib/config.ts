@@ -242,11 +242,12 @@ const areTrustedForPatchUpdate = [
 
 //#region constants / active framework version
 /**
+ * @deprecated
  * Active framework versions for
  * development => I've developing packages for
  * all of them
  */
-const activeFramewrokVersions = ['v18'] as CoreModels.FrameworkVersion[];
+const activeFrameworkVersions = ['v18'] as CoreModels.FrameworkVersion[];
 //#endregion
 
 //#region resolve tnp location
@@ -301,11 +302,11 @@ export const config = {
   /**
    * active development support
    */
-  activeFramewrokVersions,
+  activeFrameworkVersions,
   /**
    * core projects that need to be installed
    */
-  coreProjectVersions: ['v1', ...activeFramewrokVersions],
+  coreProjectVersions: ['v1', ...activeFrameworkVersions],
   frameworkName,
   /**
    * @deprecated pacakge json will be generated
