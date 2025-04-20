@@ -88,10 +88,10 @@ const file = {
   result_packages_json: 'result-packages.json',
   build_info_generated_ts: 'build-info._auto-generated_.ts',
   index_generated_ts: 'index._auto-generated_.ts',
-  docs_config_jsonc  : 'docs-config.jsonc',
+  docs_config_jsonc: 'docs-config.jsonc',
   package_json: 'package.json',
   taon_jsonc: 'taon.jsonc',
-   /**
+  /**
    * @deprecated
    */
   firedev_jsonc: 'firedev.jsonc',
@@ -111,7 +111,7 @@ const file = {
    * @deprecated
    */
   package_json__devDependencies_json: 'package.json_devDependencies.json',
-   /**
+  /**
    * @deprecated
    */
   devDependencies_json: 'devDependencies.json',
@@ -121,7 +121,7 @@ const file = {
   tnpEnvironment_json: 'tmp-environment.json',
   environment: 'environment',
   environment_js: 'environment.js',
-   /**
+  /**
    * @deprecated
    */
   tmp_transaction_pid_txt: 'tmp-transaction-pid.txt',
@@ -139,7 +139,7 @@ const file = {
   index_js_map: 'index.js.map',
   db_json: 'db.json',
   db_for_tests_json: 'db-for-tests.json',
-   /**
+  /**
    * @deprecated
    */
   tmpDockerImageId: 'tmp-docker-image-id',
@@ -240,16 +240,6 @@ const areTrustedForPatchUpdate = [
 ];
 //#endregion
 
-//#region constants / active framework version
-/**
- * @deprecated
- * Active framework versions for
- * development => I've developing packages for
- * all of them
- */
-const activeFrameworkVersions = ['v18'] as CoreModels.FrameworkVersion[];
-//#endregion
-
 //#region resolve tnp location
 // @LAST RESOLVE TNP LOCATION !!! for each context and RELEASE TNP-CONFIG
 let dirnameForTnp: string;
@@ -295,18 +285,6 @@ export const config = {
   array: {
     isomorphicPackages: 'isomorphicPackages',
   },
-  /**
-   * default when creating new
-   */
-  defaultFrameworkVersion: 'v18' as CoreModels.FrameworkVersion,
-  /**
-   * active development support
-   */
-  activeFrameworkVersions,
-  /**
-   * core projects that need to be installed
-   */
-  coreProjectVersions: ['v1', ...activeFrameworkVersions],
   frameworkName,
   /**
    * @deprecated pacakge json will be generated
@@ -358,7 +336,7 @@ export const config = {
     'sloc',
     //#endregion
   ],
-  helpAlias: ['-h', '--help', '-help', 'help']
+  helpAlias: ['-h', '--help', '-help', 'help'],
 };
 //#endregion
 
