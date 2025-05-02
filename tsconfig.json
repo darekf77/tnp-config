@@ -4,10 +4,16 @@
     "strictNullChecks": false,
     "rootDir": "./src",
     "paths": {
-      "tnp-config": [
+      "@lib": [
         "./src/lib"
       ],
-      "tnp-config/*": [
+      "@lib/*": [
+        "./src/lib/*"
+      ],
+      "tnp-config/src": [
+        "./src/lib"
+      ],
+      "tnp-config/src/*": [
         "./src/lib/*"
       ]
     }
