@@ -3,6 +3,7 @@
   "version": "v19",
   "dependenciesNamesForNpmLib": ["taon-core"],
   "additionalNpmNames": ["taon-config"],
+  "appId": "com.domain.example.tnp-config",
 
   "autoReleaseConfigAllowedItems": [{
     "artifactName": "npm-lib-and-cli-tool"
@@ -15,7 +16,7 @@
     "author": "Dariusz Filipiak",
     "license": "MIT",
     "private": false,
-
-    "scripts": {}
+    "scripts": {},
+    "description": "Description for tnp-config. Hello world!"
   }
 }
