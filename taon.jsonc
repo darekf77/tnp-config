@@ -14,9 +14,9 @@
 
   "packageJsonOverride": {
     "author": "Dariusz Filipiak",
+    "description": "Description for tnp-config. Hello world!",
     "license": "MIT",
     "private": false,
-    "scripts": {},
-    "description": "Description for tnp-config. Hello world!"
+    "scripts": {}
   }
 }
