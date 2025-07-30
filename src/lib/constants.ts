@@ -314,6 +314,8 @@ export const appRelatedFiles = [
   'app.electron.ts',
   'app.vscode.ts',
   'app.mobile.ts',
+  'app.context.ts',
+  'app.worker.ts',
 ];
 
 export const TAGS = {
@@ -353,30 +355,7 @@ export namespace FilesNames {
   export const tmpLastSelectedJsonFile = 'tmp-last-selected.json';
 }
 
-export const notAllowedProjectNames = [
-  // TODO add all npm package names from core container
-  'copyto',
-  'app',
-  'apps',
-  'dist',
-  'bundle',
-  'libs',
-  'lib',
-  'src',
-  'bin',
-  'source',
-  'migrations',
-  'assets',
-  'assets-for',
-  'browser',
-  'websql',
-  'compiled',
-  'docs',
-  'environments',
-  'env',
-  'projects',
-  'plugins',
-  '_',
+export const baseTaonDevProjectsNames = [
   'taon',
   'taon-simple-org',
   'taon-storage',
@@ -402,4 +381,35 @@ export const notAllowedProjectNames = [
   'tnp-models',
   'typescript-class-helpers',
   'vpn-split',
+];
+
+export const notAllowedNames = [
+  'copyto',
+  'app',
+  'apps',
+  'dist',
+  'bundle',
+  'libs',
+  'lib',
+  'src',
+  'bin',
+  'source',
+  'migrations',
+  'assets',
+  'assets-for',
+  'browser',
+  'websql',
+  'compiled',
+  'docs',
+  'environments',
+  'env',
+  'projects',
+  'plugins',
+  '_',
+];
+
+export const notAllowedProjectNames = [
+  // TODO add all npm package names from core container
+  ...notAllowedNames,
+  ...backendNodejsOnlyFiles,
 ];
