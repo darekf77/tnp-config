@@ -19,7 +19,6 @@ import {
   filesNotAllowedToClean,
   folderName,
   tempFoldersName,
-  urlRepoTaon,
 } from './constants';
 
 //#endregion
@@ -84,10 +83,6 @@ export const config = {
   tempFiles: {
     FILE_NAME_ISOMORPHIC_PACKAGES: 'tmp-isomorphic-packages.json',
   },
-  /**
-   * @deprecated use urlRepoTaon instead
-   */
-  urlRepoTaon,
   pathes: {
     logoSvg: 'logo.svg',
     logoPng: 'logo.png',

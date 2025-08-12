@@ -1,6 +1,7 @@
 import type { CoreModels } from 'tnp-core/src';
 
 export const urlRepoTaon = 'https://github.com/darekf77/taon.git';
+export const urlRepoTaonContainers = 'https://github.com/darekf77/taon-containers.git';
 
 export const GlobalLibTypeName = {
   //#region @backend
