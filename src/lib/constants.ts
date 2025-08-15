@@ -136,6 +136,8 @@ export const fileName = {
   logo_svg: 'logo.svg',
   ric_proj_json: 'ric-project.json',
   linked_projects_json: 'linked-projects.json',
+  docker_compose_yml: 'docker-compose.yml',
+  compose_yml: 'docker-compose.yml',
   ...filesNotAllowedToClean,
 };
 //#endregion
