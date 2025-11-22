@@ -50,10 +50,20 @@ if (path.basename(dirnameForTnp) === 'node_modules') {
   dirnameForTnp = crossPlatformPath(path.join(dirnameForTnp, 'tnp'));
 }
 
+if(frameworkName === 'tnp' && dirnameForTnp.endsWith('/local_release/npm-lib-and-cli-tool')) {
+  dirnameForTnp = dirnameForTnp.replace('/local_release/npm-lib-and-cli-tool', '');
+}
+
 //#endregion
 //#endregion
 
 //#region config
+
+// console.log({
+//   dirnameForTnp
+// });
+// process.exit(0)
+
 export const config = {
   dirnameForTnp,
   packagesThat: {
